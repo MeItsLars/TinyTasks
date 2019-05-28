@@ -1,4 +1,4 @@
-package ru.group12.tinytasks;
+package ru.group12.tinytasks.activities;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -15,12 +15,21 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class MainActivity extends AppCompatActivity {
+import java.io.Serializable;
+
+import ru.group12.tinytasks.R;
+import ru.group12.tinytasks.popups.series.taskcreation.TaskCreation;
+
+public class MainActivity extends AppCompatActivity implements Serializable {
+
+    MainActivity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        activity = this;
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference ref = database.getReference("Users").child("1");
@@ -34,7 +43,9 @@ public class MainActivity extends AppCompatActivity {
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ref.setValue(newValue.getText().toString());
+                //ref.setValue(newValue.getText().toString());
+
+                new TaskCreation(activity);
             }
         });
 
