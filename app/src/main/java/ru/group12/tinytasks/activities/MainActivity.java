@@ -17,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import ru.group12.tinytasks.R;
-import ru.group12.tinytasks.popups.LoginScreen;
+import ru.group12.tinytasks.popups.SignInScreen;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(activity, LoginScreen.class);
+                Intent intent = new Intent(activity, SignInScreen.class);
                 activity.startActivity(intent);
             }
         });

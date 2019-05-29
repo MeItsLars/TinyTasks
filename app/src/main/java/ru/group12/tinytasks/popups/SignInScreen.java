@@ -5,11 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 
 import ru.group12.tinytasks.R;
 
-public class LoginScreen extends AppCompatActivity {
+public class SignInScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_loginscreen);
+        setContentView(R.layout.activity_signinscreen);
     }
 }
