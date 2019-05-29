@@ -1,5 +1,6 @@
 package ru.group12.tinytasks.activities;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,12 +16,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.Serializable;
-
 import ru.group12.tinytasks.R;
-import ru.group12.tinytasks.popups.series.taskcreation.TaskCreation;
+import ru.group12.tinytasks.popups.LoginScreen;
 
-public class MainActivity extends AppCompatActivity implements Serializable {
+public class MainActivity extends AppCompatActivity {
 
     MainActivity activity;
 
@@ -43,9 +42,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //ref.setValue(newValue.getText().toString());
-
-                new TaskCreation(activity);
+                Intent intent = new Intent(activity, LoginScreen.class);
+                activity.startActivity(intent);
             }
         });
 
