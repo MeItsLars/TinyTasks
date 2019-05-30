@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="68dp"
 
         android:text="Sign in"
         android:textColor="#ffffff"
@@ -29,9 +29,9 @@
 
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="92dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginTop="30dp"
 
         android:background="@drawable/edittext_custom"
         android:drawableLeft="@drawable/ic_person_black_35dp"
@@ -40,43 +40,21 @@
         android:padding="5dp"
         android:paddingLeft="10dp"
 
-        app:layout_constraintBottom_toTopOf="@+id/enterPassword"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signIn" />
 
-    <EditText
-        android:id="@+id/enterPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="20dp"
-
-        android:background="@drawable/edittext_custom"
-        android:padding="5dp"
-        android:drawableLeft="@drawable/ic_lock_open_black_35dp"
-        android:drawablePadding="10dp"
-        android:hint="Enter password"
-        android:paddingLeft="10dp"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterEmail" />
-
     <Button
-        android:id="@+id/signInSubmissionButton"
+        android:id="@+id/signInButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginTop="20dp"
         android:background="@drawable/button_custom"
         android:fontFamily="sans-serif-condensed-light"
         android:padding="5dp"
@@ -86,15 +64,16 @@
         android:textSize="30sp"
 
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/enterEmail" />
 
     <TextView
         android:id="@+id/orText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="30dp"
+        android:layout_marginBottom="50dp"
 
         android:text="or sign in with"
         android:textColor="#ffffff"
@@ -103,38 +82,50 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInSubmissionButton" />
+        app:layout_constraintBottom_toTopOf="@+id/signInTwitter" />
 
-    <ImageButton
-        android:id="@+id/signInFacebook"
+    <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="60dp"
         android:layout_height="60dp"
 
         android:layout_marginEnd="60dp"
         android:layout_marginRight="60dp"
-        android:layout_marginTop="40dp"
-
-        android:background="@drawable/button_custom_signup_other"
-        android:padding="1dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/facebook_icon"
+        android:layout_marginBottom="70dp"
 
         app:layout_constraintRight_toLeftOf="@+id/signInTwitter"
-        app:layout_constraintTop_toBottomOf="@+id/orText" />
+        app:layout_constraintBottom_toBottomOf="parent" >
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/facebookSignInButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/customFacebookSignInButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:background="@drawable/button_custom_signup_other"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/facebook_icon"/>
+    </FrameLayout>
 
     <ImageButton
         android:id="@+id/signInTwitter"
         android:layout_width="60dp"
         android:layout_height="60dp"
 
-        android:layout_marginTop="40dp"
+        android:layout_marginBottom="70dp"
 
         android:background="@drawable/button_custom_signup_other"
         android:padding="1dp"
         android:scaleType="fitCenter"
         android:src="@drawable/twitter_icon"
 
-        app:layout_constraintTop_toBottomOf="@+id/orText"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintRight_toLeftOf="parent"/>
 
@@ -145,7 +136,7 @@
 
         android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginBottom="70dp"
 
         android:background="@drawable/button_custom_signup_other"
         android:padding="4dp"
@@ -153,6 +144,22 @@
         android:src="@drawable/google_icon"
 
         app:layout_constraintLeft_toRightOf="@+id/signInTwitter"
-        app:layout_constraintTop_toBottomOf="@+id/orText"/>
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <FrameLayout
+        android:id="@+id/waitingOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:clickable="true"
+        android:visibility="gone">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true" />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
