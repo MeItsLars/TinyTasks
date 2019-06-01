@@ -1,5 +1,6 @@
 package ru.group12.tinytasks.popups.signin;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -19,17 +20,23 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import ru.group12.tinytasks.R;
+import ru.group12.tinytasks.activities.MainActivity;
+import ru.group12.tinytasks.database.Database;
 
 public class SignInEmailScreen extends AppCompatActivity {
+
+    private SignInEmailScreen activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signinemailscreen);
 
+        activity = this;
+
         // Initialising top textview
         TextView emailText = findViewById(R.id.emailText);
-        emailText.setText("itslarsyt@gmail.com");
+        emailText.setText("larsjeurissen@hotmail.nl");
         GradientDrawable emailTextBackground = (GradientDrawable) emailText.getBackground();
         emailTextBackground.setColor(Color.argb(51, 152, 229, 121));
         emailTextBackground.setStroke(2, Color.argb(255, 82, 173, 46));
@@ -53,7 +60,10 @@ public class SignInEmailScreen extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
                             //TODO: Succesfull task
-                            password.setError("Correct!");
+                            Database.registerCurrentUser();
+                            Intent intent = new Intent(activity, MainActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            activity.startActivity(intent);
                         } else {
                             password.setError("Incorrect password. Please try again.");
                         }

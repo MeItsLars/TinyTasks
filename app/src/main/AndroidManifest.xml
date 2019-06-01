@@ -17,6 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.ProfileActivity"></activity>
         <activity android:name=".popups.signin.SignInScreen"></activity>
         <activity android:name=".popups.signin.SignUpEmailScreen"></activity>
         <activity android:name=".popups.signin.SignInEmailScreen"></activity>

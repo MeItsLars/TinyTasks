@@ -1,5 +1,7 @@
 package ru.group12.tinytasks.popups.signin;
 
+import android.accounts.Account;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -32,33 +34,72 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.Scopes;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.api.client.extensions.android.http.AndroidHttp;
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeTokenRequest;
+import com.google.api.client.googleapis.auth.oauth2.GoogleBrowserClientRequestUrl;
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
+import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
+import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.services.people.v1.People;
+import com.google.api.services.people.v1.PeopleScopes;
+import com.google.api.services.people.v1.model.Gender;
+import com.google.api.services.people.v1.model.ListConnectionsResponse;
+import com.google.api.services.people.v1.model.Person;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.SignInMethodQueryResult;
+import com.google.firebase.auth.TwitterAuthProvider;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.DefaultLogger;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.Twitter;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.TwitterConfig;
+import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import ru.group12.tinytasks.R;
+import ru.group12.tinytasks.database.Database;
 
 public class SignInScreen extends AppCompatActivity {
 
-    SignInScreen screen;
+    SignInScreen activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Initialize twitter SDK
+        TwitterConfig config = new TwitterConfig.Builder(this)
+                .logger(new DefaultLogger(Log.DEBUG))
+                .twitterAuthConfig(new TwitterAuthConfig("EH1FDWkfphl87dtuvvQp8DeE9", "BdP0e9kLcjFCqmHEKmbBcbqmcsXYoE5jBYTCnF3xY55RvLJWC5"))
+                .debug(true)
+                .build();
+        Twitter.initialize(config);
+
         setContentView(R.layout.activity_signinscreen);
 
-        screen = this;
+        activity = this;
 
         if(FirebaseAuth.getInstance().getCurrentUser() != null) {
             AuthUI.getInstance().signOut(this);
@@ -71,6 +112,7 @@ public class SignInScreen extends AppCompatActivity {
         initializeSignInButton(signInButton, emailEditText);
 
         initializeFacebookSignIn();
+        initializeTwitterSignIn();
         initializeGoogleSignIn();
     }
 
@@ -123,11 +165,11 @@ public class SignInScreen extends AppCompatActivity {
                                 SignInMethodQueryResult result = task.getResult();
                                 List<String> signInMethods = result.getSignInMethods();
                                 if(signInMethods.isEmpty()) {
-                                    Intent intent = new Intent(screen, SignUpEmailScreen.class);
-                                    screen.startActivity(intent);
+                                    Intent intent = new Intent(activity, SignUpEmailScreen.class);
+                                    activity.startActivity(intent);
                                 } else {
-                                    Intent intent = new Intent(screen, SignInEmailScreen.class);
-                                    screen.startActivity(intent);
+                                    Intent intent = new Intent(activity, SignInEmailScreen.class);
+                                    activity.startActivity(intent);
                                 }
                             }
                         }
@@ -199,6 +241,10 @@ public class SignInScreen extends AppCompatActivity {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
+                .requestScopes(new Scope(Scopes.PLUS_LOGIN),
+                        new Scope(PeopleScopes.USERINFO_PROFILE),
+                        new Scope(PeopleScopes.USER_BIRTHDAY_READ),
+                        new Scope(PeopleScopes.USER_PHONENUMBERS_READ))
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
@@ -213,20 +259,72 @@ public class SignInScreen extends AppCompatActivity {
         });
     }
 
-    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+    private void firebaseAuthWithGoogle(final GoogleSignInAccount acct) {
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         FirebaseAuth.getInstance().signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            System.out.println("Google sign in success: " + FirebaseAuth.getInstance().getCurrentUser().getEmail());
+                            System.out.println("Google sign in success: " + Database.userSignedIn());
+                            System.out.println("First name:" + acct.getGivenName());
+                            System.out.println("Last name:" + acct.getFamilyName());
                         } else {
                             System.out.println("Google sign in failed.");
                             //TODO: Google sign in failed
                         }
                     }
                 });
+    }
+
+    // Twitter sign in code
+
+    private TwitterLoginButton mTwitterLoginButton;
+
+    private void initializeTwitterSignIn() {
+        mTwitterLoginButton = findViewById(R.id.twitterSignInButton);
+
+        ImageButton twitterButton = findViewById(R.id.customTwitterSignInButton);
+        twitterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println(mTwitterLoginButton);
+                mTwitterLoginButton.performClick();
+            }
+        });
+
+        mTwitterLoginButton.setCallback(new Callback<TwitterSession>() {
+            @Override
+            public void success(Result<TwitterSession> result) {
+                handleTwitterSession(result.data);
+            }
+
+            @Override
+            public void failure(TwitterException exception) {
+                //TODO: Twitter sign in failed
+                System.out.println("Twitter sign in failed.");
+            }
+        });
+    }
+
+    private void handleTwitterSession(TwitterSession session) {
+        AuthCredential credential = TwitterAuthProvider.getCredential(
+                session.getAuthToken().token,
+                session.getAuthToken().secret);
+
+        FirebaseAuth.getInstance().signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            System.out.println("Twitter sign in success: " + FirebaseAuth.getInstance().getCurrentUser().getEmail());
+                        } else {
+                            System.out.println("Twitter sign in failed.");
+                            //TODO: Twitter sign in failed
+                        }
+                    }
+                });
+
     }
 
     // Activity result function used by multiple inlog methods
@@ -238,9 +336,11 @@ public class SignInScreen extends AppCompatActivity {
         // Pass the activity result back to the Facebook SDK
         mCallbackManager.onActivityResult(requestCode, resultCode, data);
 
+        // Pass the activity result to the Twitter login button.
+        mTwitterLoginButton.onActivityResult(requestCode, resultCode, data);
+
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
-            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 // Google Sign In was successful, authenticate with Firebase
@@ -249,7 +349,6 @@ public class SignInScreen extends AppCompatActivity {
             } catch (ApiException e) {
                 //TODO: Google sign in failed
                 System.out.println("Google sign in failed.");
-                e.printStackTrace();
             }
         }
 

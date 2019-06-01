@@ -177,7 +177,7 @@
         app:layout_constraintTop_toBottomOf="@+id/birthDate" />
 
     <Button
-        android:id="@+id/loginSubmissionButton"
+        android:id="@+id/signupButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
@@ -190,7 +190,7 @@
         android:background="@drawable/button_custom"
         android:fontFamily="sans-serif-condensed-light"
         android:padding="5dp"
-        android:text="Log in"
+        android:text="Sign up"
         android:textAllCaps="false"
         android:textColor="#fff7f7"
         android:textSize="30sp"

@@ -4,11 +4,19 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 import ru.group12.tinytasks.R;
 
@@ -20,8 +28,8 @@ public class SignUpEmailScreen extends AppCompatActivity {
         setContentView(R.layout.activity_signupemailscreen);
 
         // Initialising top textview
-        TextView emailText = findViewById(R.id.emailText);
-        emailText.setText("itslarsyt@gmail.com");
+        final TextView emailText = findViewById(R.id.emailText);
+        emailText.setText("larsjeurissen@hotmail.nl");
         GradientDrawable emailTextBackground = (GradientDrawable) emailText.getBackground();
         emailTextBackground.setColor(Color.argb(51, 152, 229, 121));
         emailTextBackground.setStroke(2, Color.argb(255, 82, 173, 46));
@@ -40,7 +48,7 @@ public class SignUpEmailScreen extends AppCompatActivity {
                 } else if(charSequence.length() <= 6) {
                     changeDrawableState(password.getBackground(), DrawableState.WRONG);
                     password.setError("Password not long enough!");
-                } else if(charSequence.length() <= 9) {
+                } else {
                     changeDrawableState(password.getBackground(), DrawableState.RIGHT);
                 }
             }
@@ -48,6 +56,26 @@ public class SignUpEmailScreen extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
 
+            }
+        });
+
+        Button signUpButton = findViewById(R.id.signupButton);
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email = emailText.getText().toString();
+                String pwd = password.getText().toString();
+
+                FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()) {
+                            System.out.println("Current user: " + FirebaseAuth.getInstance().getCurrentUser().getEmail());
+                        } else {
+                            System.out.println("Email sign-in failed!");
+                        }
+                    }
+                });
             }
         });
     }
