@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="ru.group12.tinytasks">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,20 +19,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ProfileActivity"></activity>
-        <activity android:name=".popups.signin.SignInScreen"></activity>
-        <activity android:name=".popups.signin.SignUpEmailScreen"></activity>
-        <activity android:name=".popups.signin.SignInEmailScreen"></activity>
+        <activity android:name=".activities.ProfileActivity" />
+        <activity android:name=".popups.signin.SignInScreen" />
+        <activity android:name=".popups.signin.SignUpEmailScreen" />
+        <activity android:name=".popups.signin.SignInEmailScreen" />
 
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-            tools:replace="android:value"
-            android:value="@string/facebook_application_id"/>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_application_id"
+            tools:replace="android:value" />
 
-        <activity android:name="com.facebook.FacebookActivity"
-            android:configChanges=
-                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

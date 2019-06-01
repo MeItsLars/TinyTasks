@@ -6,6 +6,28 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_loginscreen">
 
+    <EditText
+        android:id="@+id/gender"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+
+        android:background="@drawable/edittext_custom"
+        android:drawableLeft="@drawable/ic_lock_open_black_35dp"
+        android:drawablePadding="10dp"
+        android:hint="Gender (M/F/U)"
+        android:padding="5dp"
+        android:paddingLeft="10dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/birthDate" />
+
     <TextView
         android:id="@+id/signUpTextView"
         android:layout_width="wrap_content"
@@ -29,9 +51,9 @@
 
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginTop="10dp"
 
         android:background="@drawable/edittext_custom"
         android:drawableLeft="@drawable/ic_person_black_35dp"
@@ -51,15 +73,15 @@
 
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginTop="15dp"
 
         android:background="@drawable/edittext_custom"
-        android:padding="5dp"
         android:drawableLeft="@drawable/ic_lock_open_black_35dp"
         android:drawablePadding="10dp"
         android:hint="Enter password"
+        android:padding="5dp"
         android:paddingLeft="10dp"
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,15 +95,15 @@
 
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginTop="15dp"
 
         android:background="@drawable/edittext_custom"
-        android:padding="5dp"
         android:drawableLeft="@drawable/ic_lock_open_black_35dp"
         android:drawablePadding="10dp"
         android:hint="Confirm password"
+        android:padding="5dp"
         android:paddingLeft="10dp"
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,15 +117,15 @@
 
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginTop="15dp"
 
         android:background="@drawable/edittext_custom"
-        android:padding="5dp"
         android:drawableLeft="@drawable/ic_lock_open_black_35dp"
         android:drawablePadding="10dp"
         android:hint="Full name"
+        android:padding="5dp"
         android:paddingLeft="10dp"
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -117,15 +139,15 @@
 
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginTop="15dp"
 
         android:background="@drawable/edittext_custom"
-        android:padding="5dp"
         android:drawableLeft="@drawable/ic_lock_open_black_35dp"
         android:drawablePadding="10dp"
         android:hint="Phone number"
+        android:padding="5dp"
         android:paddingLeft="10dp"
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -139,15 +161,15 @@
 
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginTop="15dp"
 
         android:background="@drawable/edittext_custom"
-        android:padding="5dp"
         android:drawableLeft="@drawable/ic_lock_open_black_35dp"
         android:drawablePadding="10dp"
         android:hint="Birth date (dd-mm-yyyy)"
+        android:padding="5dp"
         android:paddingLeft="10dp"
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -155,47 +177,42 @@
         app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
 
     <EditText
-        android:id="@+id/gender"
+        android:id="@+id/address"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="76dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginTop="15dp"
 
         android:background="@drawable/edittext_custom"
-        android:padding="5dp"
         android:drawableLeft="@drawable/ic_lock_open_black_35dp"
         android:drawablePadding="10dp"
-        android:hint="Gender (M/F/U)"
+        android:hint="Address"
+        android:padding="5dp"
         android:paddingLeft="10dp"
 
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/birthDate" />
 
     <Button
         android:id="@+id/signupButton"
-        android:layout_width="0dp"
+        android:layout_width="312dp"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="20dp"
-
+        android:layout_marginTop="24dp"
         android:background="@drawable/button_custom"
         android:fontFamily="sans-serif-condensed-light"
         android:padding="5dp"
         android:text="Sign up"
         android:textAllCaps="false"
         android:textColor="#fff7f7"
-        android:textSize="30sp"
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gender" />
+        android:textSize="30sp"
+        app:layout_constraintTop_toBottomOf="@+id/address"
+        tools:layout_editor_absoluteX="50dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
