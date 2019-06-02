@@ -30,7 +30,7 @@
         android:layout_marginTop="8dp"
         android:text="Navigate your recommended jobs."
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="19sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
