@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import ru.group12.tinytasks.R;
 import ru.group12.tinytasks.database.Database;
+import ru.group12.tinytasks.internet.Network;
 import ru.group12.tinytasks.popups.signin.SignInScreen;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,7 +21,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         activity = this;
 
-        if(Database.userSignedIn()) Database.registerCurrentUser();
+        Network.registerInternetStateChangedListener(this);
+
+        // Load current user *IF* they exist.
+        Database.loadCurrentUser();
 
         Button signInButton = findViewById(R.id.signInButton);
         signInButton.setOnClickListener(new View.OnClickListener() {

@@ -64,7 +64,6 @@ import org.json.JSONObject;
 import java.util.List;
 
 import ru.group12.tinytasks.R;
-import ru.group12.tinytasks.database.Database;
 
 public class SignInScreen extends AppCompatActivity {
 
@@ -170,6 +169,11 @@ public class SignInScreen extends AppCompatActivity {
 
     private CallbackManager mCallbackManager;
 
+    private String facebookEmail = "";
+    private String facebookFullName = "";
+    private String facebookBirthDate = "";
+    private String facebookGender = "";
+
     public void initializeFacebookSignIn() {
         ImageButton customFacebookSignInButton = findViewById(R.id.customFacebookSignInButton);
         final LoginButton loginButton = findViewById(R.id.facebookSignInButton);
@@ -183,20 +187,26 @@ public class SignInScreen extends AppCompatActivity {
         });
 
         mCallbackManager = CallbackManager.Factory.create();
-        loginButton.setReadPermissions("email", "public_profile", "user_birthday");
+        loginButton.setReadPermissions("email", "public_profile", "user_birthday", "user_gender");
         loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
-            public void onSuccess(LoginResult loginResult) {
-                handleFacebookAccessToken(loginResult.getAccessToken());
-
+            public void onSuccess(final LoginResult loginResult) {
                 GraphRequest request = GraphRequest.newMeRequest(
                         loginResult.getAccessToken(),
                         new GraphRequest.GraphJSONObjectCallback() {
                             @Override
                             public void onCompleted(JSONObject object, GraphResponse response) {
+
+                                System.out.println("RECEIVED:");
+                                System.out.println(object);
+
                                 try {
-                                    System.out.println("Email: " + object.getString("email"));
-                                    System.out.println("Birthdate: " + object.getString("birthday"));
+                                    facebookEmail = object.getString("email");
+                                    facebookFullName = object.getString("name");
+                                    facebookBirthDate = object.getString("birthday");
+                                    facebookGender = object.getString("gender");
+
+                                    handleFacebookAccessToken(loginResult.getAccessToken());
                                 } catch(JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -223,18 +233,20 @@ public class SignInScreen extends AppCompatActivity {
 
     private void handleFacebookAccessToken(AccessToken token) {
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
-        FirebaseAuth.getInstance().signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            System.out.println("Facebook sign in success: " + FirebaseAuth.getInstance().getCurrentUser().getEmail());
-                        } else {
-                            System.out.println("Facebook sign in failed.");
-                            //TODO: Facebook sign in failed
-                        }
-                    }
-                });
+
+        Intent intent = new Intent(this, SignUpOtherScreen.class);
+        intent.putExtra("credential", credential);
+        intent.putExtra("email", facebookEmail);
+        String name = facebookFullName.substring(0, facebookFullName.indexOf(' '));
+        intent.putExtra("name", name);
+        String surname = facebookFullName.substring(facebookFullName.indexOf(' ') + 1);
+        intent.putExtra("surname", surname);
+        intent.putExtra("phoneNumber", "");
+        intent.putExtra("birthDate", facebookBirthDate.replaceAll("/", "-"));
+        String gender = facebookGender.equals("male") ? "M" : facebookGender.equals("female") ? "F" : "U";
+        intent.putExtra("gender", gender);
+
+        startActivity(intent);
     }
 
     // Google sign in code
@@ -266,18 +278,8 @@ public class SignInScreen extends AppCompatActivity {
 
     private void firebaseAuthWithGoogle(final GoogleSignInAccount acct) {
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-        FirebaseAuth.getInstance().signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            System.out.println("Google sign in success: " + Database.userSignedIn());
-                        } else {
-                            System.out.println("Google sign in failed.");
-                            //TODO: Google sign in failed
-                        }
-                    }
-                });
+
+        //TODO: New sign up screen
     }
 
     // Twitter sign in code
@@ -315,23 +317,10 @@ public class SignInScreen extends AppCompatActivity {
                 session.getAuthToken().token,
                 session.getAuthToken().secret);
 
-        FirebaseAuth.getInstance().signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            System.out.println("Twitter sign in success: " + FirebaseAuth.getInstance().getCurrentUser().getEmail());
-                        } else {
-                            System.out.println("Twitter sign in failed.");
-                            //TODO: Twitter sign in failed
-                        }
-                    }
-                });
-
+        //TODO: New sign up screen
     }
 
     // Activity result function used by multiple inlog methods
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

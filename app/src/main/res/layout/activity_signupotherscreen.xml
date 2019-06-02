@@ -61,26 +61,25 @@
         android:padding="5dp"
         android:paddingLeft="10dp"
 
-        app:layout_constraintBottom_toTopOf="@+id/enterPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signUpTextView" />
 
     <EditText
-        android:id="@+id/enterPassword"
+        android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="15dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
+        android:layout_marginTop="10dp"
 
         android:background="@drawable/edittext_custom"
         android:drawableLeft="@drawable/ic_lock_open_black_35dp"
         android:drawablePadding="10dp"
-        android:hint="Enter password"
+        android:hint="First name"
         android:padding="5dp"
         android:paddingLeft="10dp"
 
@@ -89,48 +88,26 @@
         app:layout_constraintTop_toBottomOf="@+id/emailText" />
 
     <EditText
-        android:id="@+id/confirmPassword"
+        android:id="@+id/surname"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="15dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
+        android:layout_marginTop="10dp"
 
         android:background="@drawable/edittext_custom"
         android:drawableLeft="@drawable/ic_lock_open_black_35dp"
         android:drawablePadding="10dp"
-        android:hint="Confirm password"
+        android:hint="Last name"
         android:padding="5dp"
         android:paddingLeft="10dp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterPassword" />
-
-    <EditText
-        android:id="@+id/fullName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-
-        android:background="@drawable/edittext_custom"
-        android:drawableLeft="@drawable/ic_lock_open_black_35dp"
-        android:drawablePadding="10dp"
-        android:hint="Full name"
-        android:padding="5dp"
-        android:paddingLeft="10dp"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirmPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <EditText
         android:id="@+id/phoneNumber"
@@ -152,7 +129,7 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fullName" />
+        app:layout_constraintTop_toBottomOf="@+id/surname" />
 
     <EditText
         android:id="@+id/birthDate"

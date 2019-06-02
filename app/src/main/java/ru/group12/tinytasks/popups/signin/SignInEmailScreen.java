@@ -60,7 +60,7 @@ public class SignInEmailScreen extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
                             //TODO: Succesfull task
-                            Database.registerCurrentUser();
+                            Database.loadCurrentUser();
                             Intent intent = new Intent(activity, MainActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             activity.startActivity(intent);
