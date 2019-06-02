@@ -6,6 +6,28 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_loginscreen">
 
+    <EditText
+        android:id="@+id/gender"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+
+        android:background="@drawable/edittext_custom"
+        android:drawableLeft="@drawable/ic_lock_open_black_35dp"
+        android:drawablePadding="10dp"
+        android:hint="Gender (M/F/U)"
+        android:padding="5dp"
+        android:paddingLeft="10dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/birthDate" />
+
     <TextView
         android:id="@+id/signUpTextView"
         android:layout_width="wrap_content"
@@ -22,8 +44,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/emailText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+
+        android:background="@drawable/edittext_custom"
+        android:drawableLeft="@drawable/ic_person_black_35dp"
+        android:drawablePadding="10dp"
+        android:padding="5dp"
+        android:paddingLeft="10dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpTextView" />
+
     <EditText
-        android:id="@+id/enterEmail"
+        android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
@@ -34,19 +77,18 @@
         android:layout_marginTop="10dp"
 
         android:background="@drawable/edittext_custom"
-        android:drawableLeft="@drawable/ic_person_black_35dp"
+        android:drawableLeft="@drawable/ic_lock_open_black_35dp"
         android:drawablePadding="10dp"
-        android:hint="Enter email"
+        android:hint="First name"
         android:padding="5dp"
         android:paddingLeft="10dp"
 
-        app:layout_constraintBottom_toTopOf="@+id/enterPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signUpTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/emailText" />
 
     <EditText
-        android:id="@+id/enterPassword"
+        android:id="@+id/surname"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
@@ -54,62 +96,18 @@
         android:layout_marginLeft="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
 
         android:background="@drawable/edittext_custom"
-        android:padding="5dp"
         android:drawableLeft="@drawable/ic_lock_open_black_35dp"
         android:drawablePadding="10dp"
-        android:hint="Enter password"
+        android:hint="Last name"
+        android:padding="5dp"
         android:paddingLeft="10dp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterEmail" />
-
-    <EditText
-        android:id="@+id/confirmPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="15dp"
-
-        android:background="@drawable/edittext_custom"
-        android:padding="5dp"
-        android:drawableLeft="@drawable/ic_lock_open_black_35dp"
-        android:drawablePadding="10dp"
-        android:hint="Confirm password"
-        android:paddingLeft="10dp"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterPassword" />
-
-    <EditText
-        android:id="@+id/fullName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="15dp"
-
-        android:background="@drawable/edittext_custom"
-        android:padding="5dp"
-        android:drawableLeft="@drawable/ic_lock_open_black_35dp"
-        android:drawablePadding="10dp"
-        android:hint="Full name"
-        android:paddingLeft="10dp"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirmPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <EditText
         android:id="@+id/phoneNumber"
@@ -118,20 +116,20 @@
 
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginTop="15dp"
 
         android:background="@drawable/edittext_custom"
-        android:padding="5dp"
         android:drawableLeft="@drawable/ic_lock_open_black_35dp"
         android:drawablePadding="10dp"
         android:hint="Phone number"
+        android:padding="5dp"
         android:paddingLeft="10dp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fullName" />
+        app:layout_constraintTop_toBottomOf="@+id/surname" />
 
     <EditText
         android:id="@+id/birthDate"
@@ -140,63 +138,41 @@
 
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginTop="15dp"
 
         android:background="@drawable/edittext_custom"
-        android:padding="5dp"
         android:drawableLeft="@drawable/ic_lock_open_black_35dp"
         android:drawablePadding="10dp"
         android:hint="Birth date (dd-mm-yyyy)"
+        android:padding="5dp"
         android:paddingLeft="10dp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
 
-    <EditText
-        android:id="@+id/gender"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="15dp"
-
-        android:background="@drawable/edittext_custom"
-        android:padding="5dp"
-        android:drawableLeft="@drawable/ic_lock_open_black_35dp"
-        android:drawablePadding="10dp"
-        android:hint="Gender (M/F/U)"
-        android:paddingLeft="10dp"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/birthDate" />
-
     <Button
-        android:id="@+id/loginSubmissionButton"
-        android:layout_width="0dp"
+        android:id="@+id/signupButton"
+        android:layout_width="312dp"
         android:layout_height="wrap_content"
 
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="60dp"
 
         android:background="@drawable/button_custom"
         android:fontFamily="sans-serif-condensed-light"
         android:padding="5dp"
-        android:text="Log in"
+        android:text="Sign up"
         android:textAllCaps="false"
         android:textColor="#fff7f7"
-        android:textSize="30sp"
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gender" />
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
