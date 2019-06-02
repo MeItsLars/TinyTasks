@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_loginscreen">
+
+    <TextView
+        android:id="@+id/signIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="30dp"
+
+        android:text="Sign in"
+        android:textColor="#ffffff"
+        android:textSize="60sp"
+        app:fontFamily="sans-serif-thin"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/enterEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="30dp"
+
+        android:background="@drawable/edittext_custom"
+        android:drawableLeft="@drawable/ic_person_black_35dp"
+        android:drawablePadding="10dp"
+        android:hint="Enter email"
+        android:padding="5dp"
+        android:paddingLeft="10dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/enterPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signIn" />
+
+    <EditText
+        android:id="@+id/enterPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="20dp"
+
+        android:background="@drawable/edittext_custom"
+        android:padding="5dp"
+        android:drawableLeft="@drawable/ic_lock_open_black_35dp"
+        android:drawablePadding="10dp"
+        android:hint="Enter password"
+        android:paddingLeft="10dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterEmail" />
+
+    <Button
+        android:id="@+id/signInSubmissionButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_custom"
+        android:fontFamily="sans-serif-condensed-light"
+        android:padding="5dp"
+        android:text="Sign in"
+        android:textAllCaps="false"
+        android:textColor="#fff7f7"
+        android:textSize="30sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterPassword" />
+
+    <TextView
+        android:id="@+id/orText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="30dp"
+
+        android:text="or sign in with"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
+        app:fontFamily="sans-serif-thin"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signInSubmissionButton" />
+
+    <ImageButton
+        android:id="@+id/signInFacebook"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="40dp"
+
+        android:background="@drawable/button_custom_signup_other"
+        android:padding="1dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/facebook_icon"
+
+        app:layout_constraintRight_toLeftOf="@+id/signInTwitter"
+        app:layout_constraintTop_toBottomOf="@+id/orText" />
+
+    <ImageButton
+        android:id="@+id/signInTwitter"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+
+        android:layout_marginTop="40dp"
+
+        android:background="@drawable/button_custom_signup_other"
+        android:padding="1dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/twitter_icon"
+
+        app:layout_constraintTop_toBottomOf="@+id/orText"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/signInGoogle"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="40dp"
+
+        android:background="@drawable/button_custom_signup_other"
+        android:padding="4dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/google_icon"
+
+        app:layout_constraintLeft_toRightOf="@+id/signInTwitter"
+        app:layout_constraintTop_toBottomOf="@+id/orText"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
