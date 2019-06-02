@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_loginscreen">
+
+    <TextView
+        android:id="@+id/ct_label_name_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name task"
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="102dp" />
+
+    <TextView
+        android:id="@+id/ct_Title"
+        android:layout_width="155dp"
+        android:layout_height="26dp"
+        android:text="Create Task"
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="38dp" />
+
+    <TextView
+        android:id="@+id/ct_label_task_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="204dp" />
+
+    <EditText
+        android:id="@+id/ct_create_task_description"
+        android:layout_width="370dp"
+        android:layout_height="75dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Approximately 10m^2 of grass that has to be mowed."
+        android:inputType="textMultiLine"
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="223dp" />
+
+    <EditText
+        android:id="@+id/ct_create_name_task"
+        android:layout_width="367dp"
+        android:layout_height="63dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Mowing the lawn"
+        android:inputType="textMultiLine"
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="121dp" />
+
+    <TextView
+        android:id="@+id/ct_label_add_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add images (optional)"
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="333dp" />
+
+    <ImageButton
+        android:id="@+id/ct_add_img"
+        android:layout_width="62dp"
+        android:layout_height="56dp"
+        app:srcCompat="@drawable/ic_add_to_photos_blue_24dp"
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="363dp" />
+
+    <ImageView
+        android:id="@+id/ct_gallery_img1"
+        android:layout_width="60dp"
+        android:layout_height="56dp"
+        app:srcCompat="@drawable/ic_photo_lightblue_24dp"
+        tools:layout_editor_absoluteX="255dp"
+        tools:layout_editor_absoluteY="363dp" />
+
+    <ImageView
+        android:id="@+id/ct_gallery_img2"
+        android:layout_width="60dp"
+        android:layout_height="56dp"
+        app:srcCompat="@drawable/ic_photo_lightblue_24dp"
+        tools:layout_editor_absoluteX="177dp"
+        tools:layout_editor_absoluteY="363dp" />
+
+    <ImageView
+        android:id="@+id/ct_gallery_img8"
+        android:layout_width="60dp"
+        android:layout_height="56dp"
+        app:srcCompat="@drawable/ic_photo_lightblue_24dp"
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="363dp" />
+
+    <ImageView
+        android:id="@+id/ct_gallery_img2"
+        android:layout_width="60dp"
+        android:layout_height="56dp"
+        app:srcCompat="@drawable/ic_photo_lightblue_24dp"
+        tools:layout_editor_absoluteX="329dp"
+        tools:layout_editor_absoluteY="363dp" />
+
+    <Spinner
+        android:id="@+id/ct_choose_category"
+        android:layout_width="366dp"
+        android:layout_height="33dp"
+        android:longClickable="false"
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="469dp" />
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <resources>
+        <string-array name="planets_array">
+            <item>Cleaning</item>
+            <item>Cooking</item>
+            <item>Vacuuming</item>
+            <item>Tutoring</item>
+            <item>Groceries shopping</item>
+            <item>Waste disposal</item>
+            <item>Mowing</item>
+            <item>Weeding</item>
+            <item>Repair</item>
+            <item>Carpent</item>
+            <item>Bricklaying</item>
+            <item>Paint</item>
+            <item>Plumb</item>
+        </string-array>
+    </resources>
+
+    <TextView
+        android:id="@+id/ct_label_choose_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category"
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="442dp" />
+
+    <Button
+        android:id="@+id/ct_bttn_create_task"
+        android:layout_width="362dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_custom"
+        android:linksClickable="false"
+        android:text="CREATE MY TASK"
+        android:textColor="#fff7f7"
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="607dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
