@@ -1,5 +1,6 @@
 package ru.group12.tinytasks.popups.signin;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -13,7 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -24,7 +24,8 @@ import com.google.firebase.database.annotations.NotNull;
 import java.util.regex.Pattern;
 
 import ru.group12.tinytasks.R;
-import ru.group12.tinytasks.database.Database;
+import ru.group12.tinytasks.util.ActivityManager;
+import ru.group12.tinytasks.util.database.Database;
 
 public class SignUpOtherScreen extends AppCompatActivity {
 
@@ -124,13 +125,15 @@ public class SignUpOtherScreen extends AppCompatActivity {
                                                     surnameEditText.getText().toString(),
                                                     phoneNumberEditText.getText().toString(),
                                                     birthDateEditText.getText().toString(),
-                                                    genderEditText.getText().toString(),
-                                                    true);
+                                                    genderEditText.getText().toString());
 
-                                            System.out.println("User account registration succeeded!");
-                                        } else System.out.println("User account registration failed. User not signed in.");
+                                            Database.loadCurrentUser(activity);
+                                        } else {
+                                            //TODO: Failed.
+                                            System.out.println("User account registration failed. User not signed in.");
+                                        }
                                     } else {
-                                        // Account registration failed...
+                                        //TODO: Failed.
                                         System.out.println("User account registration failed due to an unknown reason.");
                                     }
                                 }

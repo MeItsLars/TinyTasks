@@ -1,4 +1,4 @@
-package ru.group12.tinytasks.internet;
+package ru.group12.tinytasks.util.internet;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

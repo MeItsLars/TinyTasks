@@ -7,8 +7,6 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,7 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import ru.group12.tinytasks.R;
 import ru.group12.tinytasks.activities.MainActivity;
-import ru.group12.tinytasks.database.Database;
+import ru.group12.tinytasks.util.ActivityManager;
+import ru.group12.tinytasks.util.database.Database;
 
 public class SignInEmailScreen extends AppCompatActivity {
 
@@ -59,11 +58,8 @@ public class SignInEmailScreen extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
-                            //TODO: Succesfull task
-                            Database.loadCurrentUser();
-                            Intent intent = new Intent(activity, MainActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            activity.startActivity(intent);
+                            // Load user and start new activity when done
+                            Database.loadCurrentUser(activity);
                         } else {
                             password.setError("Incorrect password. Please try again.");
                         }

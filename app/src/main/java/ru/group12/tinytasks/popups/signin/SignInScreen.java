@@ -56,6 +56,7 @@ import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterConfig;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.identity.TwitterAuthClient;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
 import org.json.JSONException;
@@ -64,6 +65,7 @@ import org.json.JSONObject;
 import java.util.List;
 
 import ru.group12.tinytasks.R;
+import ru.group12.tinytasks.util.ActivityManager;
 
 public class SignInScreen extends AppCompatActivity {
 
@@ -149,11 +151,9 @@ public class SignInScreen extends AppCompatActivity {
                                 SignInMethodQueryResult result = task.getResult();
                                 List<String> signInMethods = result.getSignInMethods();
                                 if(signInMethods.isEmpty()) {
-                                    Intent intent = new Intent(activity, SignUpEmailScreen.class);
-                                    activity.startActivity(intent);
+                                    ActivityManager.startNewActivity(activity, SignUpEmailScreen.class, false);
                                 } else {
-                                    Intent intent = new Intent(activity, SignInEmailScreen.class);
-                                    activity.startActivity(intent);
+                                    ActivityManager.startNewActivity(activity, SignInEmailScreen.class, false);
                                 }
                             }
                         }
@@ -196,10 +196,6 @@ public class SignInScreen extends AppCompatActivity {
                         new GraphRequest.GraphJSONObjectCallback() {
                             @Override
                             public void onCompleted(JSONObject object, GraphResponse response) {
-
-                                System.out.println("RECEIVED:");
-                                System.out.println(object);
-
                                 try {
                                     facebookEmail = object.getString("email");
                                     facebookFullName = object.getString("name");
@@ -279,11 +275,19 @@ public class SignInScreen extends AppCompatActivity {
     private void firebaseAuthWithGoogle(final GoogleSignInAccount acct) {
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
 
-        //TODO: New sign up screen
+        Intent intent = new Intent(this, SignUpOtherScreen.class);
+        intent.putExtra("credential", credential);
+        intent.putExtra("email", acct.getEmail());
+        intent.putExtra("name", acct.getGivenName());
+        intent.putExtra("surname", acct.getFamilyName());
+        intent.putExtra("phoneNumber", "");
+        intent.putExtra("birthDate", "");
+        intent.putExtra("gender", "");
+
+        startActivity(intent);
     }
 
     // Twitter sign in code
-
     private TwitterLoginButton mTwitterLoginButton;
 
     private void initializeTwitterSignIn() {
@@ -317,7 +321,34 @@ public class SignInScreen extends AppCompatActivity {
                 session.getAuthToken().token,
                 session.getAuthToken().secret);
 
-        //TODO: New sign up screen
+        final Intent intent = new Intent(this, SignUpOtherScreen.class);
+        intent.putExtra("credential", credential);
+
+        String userName = session.getUserName();
+
+        String name = userName.indexOf(' ') == -1 ? userName : userName.substring(0, userName.indexOf(' '));
+        String surname = (userName.indexOf(' ') == -1 || userName.indexOf(' ') + 1 >= userName.length()) ? "" : userName.substring(userName.indexOf(' ') + 1);
+
+        intent.putExtra("name", name);
+        intent.putExtra("surname", surname);
+        intent.putExtra("phoneNumber", "");
+        intent.putExtra("birthDate", "");
+        intent.putExtra("gender", "");
+
+        TwitterAuthClient authClient = new TwitterAuthClient();
+        authClient.requestEmail(session, new Callback<String>() {
+            @Override
+            public void success(Result<String> result) {
+                intent.putExtra("email", result.data);
+                startActivity(intent);
+            }
+
+            @Override
+            public void failure(TwitterException exception) {
+                intent.putExtra("email", "");
+                startActivity(intent);
+            }
+        });
     }
 
     // Activity result function used by multiple inlog methods

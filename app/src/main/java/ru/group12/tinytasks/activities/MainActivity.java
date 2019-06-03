@@ -7,8 +7,9 @@ import android.view.View;
 import android.widget.Button;
 
 import ru.group12.tinytasks.R;
-import ru.group12.tinytasks.database.Database;
-import ru.group12.tinytasks.internet.Network;
+import ru.group12.tinytasks.util.ActivityManager;
+import ru.group12.tinytasks.util.database.Database;
+import ru.group12.tinytasks.util.internet.Network;
 import ru.group12.tinytasks.popups.signin.SignInScreen;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(activity, SignInScreen.class);
-                activity.startActivity(intent);
+                ActivityManager.startNewActivity(activity, SignInScreen.class, false,
+                        Intent.FLAG_ACTIVITY_NEW_TASK);
             }
         });
 

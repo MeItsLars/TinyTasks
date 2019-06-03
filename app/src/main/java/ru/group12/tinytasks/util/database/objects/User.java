@@ -1,4 +1,4 @@
-package ru.group12.tinytasks.database.objects;
+package ru.group12.tinytasks.util.database.objects;
 
 public class User {
 
@@ -32,6 +32,10 @@ public class User {
 
     public String getSurname() {
         return surname;
+    }
+
+    public String getFullName() {
+        return name.concat(" ").concat(surname);
     }
 
     public String getPhoneNumber() {

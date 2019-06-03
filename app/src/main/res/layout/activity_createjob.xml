@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_loginscreen">
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="38dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="3dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/ct_price_range_from"
+        app:layout_constraintTop_toBottomOf="@+id/ct_price_range" />
+
+    <TextView
+        android:id="@+id/ct_label_name_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="115dp"
+        android:text="Name task"
+        app:layout_constraintBottom_toTopOf="@+id/ct_create_name_task"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ct_Title"
+        android:layout_width="363dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/create_task"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ct_label_task_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:text="Description"
+        app:layout_constraintBottom_toTopOf="@+id/ct_create_task_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ct_create_name_task"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/ct_create_task_description"
+        android:layout_width="370dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="370dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Approximately 10m^2 of grass that has to be mowed."
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ct_create_name_task" />
+
+    <EditText
+        android:id="@+id/ct_create_name_task"
+        android:layout_width="367dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="450dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Mowing the lawn"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ct_Title" />
+
+    <TextView
+        android:id="@+id/ct_price_range"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Pricerange"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ct_create_task_description" />
+
+    <Spinner
+        android:id="@+id/ct_choose_category"
+        android:layout_width="366dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="272dp"
+        android:longClickable="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <resources>
+        <string-array name="planets_array">
+            <item>Cleaning</item>
+            <item>Cooking</item>
+            <item>Vacuuming</item>
+            <item>Tutoring</item>
+            <item>Groceries shopping</item>
+            <item>Waste disposal</item>
+            <item>Mowing</item>
+            <item>Weeding</item>
+            <item>Repair</item>
+            <item>Carpent</item>
+            <item>Bricklaying</item>
+            <item>Paint</item>
+            <item>Plumb</item>
+        </string-array>
+    </resources>
+
+    <TextView
+        android:id="@+id/ct_label_other_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginBottom="1dp"
+        android:text="Category"
+        app:layout_constraintBottom_toTopOf="@+id/ct_choose_category"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+
+    <Button
+        android:id="@+id/ct_bttn_prev_page"
+        android:layout_width="362dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="76dp"
+        android:background="@drawable/button_custom"
+        android:linksClickable="false"
+        android:text="NEXT PAGE"
+        android:textColor="#fff7f7"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.363"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/ct_price_range_from"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="3dp"
+        android:text="From"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ct_price_range" />
+
+    <TextView
+        android:id="@+id/ct_price_range_to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="3dp"
+        android:text="To"
+        app:layout_constraintStart_toEndOf="@+id/editText2"
+        app:layout_constraintTop_toBottomOf="@+id/ct_price_range" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="38dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="225dp"
+        android:layout_marginRight="225dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ct_price_range_to"
+        app:layout_constraintTop_toBottomOf="@+id/ct_price_range" />
+
+    <TextView
+        android:id="@+id/ct_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="35dp"
+        android:text="Location"
+        app:layout_constraintBottom_toTopOf="@+id/editText3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ct_choose_category" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="114dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="190dp"
+        android:ems="10"
+        android:inputType="textPostalAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ct_location" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
