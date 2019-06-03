@@ -4,4 +4,8 @@
     <string name="fb_login_protocol_scheme">fb407297503449175</string>
     <string name="CONSUMER_KEY">EH1FDWkfphl87dtuvvQp8DeE9</string>
     <string name="CONSUMER_SECRET">BdP0e9kLcjFCqmHEKmbBcbqmcsXYoE5jBYTCnF3xY55RvLJWC5</string>
+    <string name="title_activity_joboverview">joboverview</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
