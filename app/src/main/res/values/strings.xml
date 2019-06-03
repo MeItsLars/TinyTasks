@@ -4,4 +4,5 @@
     <string name="fb_login_protocol_scheme">fb407297503449175</string>
     <string name="CONSUMER_KEY">EH1FDWkfphl87dtuvvQp8DeE9</string>
     <string name="CONSUMER_SECRET">BdP0e9kLcjFCqmHEKmbBcbqmcsXYoE5jBYTCnF3xY55RvLJWC5</string>
+    <string name="create_task">Create Task</string>
 </resources>
