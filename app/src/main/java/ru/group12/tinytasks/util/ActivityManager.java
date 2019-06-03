@@ -21,4 +21,9 @@ public class ActivityManager {
         activity.startActivity(intent);
         if(finishCurrent) activity.finish();
     }
+
+    public static void startNewActivityForResult(AppCompatActivity activity, Class newClass, int requestCode) {
+        Intent intent = new Intent(activity, newClass);
+        activity.startActivityForResult(intent, requestCode);
+    }
 }
