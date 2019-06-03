@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activities.CreateTask"></activity>
 
-        <receiver android:name=".internet.InternetChangeReciever">
+        <receiver android:name=".util.internet.InternetChangeReciever" >
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
@@ -34,6 +34,7 @@
         <activity android:name=".popups.signin.SignUpEmailScreen" />
         <activity android:name=".popups.signin.SignUpOtherScreen" />
         <activity android:name=".popups.signin.SignInEmailScreen" />
+        <activity android:name=".popups.signin.SignInSuccessScreen" />
         <activity android:name=".popups.internet.InternetUnavailableScreen" />
 
         <meta-data

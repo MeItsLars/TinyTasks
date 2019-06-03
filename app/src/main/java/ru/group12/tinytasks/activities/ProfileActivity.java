@@ -1,23 +1,39 @@
 package ru.group12.tinytasks.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 import ru.group12.tinytasks.R;
-import ru.group12.tinytasks.database.Database;
-import ru.group12.tinytasks.database.objects.User;
+import ru.group12.tinytasks.util.database.Database;
+import ru.group12.tinytasks.util.database.objects.User;
 
 public class ProfileActivity extends AppCompatActivity {
+
+    private ProfileActivity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        activity = this;
+
         TextView name = findViewById(R.id.tv1a);
+
+        name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity, MainActivity.class);
+                activity.startActivity(intent);
+                finish();
+            }
+        });
+
         TextView surname = findViewById(R.id.tv2a);
         TextView phoneNumber = findViewById(R.id.tv3a);
         TextView birthDate = findViewById(R.id.tv4a);

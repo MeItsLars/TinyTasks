@@ -1,4 +1,4 @@
-package ru.group12.tinytasks.database.objects;
+package ru.group12.tinytasks.util.database.objects;
 
 import java.io.Serializable;
 

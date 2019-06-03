@@ -7,9 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import ru.group12.tinytasks.R;
-import ru.group12.tinytasks.database.Database;
-import ru.group12.tinytasks.database.objects.Task;
-import ru.group12.tinytasks.database.objects.User;
+import ru.group12.tinytasks.util.database.Database;
+import ru.group12.tinytasks.util.database.objects.User;
 
 public class CreateTask extends AppCompatActivity {
 
