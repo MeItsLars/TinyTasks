@@ -16,15 +16,15 @@ public class CreateTask extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_createjob);
-        final Button createTask = findViewById(R.id.ct_bttn_create_task);
+        //final Button createTask = findViewById(R.id.ct_bttn_create_task);
 
-        createTask.setOnClickListener(new View.OnClickListener() {
+        /*createTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 createTheTask();
                 // go to next activity (where you can see your listing)
             }
-        });
+        });*/
         /* final Button addImage = findViewById(R.id.);
         addImage.setOnClickListener(new View.OnClickListener() {
             @Override

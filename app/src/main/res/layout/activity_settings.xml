@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+        android:id="@+id/SettingsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="60dp"
+
+        android:text="Settings"
+        android:textColor="#000000"
+        android:textSize="60sp"
+        app:fontFamily="sans-serif-thin"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@+id/SettingsTextView"
+        app:layout_constraintTop_toLeftOf="parent"
+        app:layout_constraintTop_toRightOf="parent"
+
+        android:id="@+id/EditProfileButton"
+        android:layout_width="312dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:background="@drawable/button_custom"
+        android:fontFamily="sans-serif-condensed-light"
+        android:padding="5dp"
+        android:text="Edit Profile"
+        android:textAllCaps="false"
+        android:textColor="#fff7f7"
+
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="250dp"/>
+
+
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@+id/EditProfileButton"
+        app:layout_constraintTop_toLeftOf="parent"
+        app:layout_constraintTop_toRightOf="parent"
+        android:layout_width="312dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/TaskPreferencesButton"
+
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_custom"
+        android:fontFamily="sans-serif-condensed-light"
+        android:padding="5dp"
+        android:text="Task Preferences"
+        android:textAllCaps="false"
+        android:textColor="#fff7f7"
+
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="50dp" />
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@+id/TaskPreferencesButton"
+        app:layout_constraintTop_toLeftOf="parent"
+        app:layout_constraintTop_toRightOf="parent"
+        android:layout_width="312dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/NotificationsButton"
+
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_custom"
+        android:fontFamily="sans-serif-condensed-light"
+        android:padding="5dp"
+        android:text="Notifications"
+        android:textAllCaps="false"
+        android:textColor="#fff7f7"
+
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="50dp" />
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@+id/NotificationsButton"
+        app:layout_constraintTop_toLeftOf="parent"
+        app:layout_constraintTop_toRightOf="parent"
+        android:layout_width="312dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/LogOutButton"
+
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_custom_signup_other"
+        android:fontFamily="sans-serif-condensed-light"
+        android:padding="5dp"
+        android:text="Log Out"
+        android:textAllCaps="false"
+        android:textColor="#fff7f7"
+
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="50dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
