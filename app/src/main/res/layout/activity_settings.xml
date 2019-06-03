@@ -29,75 +29,99 @@
         android:layout_width="312dp"
         android:layout_height="wrap_content"
 
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="150dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:background="@drawable/button_custom"
         android:fontFamily="@font/roboto"
         android:padding="5dp"
         android:text="Edit Profile"
-        android:textAllCaps="false"
+        android:textAllCaps="true"
+
         android:textColor="#fff7f7"
-        android:textSize="30sp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SettingsTextView"
         app:layout_constraintTop_toLeftOf="parent"
-
-        app:layout_constraintTop_toRightOf="parent"
-        tools:layout_editor_absoluteX="50dp" />
+        app:layout_constraintTop_toRightOf="parent" />
 
 
     <Button
         android:id="@+id/TaskPreferencesButton"
         android:layout_width="312dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="24dp"
+
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:background="@drawable/button_custom"
         android:fontFamily="@font/roboto"
-
         android:padding="5dp"
         android:text="Task Preferences"
-        android:textAllCaps="false"
+        android:textAllCaps="true"
+
         android:textColor="#fff7f7"
-        android:textSize="30sp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EditProfileButton"
         app:layout_constraintTop_toLeftOf="parent"
-
-        app:layout_constraintTop_toRightOf="parent"
-        tools:layout_editor_absoluteX="50dp" />
+        app:layout_constraintTop_toRightOf="parent" />
 
     <Button
         android:id="@+id/NotificationsButton"
         android:layout_width="312dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="24dp"
+
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:background="@drawable/button_custom"
         android:fontFamily="@font/roboto"
-
         android:padding="5dp"
         android:text="Notifications"
-        android:textAllCaps="false"
+        android:textAllCaps="true"
+
         android:textColor="#fff7f7"
-        android:textSize="30sp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TaskPreferencesButton"
         app:layout_constraintTop_toLeftOf="parent"
-
-        app:layout_constraintTop_toRightOf="parent"
-        tools:layout_editor_absoluteX="50dp" />
+        app:layout_constraintTop_toRightOf="parent" />
 
     <Button
         android:id="@+id/LogOutButton"
         android:layout_width="312dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="24dp"
+
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/roboto"
         android:padding="5dp"
-
         android:text="Log Out"
-        android:textAllCaps="false"
+
+        android:textAllCaps="true"
         android:textColor="#000000"
-        android:textSize="30sp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NotificationsButton"
         app:layout_constraintTop_toLeftOf="parent"
-
         app:layout_constraintTop_toRightOf="parent"
-        tools:layout_editor_absoluteX="50dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

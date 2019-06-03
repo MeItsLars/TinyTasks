@@ -4,21 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_loginscreen">
+    >
 
     <TextView
         android:id="@+id/signIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="116dp"
 
+        android:fontFamily="@font/roboto"
         android:text="Signed in"
-        android:textColor="#ffffff"
+        android:textColor="@color/quantum_black_100"
         android:textSize="60sp"
-        app:fontFamily="sans-serif-thin"
 
+        android:textStyle="bold"
+        app:fontFamily="sans-serif-thin"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,30 +32,15 @@
 
         android:layout_marginTop="90dp"
 
+        android:fontFamily="@font/roboto"
         android:text="Welcome,"
-        android:textColor="#ffffff"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="40sp"
-        app:fontFamily="sans-serif-thin"
 
+        app:fontFamily="sans-serif-light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signIn" />
-
-    <TextView
-        android:id="@+id/fullNameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginTop="0dp"
-
-        android:text=""
-        android:textColor="#ffffff"
-        android:textSize="40sp"
-        app:fontFamily="sans-serif-condensed-light"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
 
     <Button
         android:id="@+id/myProfileButton"
@@ -66,15 +54,15 @@
         android:layout_marginBottom="150dp"
 
         android:background="@drawable/button_custom"
-        android:fontFamily="sans-serif-condensed-light"
+        android:fontFamily="@font/roboto"
         android:padding="5dp"
         android:text="My profile"
-        android:textAllCaps="false"
+        android:textAllCaps="true"
         android:textColor="#fff7f7"
-        android:textSize="30sp"
+        android:textSize="18sp"
 
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
