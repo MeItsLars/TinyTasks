@@ -16,7 +16,8 @@
         android:text="Settings"
         android:textColor="#000000"
         android:textSize="60sp"
-        app:fontFamily="sans-serif-thin"
+        app:fontFamily="roboto"
+        android:textStyle="bold"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
