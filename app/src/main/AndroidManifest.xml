@@ -14,9 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.CreateTask"></activity>
+        <activity android:name=".activity_notifications"></activity>
+        <activity android:name=".activities.CreateTask" />
 
-        <receiver android:name=".util.internet.InternetChangeReciever" >
+        <receiver android:name=".util.internet.InternetChangeReciever">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
