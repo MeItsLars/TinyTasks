@@ -107,8 +107,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <?xml version="1.0" encoding="utf-8"?>
-    <resources>
+    <!--<resources>
         <string-array name="planets_array">
             <item>Cleaning</item>
             <item>Cooking</item>
@@ -124,7 +123,7 @@
             <item>Paint</item>
             <item>Plumb</item>
         </string-array>
-    </resources>
+    </resources>-->
 
     <TextView
         android:id="@+id/ct_label_other_info"
