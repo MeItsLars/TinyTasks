@@ -4,23 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:background="@drawable/background_loginscreen">
 
-    <!--<Button
+    <Button
         android:id="@+id/ct_bttn_create_task2"
         android:layout_width="362dp"
         android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginRight="27dp"
+        android:layout_marginBottom="74dp"
         android:background="@drawable/button_custom"
         android:linksClickable="false"
         android:text="CREATE MY TASK"
         android:textColor="#fff7f7"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ct_bttn_prev_page" />
 
@@ -28,49 +29,44 @@
         android:id="@+id/ct_img9"
         android:layout_width="70dp"
         android:layout_height="64dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.266"
         app:layout_constraintStart_toEndOf="@+id/ct_img8"
         app:layout_constraintTop_toBottomOf="@+id/ct_img5"
-        app:srcCompat="@drawable/ic_photo_lightblue_24dp" />
+        android:src="@drawable/ic_photo_lightblue_24dp" />
 
     <ImageView
         android:id="@+id/ct_img1"
         android:layout_width="70dp"
         android:layout_height="64dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginLeft="14dp"
         app:layout_constraintStart_toEndOf="@+id/ct_add_img"
         app:layout_constraintTop_toBottomOf="@+id/ct_price_range"
-        app:srcCompat="@drawable/ic_photo_lightblue_24dp" />
+        android:src="@drawable/ic_photo_lightblue_24dp" />
 
     <ImageView
         android:id="@+id/ct_img2"
         android:layout_width="70dp"
         android:layout_height="64dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         app:layout_constraintStart_toEndOf="@+id/ct_img1"
         app:layout_constraintTop_toBottomOf="@+id/ct_price_range"
-        app:srcCompat="@drawable/ic_photo_lightblue_24dp" />
+        android:src="@drawable/ic_photo_lightblue_24dp" />
 
     <ImageView
         android:id="@+id/ct_img3"
         android:layout_width="70dp"
         android:layout_height="64dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toEndOf="@+id/ct_img2"
         app:layout_constraintTop_toBottomOf="@+id/ct_price_range"
-        app:srcCompat="@drawable/ic_photo_lightblue_24dp" />
+        android:src="@drawable/ic_photo_lightblue_24dp" />
 
     <ImageView
         android:id="@+id/ct_img4"
@@ -81,20 +77,19 @@
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ct_img1"
-        app:srcCompat="@drawable/ic_photo_lightblue_24dp" />
+        android:src="@drawable/ic_photo_lightblue_24dp" />
 
     <ImageView
         android:id="@+id/ct_img5"
         android:layout_width="70dp"
         android:layout_height="64dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.266"
         app:layout_constraintStart_toEndOf="@+id/ct_img6"
         app:layout_constraintTop_toBottomOf="@+id/ct_img3"
-        app:srcCompat="@drawable/ic_photo_lightblue_24dp" />
+        android:src="@drawable/ic_photo_lightblue_24dp" />
 
     <ImageView
         android:id="@+id/ct_img6"
@@ -105,7 +100,7 @@
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toEndOf="@+id/ct_img4"
         app:layout_constraintTop_toBottomOf="@+id/ct_img2"
-        app:srcCompat="@drawable/ic_photo_lightblue_24dp" />
+        android:src="@drawable/ic_photo_lightblue_24dp" />
 
     <ImageView
         android:id="@+id/ct_img7"
@@ -116,7 +111,7 @@
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ct_img4"
-        app:srcCompat="@drawable/ic_photo_lightblue_24dp" />
+        android:src="@drawable/ic_photo_lightblue_24dp" />
 
     <ImageView
         android:id="@+id/ct_img8"
@@ -127,24 +122,16 @@
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toEndOf="@+id/ct_img7"
         app:layout_constraintTop_toBottomOf="@+id/ct_img6"
-        app:srcCompat="@drawable/ic_photo_lightblue_24dp" />
+        android:src="@drawable/ic_photo_lightblue_24dp" />
 
     <TextView
         android:id="@+id/ct_Title"
-        android:layout_width="352dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:fontFamily="@font/roboto"
+        android:layout_width="155dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="24dp"
         android:text="Create Task"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.171"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -152,18 +139,10 @@
         android:id="@+id/ct_price_range"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="115dp"
         android:text="Add images (optional)"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ct_Title" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="20dp" />
 
     <ImageButton
         android:id="@+id/ct_add_img"
@@ -171,7 +150,8 @@
         android:layout_height="56dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="535dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ct_price_range"
         app:srcCompat="@drawable/ic_add_to_photos_blue_24dp" />
@@ -215,28 +195,28 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="24dp"
-        android:text="Other information"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="18sp"
+        android:layout_marginTop="207dp"
+        android:text="Other info"
+        app:layout_constraintBottom_toTopOf="@+id/editText4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ct_img8" />
+        app:layout_constraintTop_toBottomOf="@+id/ct_add_img" />
 
     <Button
         android:id="@+id/ct_bttn_prev_page"
         android:layout_width="362dp"
         android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginRight="27dp"
+        android:layout_marginBottom="14dp"
         android:background="@drawable/button_custom"
         android:linksClickable="false"
         android:text="PREVIOUS PAGE"
         android:textColor="#fff7f7"
+        app:layout_constraintBottom_toTopOf="@+id/ct_bttn_create_task2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText4" />
 
@@ -246,17 +226,13 @@
         android:layout_height="100dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginBottom="240dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ct_label_other_info"
-        app:layout_constraintVertical_bias="0.0" />-->
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

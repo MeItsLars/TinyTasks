@@ -174,7 +174,7 @@
         android:background="@drawable/edittext_custom"
         android:drawableLeft="@drawable/ic_lock_open_black_35dp"
         android:drawablePadding="10dp"
-        android:hint="Birth date (dd-mm-yyyy)"
+        android:hint="Date of birth (dd-mm-yyyy)"
         android:padding="5dp"
         android:paddingLeft="10dp"
 
