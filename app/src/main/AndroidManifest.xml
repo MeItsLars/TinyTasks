@@ -38,6 +38,8 @@
         <activity android:name=".popups.signin.SignUpOtherScreen" />
         <activity android:name=".popups.signin.SignInEmailScreen" />
         <activity android:name=".popups.signin.SignInSuccessScreen" />
+        <activity android:name=".popups.createtask.CreateTaskPart1Screen" />
+        <activity android:name=".popups.createtask.CreateTaskPart2Screen" />
         <activity android:name=".popups.internet.InternetUnavailableScreen" />
         <activity android:name=".popups.location.LocationSelectionScreen" />
 

@@ -26,8 +26,6 @@
 
     <Button
         app:layout_constraintTop_toBottomOf="@+id/SettingsTextView"
-        app:layout_constraintTop_toLeftOf="parent"
-        app:layout_constraintTop_toRightOf="parent"
 
         android:id="@+id/EditProfileButton"
         android:layout_width="312dp"
@@ -49,8 +47,6 @@
 
     <Button
         app:layout_constraintTop_toBottomOf="@+id/EditProfileButton"
-        app:layout_constraintTop_toLeftOf="parent"
-        app:layout_constraintTop_toRightOf="parent"
         android:layout_width="312dp"
         android:layout_height="wrap_content"
         android:id="@+id/TaskPreferencesButton"
@@ -69,8 +65,6 @@
 
     <Button
         app:layout_constraintTop_toBottomOf="@+id/TaskPreferencesButton"
-        app:layout_constraintTop_toLeftOf="parent"
-        app:layout_constraintTop_toRightOf="parent"
         android:layout_width="312dp"
         android:layout_height="wrap_content"
         android:id="@+id/NotificationsButton"
@@ -89,8 +83,6 @@
 
     <Button
         app:layout_constraintTop_toBottomOf="@+id/NotificationsButton"
-        app:layout_constraintTop_toLeftOf="parent"
-        app:layout_constraintTop_toRightOf="parent"
         android:layout_width="312dp"
         android:layout_height="wrap_content"
         android:id="@+id/LogOutButton"

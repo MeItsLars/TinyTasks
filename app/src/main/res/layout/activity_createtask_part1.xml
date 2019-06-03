@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_loginscreen">
+
+    <TextView
+        android:id="@+id/create_task_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="Create Task 1/3"
+        android:textSize="30sp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/task_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="Task name:"
+        android:textSize="15sp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_task_text" />
+
+    <EditText
+        android:id="@+id/task_name_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+
+        android:gravity="start|top"
+        android:padding="10dp"
+        android:background="@drawable/edittext_custom"
+        android:hint="Mowing the lawn"
+        android:inputType="textMultiLine"
+
+        app:layout_constraintTop_toBottomOf="@+id/task_name_text"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/task_description_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="Task name:"
+        android:textSize="15sp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/task_name_edittext" />
+
+    <EditText
+        android:id="@+id/task_description_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+
+        android:gravity="start|top"
+        android:padding="10dp"
+        android:background="@drawable/edittext_custom"
+        android:hint="Mowing the lawn"
+        android:inputType="textMultiLine"
+
+        app:layout_constraintTop_toBottomOf="@+id/task_description_text"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/task_next_page_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="60dp"
+
+        android:background="@drawable/button_custom"
+        android:textAllCaps="false"
+        android:text="Next page"
+        android:textSize="20sp"
+        android:textColor="#fff"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

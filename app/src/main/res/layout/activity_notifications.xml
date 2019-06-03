@@ -15,7 +15,6 @@
         android:layout_marginTop="32dp"
         android:width="151dp"
         android:height="51.8dp"
-        android:style="@style/bigtitle"
         android:text="Notifications"
         android:textStyle="bold"
         app:fontFamily="@font/roboto"

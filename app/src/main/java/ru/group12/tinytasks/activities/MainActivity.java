@@ -29,6 +29,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import ru.group12.tinytasks.R;
+import ru.group12.tinytasks.popups.createtask.CreateTaskPart1Screen;
 import ru.group12.tinytasks.popups.location.LocationSelectionScreen;
 import ru.group12.tinytasks.util.ActivityManager;
 import ru.group12.tinytasks.util.database.Database;
@@ -125,6 +126,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Database.signOutCurrentUser(activity);
+            }
+        });
+
+        Button createTaskButton = findViewById(R.id.createTaskButton);
+        createTaskButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityManager.startNewActivity(MainActivity.this, CreateTaskPart1Screen.class);
             }
         });
     }

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "211628690680-2vcujanrbphcnqkc72vjn82n4dkkg59v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ru.group12.tinytasks",
+            "certificate_hash": "9fa40c8b8c581484c1040950070f2b86cdd50eb6"
+          }
+        },
+        {
           "client_id": "211628690680-jaaap4g9bid6aein4o71hub3d560hvd4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

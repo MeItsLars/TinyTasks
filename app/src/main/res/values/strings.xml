@@ -6,4 +6,9 @@
     <string name="CONSUMER_SECRET">BdP0e9kLcjFCqmHEKmbBcbqmcsXYoE5jBYTCnF3xY55RvLJWC5</string>
     <string name="create_task">Create Task</string>
     <string name="mapbox_access_token">pk.eyJ1IjoiaXRzbGFycyIsImEiOiJjandnbTZxMTMwYXBnNDVsYjI0bXFjandvIn0.2XNaPq9t88u43xs_2wJVeg</string>
+
+    <string-array name="task_price_types">
+        <item>Enter price</item>
+        <item>N.O.T.K.</item>
+    </string-array>
 </resources>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+
+    <TextView
+        android:id="@+id/create_task_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="Create Task 3/3"
+        android:textSize="30sp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/add_images_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="Add images (optional)"
+        android:textSize="15sp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_task_text" />
+
+    <ImageButton
+        android:id="@+id/add_image_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+
+        android:background=""
+        android:src="@drawable/ic_add_to_photos_blue_24dp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/add_images_text" />
+
+    <ImageButton
+        android:id="@+id/add_image_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+
+        android:background=""
+        android:src="@drawable/ic_add_to_photos_blue_24dp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_image_1" />
+
+    <ImageButton
+        android:id="@+id/add_image_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+
+        android:background=""
+        android:src="@drawable/ic_add_to_photos_blue_24dp"
+
+        app:layout_constraintLeft_toRightOf="@+id/add_image_1"
+        app:layout_constraintTop_toTopOf="@+id/add_images_text" />
+
+    <ImageButton
+        android:id="@+id/add_image_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+
+        android:background=""
+        android:src="@drawable/ic_add_to_photos_blue_24dp"
+
+        app:layout_constraintLeft_toRightOf="@+id/add_image_2"
+        app:layout_constraintTop_toBottomOf="@+id/add_image_3" />
+
+    <ImageButton
+        android:id="@+id/add_image_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+
+        android:background=""
+        android:src="@drawable/ic_add_to_photos_blue_24dp"
+
+        app:layout_constraintLeft_toRightOf="@+id/add_image_3"
+        app:layout_constraintTop_toBottomOf="@+id/add_images_text" />
+
+    <ImageButton
+        android:id="@+id/add_image_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+
+        android:background=""
+        android:src="@drawable/ic_add_to_photos_blue_24dp"
+
+        app:layout_constraintLeft_toRightOf="@+id/add_image_4"
+        app:layout_constraintTop_toBottomOf="@+id/add_image_5" />
+
+    <Button
+        android:id="@+id/create_task_button"
+        android:layout_width="362dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginRight="27dp"
+        android:layout_marginBottom="74dp"
+        android:background="@drawable/button_custom"
+        android:linksClickable="false"
+        android:text="CREATE MY TASK"
+        android:textColor="#fff7f7"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
