@@ -185,7 +185,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:text="Category"
+        android:text="Other info"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="397dp" />
 
@@ -202,8 +202,8 @@
 
     <EditText
         android:id="@+id/editText4"
-        android:layout_width="377dp"
-        android:layout_height="87dp"
+        android:layout_width="379dp"
+        android:layout_height="100dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="240dp"
