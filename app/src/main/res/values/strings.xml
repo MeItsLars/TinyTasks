@@ -14,6 +14,9 @@
     <string name="sign_in">Sign in</string>
     <string name="enter_password">Enter password</string>
     <string name="sign_in">Sign in</string>
+    <string name="home">Home</string>
+    <string name="login_or_create_your_account_now">Login or create your account now!</string>
+    <string name="navigate_your_recommended_jobs">Navigate your recommended jobs</string>
 
     <string-array name="task_price_types">
         <item>Enter price</item>
