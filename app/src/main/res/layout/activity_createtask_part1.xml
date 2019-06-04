@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_loginscreen">
+    android:background="#FFFFFF">>
 
     <TextView
         android:id="@+id/create_task_text"
@@ -134,10 +134,10 @@
         android:layout_marginBottom="60dp"
 
         android:background="@drawable/button_custom"
-        android:textAllCaps="false"
         android:text="Next page"
-        android:textSize="20sp"
+        android:textAllCaps="false"
         android:textColor="#fff"
+        android:textSize="20sp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

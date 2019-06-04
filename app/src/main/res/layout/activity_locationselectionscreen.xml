@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">>
 
     <com.mapbox.mapboxsdk.maps.MapView
         android:id="@+id/mapView"
@@ -21,7 +22,7 @@
 
         android:gravity="center"
         android:fontFamily="sans-serif-light"
-        android:text=""
+        android:text="Location"
         android:textAllCaps="false"
         android:textColor="#4c4c4c"
         android:textSize="25sp"

@@ -53,7 +53,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:fontFamily="sans-serif-light"
-        android:text="Check internet connection"
+        android:text="Wating for a connection ..."
 
         android:textAllCaps="true"
         android:textSize="16sp"
