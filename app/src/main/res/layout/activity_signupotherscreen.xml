@@ -172,8 +172,8 @@
         android:layout_marginLeft="50dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="50dp"
-
         android:layout_marginBottom="88dp"
+
         android:background="@drawable/button_custom"
         android:fontFamily="sans-serif-condensed-light"
         android:padding="5dp"
