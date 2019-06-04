@@ -7,20 +7,26 @@
     android:background="#fff">
 
     <TextView
-        android:id="@+id/create_task_text"
+        android:id="@+id/create_task_text_p3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="32dp"
 
-        android:fontFamily="@font/roboto"
         android:text="Create Task 3/3"
-        android:textSize="30sp"
+        android:fontFamily="@font/roboto"
+        android:textColor="#000000"
+        android:textSize="40sp"
+        android:textStyle="bold"
 
+        app:fontFamily="@font/roboto"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/add_images_text"
@@ -29,14 +35,14 @@
 
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
 
         android:fontFamily="@font/roboto"
         android:text="Add images (optional)"
         android:textSize="15sp"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_task_text" />
+        app:layout_constraintTop_toBottomOf="@+id/create_task_text_p3" />
 
     <ImageButton
         android:id="@+id/add_image_1"
@@ -159,9 +165,7 @@
         android:textColor="#fff"
 
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constrainedLeft_toLeftOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintRightOf_toRightOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
