@@ -8,6 +8,6 @@ public class joboverview extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_joboverview);
+        setContentView(R.layout.activity_taskoverview);
     }
 }
