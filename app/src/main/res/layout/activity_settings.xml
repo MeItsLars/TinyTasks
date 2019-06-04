@@ -13,7 +13,7 @@
 
         android:layout_marginTop="60dp"
 
-        android:text="Settings"
+        android:text="@string/settings"
         android:textColor="#000000"
         android:textSize="60sp"
         app:fontFamily="roboto"
@@ -37,7 +37,7 @@
         android:background="@drawable/button_custom"
         android:fontFamily="roboto"
         android:padding="5dp"
-        android:text="Edit Profile"
+        android:text="@string/edit_profile"
 
         android:textAllCaps="false"
         android:textColor="#fff7f7"
@@ -61,7 +61,7 @@
         android:background="@drawable/button_custom"
         android:fontFamily="roboto"
         android:padding="5dp"
-        android:text="Task Preferences"
+        android:text="@string/task_preferences"
 
         android:textAllCaps="false"
         android:textColor="#fff7f7"
@@ -84,7 +84,7 @@
         android:background="@drawable/button_custom"
         android:fontFamily="roboto"
         android:padding="5dp"
-        android:text="Notifications"
+        android:text="@string/notifications"
 
         android:textAllCaps="false"
         android:textColor="#fff7f7"
@@ -106,7 +106,7 @@
         android:layout_marginRight="8dp"
         android:fontFamily="roboto"
         android:padding="5dp"
-        android:text="Log Out"
+        android:text="@string/log_out"
 
         android:textAllCaps="false"
         android:textColor="#fff7f7"
