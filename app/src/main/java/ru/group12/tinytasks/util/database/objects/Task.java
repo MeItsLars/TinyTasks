@@ -9,4 +9,6 @@ public class Task {
     public Task(String uniqueTaskID, String userID, CarmenFeature location, Category category, String title, String description, String price) {
 
     }
+
+    //public void setDuration, public void addImage
 }
