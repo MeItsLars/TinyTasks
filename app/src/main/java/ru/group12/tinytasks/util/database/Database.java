@@ -1,7 +1,9 @@
-package ru.group12.tinytasks.database;
+package ru.group12.tinytasks.util.database;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -13,7 +15,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import ru.group12.tinytasks.database.objects.User;
+import io.opencensus.common.Function;
+import ru.group12.tinytasks.popups.signin.SignInSuccessScreen;
+import ru.group12.tinytasks.util.ActivityManager;
+import ru.group12.tinytasks.util.database.objects.User;
 
 public class Database {
 
@@ -40,39 +45,21 @@ public class Database {
         }
     }
 
-    public static void registerCurrentUser() {
+    public static void loadCurrentUser() {
         if(userSignedIn()) {
-            String uid = mAuth.getCurrentUser().getUid();
+            final String uid = mAuth.getCurrentUser().getUid();
+            final String email = mAuth.getCurrentUser().getEmail();
             DatabaseReference userProfile = mDatabase.getReference("users").child(uid);
             userProfile.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    System.out.println("========================================");
-                    System.out.println(dataSnapshot);
-
-                    currentUser = new User(
+                    currentUser = new User(uid,
+                            email,
                             (String) dataSnapshot.child("name").getValue(),
                             (String) dataSnapshot.child("surname").getValue(),
                             (String) dataSnapshot.child("phoneNumber").getValue(),
                             (String) dataSnapshot.child("birthDate").getValue(),
                             (String) dataSnapshot.child("gender").getValue());
-
-                    System.out.println("User: " + currentUser);
-
-                    /*String name, surname, phoneNumber, birhtDate, gender;
-
-                    for(DataSnapshot subData : dataSnapshot.getChildren()) {
-                        if(subData.getKey().equals("name")) gender = (String) subData.getValue();
-
-                        System.out.println("Sub: " + subData);
-                        currentUser = new User(
-                                (String) subData.child("name").getValue(),
-                                (String) subData.child("surname").getValue(),
-                                (String) subData.child("phoneNumber").getValue(),
-                                (String) subData.child("birthDate").getValue(),
-                                (String) subData.child("gender").getValue());
-                    }*/
-                    System.out.println("========================================");
                 }
 
                 @Override
@@ -83,7 +70,35 @@ public class Database {
         }
     }
 
-    public static void addUser(String uid, String name, String surname, String phoneNumber, String birthDate, String gender, boolean registerUser) {
+    public static void loadCurrentUser(final AppCompatActivity activity) {
+        if(userSignedIn()) {
+            final String uid = mAuth.getCurrentUser().getUid();
+            final String email = mAuth.getCurrentUser().getEmail();
+            DatabaseReference userProfile = mDatabase.getReference("users").child(uid);
+            userProfile.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    currentUser = new User(uid,
+                            email,
+                            (String) dataSnapshot.child("name").getValue(),
+                            (String) dataSnapshot.child("surname").getValue(),
+                            (String) dataSnapshot.child("phoneNumber").getValue(),
+                            (String) dataSnapshot.child("birthDate").getValue(),
+                            (String) dataSnapshot.child("gender").getValue());
+
+                    ActivityManager.startNewActivity(activity, SignInSuccessScreen.class, true,
+                            Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // Do nothing
+                }
+            });
+        }
+    }
+
+    public static void registerNewUser(String uid, String name, String surname, String phoneNumber, String birthDate, String gender) {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
 
         ref.child(uid).child("name").setValue(name);
@@ -91,7 +106,5 @@ public class Database {
         ref.child(uid).child("phoneNumber").setValue(phoneNumber);
         ref.child(uid).child("birthDate").setValue(birthDate);
         ref.child(uid).child("gender").setValue(gender);
-
-        if(registerUser) registerCurrentUser();
     }
 }

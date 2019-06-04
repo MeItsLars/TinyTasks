@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_loginscreen">
+
+    <TextView
+        android:id="@+id/create_task_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="Create Task 2/3"
+        android:textSize="30sp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/task_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="Task price:"
+        android:textSize="15sp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_task_text" />
+
+    <Spinner
+        android:id="@+id/price_type_listview"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="29dp"
+
+        android:entries="@array/task_price_types"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/task_price_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/task_price" />
+
+    <EditText
+        android:id="@+id/task_price_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:layout_marginStart="170dp"
+        android:layout_marginLeft="170dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+
+        android:background="@drawable/edittext_custom"
+        android:gravity="start|top"
+        android:hint="Task price"
+        android:inputType=""
+        android:padding="10dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/task_price"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/work_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="Estimated amount of work (hours):"
+        android:textSize="15sp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/task_price_edittext" />
+
+    <EditText
+        android:id="@+id/work_amount_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="200dp"
+        android:layout_marginRight="200dp"
+        android:layout_marginTop="10dp"
+
+        android:background="@drawable/edittext_custom"
+        android:gravity="start|top"
+        android:hint="Hours"
+        android:inputType=""
+        android:padding="10dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/work_amount"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/task_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="Task location:"
+        android:textSize="15sp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/work_amount_edittext" />
+
+    <Button
+        android:id="@+id/select_location_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="10dp"
+
+        android:background="@drawable/button_custom"
+        android:textAllCaps="false"
+        android:text="Select location on map"
+        android:textSize="20sp"
+        android:textColor="#fff"
+
+        app:layout_constraintTop_toBottomOf="@+id/task_location"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/task_location_text"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+
+        android:fontFamily="@font/roboto"
+        android:text=""
+        android:textSize="30sp"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="12sp"
+        app:autoSizeMaxTextSize="30sp"
+        app:autoSizeStepGranularity="2sp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/select_location_button" />
+
+    <Button
+        android:id="@+id/task_next_page_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="60dp"
+
+        android:background="@drawable/button_custom"
+        android:textAllCaps="false"
+        android:text="Next page"
+        android:textSize="20sp"
+        android:textColor="#fff"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

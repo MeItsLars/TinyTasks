@@ -1,7 +1,5 @@
 package ru.group12.tinytasks.popups.signin;
 
-import android.accounts.Account;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -15,12 +13,10 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -35,14 +31,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.Scopes;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.api.services.people.v1.PeopleScopes;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
@@ -56,6 +48,7 @@ import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterConfig;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.identity.TwitterAuthClient;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
 import org.json.JSONException;
@@ -64,7 +57,7 @@ import org.json.JSONObject;
 import java.util.List;
 
 import ru.group12.tinytasks.R;
-import ru.group12.tinytasks.database.Database;
+import ru.group12.tinytasks.util.ActivityManager;
 
 public class SignInScreen extends AppCompatActivity {
 
@@ -150,11 +143,9 @@ public class SignInScreen extends AppCompatActivity {
                                 SignInMethodQueryResult result = task.getResult();
                                 List<String> signInMethods = result.getSignInMethods();
                                 if(signInMethods.isEmpty()) {
-                                    Intent intent = new Intent(activity, SignUpEmailScreen.class);
-                                    activity.startActivity(intent);
+                                    ActivityManager.startNewActivity(activity, SignUpEmailScreen.class, false);
                                 } else {
-                                    Intent intent = new Intent(activity, SignInEmailScreen.class);
-                                    activity.startActivity(intent);
+                                    ActivityManager.startNewActivity(activity, SignInEmailScreen.class, false);
                                 }
                             }
                         }
@@ -170,6 +161,11 @@ public class SignInScreen extends AppCompatActivity {
 
     private CallbackManager mCallbackManager;
 
+    private String facebookEmail = "";
+    private String facebookFullName = "";
+    private String facebookBirthDate = "";
+    private String facebookGender = "";
+
     public void initializeFacebookSignIn() {
         ImageButton customFacebookSignInButton = findViewById(R.id.customFacebookSignInButton);
         final LoginButton loginButton = findViewById(R.id.facebookSignInButton);
@@ -183,20 +179,22 @@ public class SignInScreen extends AppCompatActivity {
         });
 
         mCallbackManager = CallbackManager.Factory.create();
-        loginButton.setReadPermissions("email", "public_profile", "user_birthday");
+        loginButton.setReadPermissions("email", "public_profile", "user_birthday", "user_gender");
         loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
-            public void onSuccess(LoginResult loginResult) {
-                handleFacebookAccessToken(loginResult.getAccessToken());
-
+            public void onSuccess(final LoginResult loginResult) {
                 GraphRequest request = GraphRequest.newMeRequest(
                         loginResult.getAccessToken(),
                         new GraphRequest.GraphJSONObjectCallback() {
                             @Override
                             public void onCompleted(JSONObject object, GraphResponse response) {
                                 try {
-                                    System.out.println("Email: " + object.getString("email"));
-                                    System.out.println("Birthdate: " + object.getString("birthday"));
+                                    facebookEmail = object.getString("email");
+                                    facebookFullName = object.getString("name");
+                                    facebookBirthDate = object.getString("birthday");
+                                    facebookGender = object.getString("gender");
+
+                                    handleFacebookAccessToken(loginResult.getAccessToken());
                                 } catch(JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -223,18 +221,20 @@ public class SignInScreen extends AppCompatActivity {
 
     private void handleFacebookAccessToken(AccessToken token) {
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
-        FirebaseAuth.getInstance().signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            System.out.println("Facebook sign in success: " + FirebaseAuth.getInstance().getCurrentUser().getEmail());
-                        } else {
-                            System.out.println("Facebook sign in failed.");
-                            //TODO: Facebook sign in failed
-                        }
-                    }
-                });
+
+        Intent intent = new Intent(this, SignUpOtherScreen.class);
+        intent.putExtra("credential", credential);
+        intent.putExtra("email", facebookEmail);
+        String name = facebookFullName.substring(0, facebookFullName.indexOf(' '));
+        intent.putExtra("name", name);
+        String surname = facebookFullName.substring(facebookFullName.indexOf(' ') + 1);
+        intent.putExtra("surname", surname);
+        intent.putExtra("phoneNumber", "");
+        intent.putExtra("birthDate", facebookBirthDate.replaceAll("/", "-"));
+        String gender = facebookGender.equals("male") ? "M" : facebookGender.equals("female") ? "F" : "U";
+        intent.putExtra("gender", gender);
+
+        startActivity(intent);
     }
 
     // Google sign in code
@@ -246,10 +246,6 @@ public class SignInScreen extends AppCompatActivity {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
-                .requestScopes(new Scope(Scopes.PLUS_LOGIN),
-                        new Scope(PeopleScopes.USERINFO_PROFILE),
-                        new Scope(PeopleScopes.USER_BIRTHDAY_READ),
-                        new Scope(PeopleScopes.USER_PHONENUMBERS_READ))
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
@@ -266,22 +262,20 @@ public class SignInScreen extends AppCompatActivity {
 
     private void firebaseAuthWithGoogle(final GoogleSignInAccount acct) {
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-        FirebaseAuth.getInstance().signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            System.out.println("Google sign in success: " + Database.userSignedIn());
-                        } else {
-                            System.out.println("Google sign in failed.");
-                            //TODO: Google sign in failed
-                        }
-                    }
-                });
+
+        Intent intent = new Intent(this, SignUpOtherScreen.class);
+        intent.putExtra("credential", credential);
+        intent.putExtra("email", acct.getEmail());
+        intent.putExtra("name", acct.getGivenName());
+        intent.putExtra("surname", acct.getFamilyName());
+        intent.putExtra("phoneNumber", "");
+        intent.putExtra("birthDate", "");
+        intent.putExtra("gender", "");
+
+        startActivity(intent);
     }
 
     // Twitter sign in code
-
     private TwitterLoginButton mTwitterLoginButton;
 
     private void initializeTwitterSignIn() {
@@ -315,23 +309,37 @@ public class SignInScreen extends AppCompatActivity {
                 session.getAuthToken().token,
                 session.getAuthToken().secret);
 
-        FirebaseAuth.getInstance().signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            System.out.println("Twitter sign in success: " + FirebaseAuth.getInstance().getCurrentUser().getEmail());
-                        } else {
-                            System.out.println("Twitter sign in failed.");
-                            //TODO: Twitter sign in failed
-                        }
-                    }
-                });
+        final Intent intent = new Intent(this, SignUpOtherScreen.class);
+        intent.putExtra("credential", credential);
 
+        String userName = session.getUserName();
+
+        String name = userName.indexOf(' ') == -1 ? userName : userName.substring(0, userName.indexOf(' '));
+        String surname = (userName.indexOf(' ') == -1 || userName.indexOf(' ') + 1 >= userName.length()) ? "" : userName.substring(userName.indexOf(' ') + 1);
+
+        intent.putExtra("name", name);
+        intent.putExtra("surname", surname);
+        intent.putExtra("phoneNumber", "");
+        intent.putExtra("birthDate", "");
+        intent.putExtra("gender", "");
+
+        TwitterAuthClient authClient = new TwitterAuthClient();
+        authClient.requestEmail(session, new Callback<String>() {
+            @Override
+            public void success(Result<String> result) {
+                intent.putExtra("email", result.data);
+                startActivity(intent);
+            }
+
+            @Override
+            public void failure(TwitterException exception) {
+                intent.putExtra("email", "");
+                startActivity(intent);
+            }
+        });
     }
 
     // Activity result function used by multiple inlog methods
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

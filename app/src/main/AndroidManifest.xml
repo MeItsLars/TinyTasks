@@ -4,6 +4,10 @@
     package="ru.group12.tinytasks">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +16,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".joboverview"></activity>
+        <activity android:name=".createTask_part3"></activity>
+        <activity android:name=".createTask_part2" />
+        <activity android:name=".createTask_part1" />
+        <activity android:name=".activity_notifications" />
+        <activity android:name=".activities.CreateTask" />
+
+        <receiver android:name=".util.internet.InternetChangeReciever">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,15 +38,18 @@
         <activity android:name=".activities.ProfileActivity" />
         <activity android:name=".popups.signin.SignInScreen" />
         <activity android:name=".popups.signin.SignUpEmailScreen" />
+        <activity android:name=".popups.signin.SignUpOtherScreen" />
         <activity android:name=".popups.signin.SignInEmailScreen" />
+        <activity android:name=".popups.signin.SignInSuccessScreen" />
+        <activity android:name=".popups.createtask.CreateTaskPart1Screen" />
+        <activity android:name=".popups.createtask.CreateTaskPart2Screen" />
+        <activity android:name=".popups.internet.InternetUnavailableScreen" />
+        <activity android:name=".popups.location.LocationSelectionScreen" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_application_id"
             tools:replace="android:value" />
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
 
         <activity
             android:name="com.facebook.FacebookActivity"
