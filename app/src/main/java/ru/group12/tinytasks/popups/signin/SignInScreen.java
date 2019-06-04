@@ -127,25 +127,17 @@ public class SignInScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(emailEditText.getText().length() > 0 && emailEditText.getError() == null) {
-
-                    //Starting loading screen:
-                    final LoadingTask loadingTask = new LoadingTask();
-                    loadingTask.execute();
-
                     FirebaseAuth auth = FirebaseAuth.getInstance();
                     auth.fetchSignInMethodsForEmail(emailEditText.getText().toString()).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
                         @Override
                         public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
-                            //Stopping loading screen:
-                            loadingTask.cancel(false);
-
                             if(task.isSuccessful()) {
                                 SignInMethodQueryResult result = task.getResult();
                                 List<String> signInMethods = result.getSignInMethods();
                                 if(signInMethods.isEmpty()) {
-                                    ActivityManager.startNewActivity(activity, SignUpEmailScreen.class, false);
+                                    ActivityManager.startNewActivity(activity, SignUpEmailScreen.class, true);
                                 } else {
-                                    ActivityManager.startNewActivity(activity, SignInEmailScreen.class, false);
+                                    ActivityManager.startNewActivity(activity, SignInEmailScreen.class, true);
                                 }
                             }
                         }
@@ -235,6 +227,7 @@ public class SignInScreen extends AppCompatActivity {
         intent.putExtra("gender", gender);
 
         startActivity(intent);
+        finish();
     }
 
     // Google sign in code
@@ -273,6 +266,7 @@ public class SignInScreen extends AppCompatActivity {
         intent.putExtra("gender", "");
 
         startActivity(intent);
+        finish();
     }
 
     // Twitter sign in code
@@ -329,12 +323,14 @@ public class SignInScreen extends AppCompatActivity {
             public void success(Result<String> result) {
                 intent.putExtra("email", result.data);
                 startActivity(intent);
+                finish();
             }
 
             @Override
             public void failure(TwitterException exception) {
                 intent.putExtra("email", "");
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -387,29 +383,6 @@ public class SignInScreen extends AppCompatActivity {
                 break;
             default:
                 break;
-        }
-    }
-
-    // Task for managing waiting screen
-    private class LoadingTask extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            FrameLayout layout = findViewById(R.id.waitingOverlay);
-            layout.setVisibility(View.VISIBLE);
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            FrameLayout layout = findViewById(R.id.waitingOverlay);
-            layout.setVisibility(View.INVISIBLE);
-        }
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            return null;
         }
     }
 }

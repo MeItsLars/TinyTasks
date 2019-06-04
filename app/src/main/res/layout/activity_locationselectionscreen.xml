@@ -51,10 +51,6 @@
         android:textAllCaps="true"
         android:textColor="@color/cardview_light_background"
         android:textSize="18sp"
-        app:autoSizeMaxTextSize="18sp"
-        app:autoSizeMinTextSize="18sp"
-        app:autoSizeStepGranularity="2sp"
-        app:autoSizeTextType="uniform"
 
         app:layout_constraintBottom_toTopOf="@+id/confirm_location_button"
         app:layout_constraintEnd_toEndOf="parent"

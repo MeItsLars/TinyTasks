@@ -5,29 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/gender"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="50dp"
-
-        android:layout_marginRight="50dp"
-        android:background="@drawable/edittext_custom"
-        android:drawableLeft="@drawable/ic_lock_open_black_35dp"
-        android:drawablePadding="10dp"
-        android:hint="Gender (M/F/U)"
-        android:padding="5dp"
-
-        android:paddingLeft="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/birthDate" />
-
     <TextView
         android:id="@+id/signUpTextView"
         android:layout_width="wrap_content"
@@ -159,16 +136,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
 
+    <EditText
+        android:id="@+id/gender"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="50dp"
+
+        android:layout_marginRight="50dp"
+        android:background="@drawable/edittext_custom"
+        android:drawableLeft="@drawable/ic_lock_open_black_35dp"
+        android:drawablePadding="10dp"
+        android:hint="Gender (M/F/U)"
+        android:padding="5dp"
+
+        android:paddingLeft="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/birthDate" />
+
     <Button
         android:id="@+id/signupButton"
         android:layout_width="312dp"
         android:layout_height="wrap_content"
 
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="50dp"
 
-        android:layout_marginBottom="88dp"
         android:background="@drawable/button_custom"
         android:fontFamily="sans-serif-condensed-light"
         android:padding="5dp"
@@ -178,7 +177,6 @@
         android:textColor="#fff7f7"
         android:textSize="16sp"
         app:fontFamily="@font/roboto"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

@@ -53,6 +53,7 @@
         android:background="@drawable/edittext_custom"
         android:hint="Mowing the lawn"
         android:inputType="textMultiLine"
+        android:maxLength="100"
 
         app:layout_constraintTop_toBottomOf="@+id/task_name_text"
         app:layout_constraintStart_toStartOf="parent" />
@@ -89,6 +90,7 @@
         android:background="@drawable/edittext_custom"
         android:hint="Mowing the lawn"
         android:inputType="textMultiLine"
+        android:maxLength="1000"
 
         app:layout_constraintTop_toBottomOf="@+id/task_description_text"
         app:layout_constraintStart_toStartOf="parent" />
@@ -110,14 +112,12 @@
         app:layout_constraintTop_toBottomOf="@+id/task_description_edittext" />
 
     <Spinner
-        android:id="@+id/categories_listview"
+        android:id="@+id/categories_spinner"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
 
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
-        android:entries="@array/create_task_categories"
-        android:padding="10dp"
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create_task_choose_category_text" />

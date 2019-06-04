@@ -13,25 +13,9 @@
     <string name="log_out">Log Out</string>
     <string name="sign_in">Sign in</string>
     <string name="enter_password">Enter password</string>
-    <string name="sign_in">Sign in</string>
 
     <string-array name="task_price_types">
         <item>Enter price</item>
-        <item>N.O.T.K.</item>
-    </string-array>
-
-    <string-array name="create_task_categories">
-        <item>Brick laying</item>
-        <item>Carpenting</item>
-        <item>Cleaning</item>
-        <item>Cooking</item>
-        <item>Garden work</item>
-        <item>Groceries Shopping</item>
-        <item>Householding</item>
-        <item>Painting</item>
-        <item>Plumbing</item>
-        <item>Repairing</item>
-        <item>Tutoring</item>
-        <item>Other</item>
+        <item>To be determined</item>
     </string-array>
 </resources>

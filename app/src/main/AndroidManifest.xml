@@ -16,11 +16,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".createTask_part3"></activity>
-        <activity android:name=".createTask_part2" />
-        <activity android:name=".createTask_part1" />
-        <activity android:name=".activity_notifications" />
-        <activity android:name=".activities.CreateTask" />
 
         <receiver android:name=".util.internet.InternetChangeReciever">
             <intent-filter>
@@ -35,7 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ProfileActivity" />
+        <activity android:name=".activities.ApplicationHomeActivity" />
         <activity android:name=".popups.signin.SignInScreen" />
         <activity android:name=".popups.signin.SignUpEmailScreen" />
         <activity android:name=".popups.signin.SignUpOtherScreen" />
@@ -43,6 +38,8 @@
         <activity android:name=".popups.signin.SignInSuccessScreen" />
         <activity android:name=".popups.createtask.CreateTaskPart1Screen" />
         <activity android:name=".popups.createtask.CreateTaskPart2Screen" />
+        <activity android:name=".popups.createtask.CreateTaskPart3Screen" />
+        <activity android:name=".popups.createtask.CreateTaskSuccessScreen" />
         <activity android:name=".popups.internet.InternetUnavailableScreen" />
         <activity android:name=".popups.location.LocationSelectionScreen" />
 
