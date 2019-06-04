@@ -173,7 +173,7 @@
         app:layout_constraintTop_toBottomOf="@+id/select_location_button" />
 
     <Button
-        android:id="@+id/task_next_page_button"
+        android:id="@+id/task_next_page_button_p2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
