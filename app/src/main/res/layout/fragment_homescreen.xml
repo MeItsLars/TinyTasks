@@ -27,15 +27,57 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="0dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Navigate your recommended tiny tasks."
-        android:textSize="15sp"
+        android:text="Recommended tasks"
+        android:textSize="30sp"
 
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home_screen_text" />
 
+    <LinearLayout
+        android:id="@+id/home_task_section"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:layout_marginTop="20dp"
+
+        android:background="#fffded"
+        android:orientation="vertical"
+
+        app:layout_constraintTop_toBottomOf="@+id/home_navigate_tasks_text"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_marginBottom="50dp">
+
+            <LinearLayout
+                android:id="@+id/recommended_task_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="10dp"
+
+                android:numColumns="1"
+                android:orientation="vertical"
+
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/home_navigate_tasks_text">
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
