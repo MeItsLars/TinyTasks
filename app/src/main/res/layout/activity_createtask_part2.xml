@@ -35,14 +35,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
 
         android:fontFamily="@font/roboto"
         android:text="@string/task_price"
-        android:textSize="15sp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
 
+        android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create_task_text_p2" />
 
@@ -86,14 +86,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
 
         android:fontFamily="@font/roboto"
         android:text="@string/estimated_amount_of_work_hours"
-        android:textSize="15sp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
 
+        android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/task_price_edittext" />
 
@@ -123,14 +123,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
 
         android:fontFamily="@font/roboto"
         android:text="@string/Choose_location_for_task"
-        android:textSize="15sp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
 
+        android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/work_amount_edittext" />
 
@@ -139,21 +139,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="50dp"
 
         android:background="@drawable/button_custom"
-        android:textAllCaps="false"
         android:text="@string/select_location_on_map"
-        android:textSize="20sp"
+        android:textAllCaps="true"
         android:textColor="#fff"
+        android:textSize="20sp"
 
-        app:layout_constraintTop_toBottomOf="@+id/task_location"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/task_location" />
 
     <TextView
         android:id="@+id/task_location_text"
@@ -182,20 +180,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="27dp"
         android:layout_marginLeft="27dp"
-        android:layout_marginEnd="27dp"
         android:layout_marginRight="27dp"
         android:layout_marginBottom="74dp"
 
         android:background="@drawable/button_custom"
-        android:textAllCaps="false"
         android:text="@string/next_page"
-        android:textSize="20sp"
+        android:textAllCaps="true"
         android:textColor="#fff"
+        android:textSize="20sp"
 
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
