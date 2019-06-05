@@ -12,7 +12,7 @@
 
         android:layout_marginTop="32dp"
 
-        android:text="Home"
+        android:text="@string/home"
         android:textColor="#000000"
         android:textSize="50sp"
         android:textStyle="bold"
@@ -32,7 +32,7 @@
         android:layout_marginTop="20dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Navigate your recommended tiny tasks."
+        android:text="@string/navigate_your_recommended_tiny_tasks"
         android:textSize="15sp"
 
         app:layout_constraintLeft_toLeftOf="parent"

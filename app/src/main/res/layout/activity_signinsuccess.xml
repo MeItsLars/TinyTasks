@@ -14,7 +14,7 @@
         android:layout_marginTop="116dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Signed in"
+        android:text="@string/signed_in"
         android:textColor="@color/quantum_black_100"
         android:textSize="60sp"
 
@@ -33,7 +33,7 @@
         android:layout_marginTop="70dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Welcome,"
+        android:text="@string/welcome"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="40sp"
 
@@ -73,7 +73,7 @@
         android:background="@drawable/button_custom"
         android:fontFamily="@font/roboto"
         android:padding="5dp"
-        android:text="My profile"
+        android:text="@string/my_profile"
         android:textAllCaps="false"
         android:textColor="#fff7f7"
         android:textSize="18sp"
@@ -96,7 +96,7 @@
         android:background="@drawable/button_custom"
         android:fontFamily="@font/roboto"
         android:padding="5dp"
-        android:text="Back"
+        android:text="@string/back"
         android:textAllCaps="false"
         android:textColor="#fff7f7"
         android:textSize="18sp"

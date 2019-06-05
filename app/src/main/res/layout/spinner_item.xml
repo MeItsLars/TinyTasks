@@ -10,6 +10,6 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:padding="10dp"
-        android:text="Demo"
+        android:text="@string/demo"
         android:textColor="#000" />
 </LinearLayout>
