@@ -26,7 +26,8 @@
         app:fontFamily="@font/roboto"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/add_images_text"
@@ -42,7 +43,8 @@
         android:textSize="15sp"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_task_text_p3" />
+        app:layout_constraintTop_toBottomOf="@+id/create_task_text_p3"
+        tools:ignore="HardcodedText" />
 
     <ImageButton
         android:id="@+id/add_image_1"
@@ -59,7 +61,8 @@
         android:src="@drawable/ic_add_to_photos_blue_24dp"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/add_images_text" />
+        app:layout_constraintTop_toTopOf="@+id/add_images_text"
+        tools:ignore="HardcodedText" />
 
     <ImageButton
         android:id="@+id/add_image_2"
@@ -76,7 +79,8 @@
         android:src="@drawable/ic_add_to_photos_blue_24dp"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_image_1" />
+        app:layout_constraintTop_toBottomOf="@+id/add_image_1"
+        tools:ignore="HardcodedText" />
 
     <ImageButton
         android:id="@+id/add_image_3"
@@ -93,7 +97,8 @@
         android:src="@drawable/ic_add_to_photos_blue_24dp"
 
         app:layout_constraintLeft_toRightOf="@+id/add_image_1"
-        app:layout_constraintTop_toTopOf="@+id/add_images_text" />
+        app:layout_constraintTop_toTopOf="@+id/add_images_text"
+        tools:ignore="HardcodedText" />
 
     <ImageButton
         android:id="@+id/add_image_4"
@@ -110,7 +115,8 @@
         android:src="@drawable/ic_add_to_photos_blue_24dp"
 
         app:layout_constraintLeft_toRightOf="@+id/add_image_2"
-        app:layout_constraintTop_toBottomOf="@+id/add_image_3" />
+        app:layout_constraintTop_toBottomOf="@+id/add_image_3"
+        tools:ignore="HardcodedText" />
 
     <ImageButton
         android:id="@+id/add_image_5"
@@ -127,7 +133,8 @@
         android:src="@drawable/ic_add_to_photos_blue_24dp"
 
         app:layout_constraintLeft_toRightOf="@+id/add_image_3"
-        app:layout_constraintTop_toBottomOf="@+id/add_images_text" />
+        app:layout_constraintTop_toBottomOf="@+id/add_images_text"
+        tools:ignore="HardcodedText" />
 
     <ImageButton
         android:id="@+id/add_image_6"
@@ -144,28 +151,30 @@
         android:src="@drawable/ic_add_to_photos_blue_24dp"
 
         app:layout_constraintLeft_toRightOf="@+id/add_image_4"
-        app:layout_constraintTop_toBottomOf="@+id/add_image_5" />
+        app:layout_constraintTop_toBottomOf="@+id/add_image_5"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/create_task_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="381dp"
+        android:layout_height="61dp"
 
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginTop="8dp"
 
+        android:layout_marginBottom="52dp"
         android:background="@drawable/button_custom"
         android:linksClickable="false"
-        android:textAllCaps="false"
         android:text="Create my task"
-        android:textSize="20sp"
+        android:textAllCaps="false"
         android:textColor="#fff"
 
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="20sp"
         app:layout_constrainedLeft_toLeftOf="parent"
-        app:layout_constraintRightOf_toRightOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRightOf_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_image_4"
+        app:layout_constraintVertical_bias="0.811"
+        tools:layout_editor_absoluteX="14dp"
+        tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

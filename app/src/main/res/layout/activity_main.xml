@@ -15,7 +15,8 @@
         android:layout_marginTop="16dp"
         android:text="@string/view_profile"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/signInButton"
@@ -26,7 +27,8 @@
         android:layout_marginTop="16dp"
         android:text="@string/sign_in_up"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewProfileButton" />
+        app:layout_constraintTop_toBottomOf="@+id/viewProfileButton"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/signOutButton"
@@ -37,7 +39,8 @@
         android:layout_marginTop="16dp"
         android:text="@string/sign_out"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInButton" />
+        app:layout_constraintTop_toBottomOf="@+id/signInButton"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/getLocationButton"
@@ -48,7 +51,8 @@
         android:layout_marginTop="16dp"
         android:text="@string/get_location"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signOutButton" />
+        app:layout_constraintTop_toBottomOf="@+id/signOutButton"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/placePickerButton"
@@ -59,7 +63,8 @@
         android:layout_marginTop="16dp"
         android:text="@string/place_picker"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/getLocationButton" />
+        app:layout_constraintTop_toBottomOf="@+id/getLocationButton"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/createTaskButton"

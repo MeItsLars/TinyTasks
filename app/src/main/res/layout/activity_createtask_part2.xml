@@ -28,7 +28,8 @@
         app:fontFamily="@font/roboto"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/task_price"
@@ -44,36 +45,32 @@
         android:textSize="15sp"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_task_text_p2" />
+        app:layout_constraintTop_toBottomOf="@+id/create_task_text_p2"
+        tools:ignore="HardcodedText" />
 
     <Spinner
         android:id="@+id/price_type_listview"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="167dp"
+        android:layout_height="49dp"
 
-        android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
 
         android:entries="@array/task_price_types"
         android:padding="10dp"
 
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/task_price_edittext"
         app:layout_constraintTop_toBottomOf="@+id/task_price" />
 
     <EditText
         android:id="@+id/task_price_edittext"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="204dp"
+        android:layout_height="48dp"
 
-        android:layout_marginStart="170dp"
         android:layout_marginLeft="170dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
 
         android:background="@drawable/edittext_custom"
         android:gravity="start|top"
@@ -81,9 +78,11 @@
         android:inputType=""
         android:padding="10dp"
 
-        app:layout_constraintTop_toBottomOf="@+id/task_price"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/task_price"
+        tools:ignore="Autofill,HardcodedText,RtlHardcoded" />
 
     <TextView
         android:id="@+id/work_amount"
@@ -99,18 +98,16 @@
         android:textSize="15sp"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_price_edittext" />
+        app:layout_constraintTop_toBottomOf="@+id/task_price_edittext"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/work_amount_edittext"
         android:layout_width="match_parent"
         android:layout_height="0dp"
 
-        android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginEnd="200dp"
         android:layout_marginRight="200dp"
-        android:layout_marginTop="10dp"
 
         android:background="@drawable/edittext_custom"
         android:gravity="start|top"
@@ -118,9 +115,11 @@
         android:inputType=""
         android:padding="10dp"
 
-        app:layout_constraintTop_toBottomOf="@+id/work_amount"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/work_amount"
+        tools:ignore="Autofill,HardcodedText,RtlHardcoded" />
 
     <TextView
         android:id="@+id/task_location"
@@ -136,50 +135,49 @@
         android:textSize="15sp"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/work_amount_edittext" />
+        app:layout_constraintTop_toBottomOf="@+id/work_amount_edittext"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/select_location_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginTop="16dp"
         android:layout_marginRight="50dp"
-        android:layout_marginTop="10dp"
 
         android:background="@drawable/button_custom"
-        android:textAllCaps="false"
         android:text="Select location on map"
-        android:textSize="20sp"
+        android:textAllCaps="false"
         android:textColor="#fff"
+        android:textSize="20sp"
 
-        app:layout_constraintTop_toBottomOf="@+id/task_location"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/task_location"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/task_location_text"
         android:layout_width="match_parent"
         android:layout_height="50dp"
 
-        android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="12dp"
 
         android:fontFamily="@font/roboto"
         android:text=""
         android:textSize="30sp"
-        app:autoSizeTextType="uniform"
-        app:autoSizeMinTextSize="12sp"
         app:autoSizeMaxTextSize="30sp"
+        app:autoSizeMinTextSize="12sp"
         app:autoSizeStepGranularity="2sp"
+        app:autoSizeTextType="uniform"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/select_location_button" />
+        app:layout_constraintTop_toBottomOf="@+id/select_location_button"
+        tools:ignore="RtlHardcoded" />
 
     <Button
         android:id="@+id/task_next_page_button_p2"
@@ -200,6 +198,7 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
