@@ -68,7 +68,6 @@ public class ApplicationHomeActivity extends AppCompatActivity {
                         break;
                     case R.id.navigation_create_task_button:
                         setActiveFragment(createTaskFragment);
-                        ((CreateTaskFragment) createTaskFragment).showFragment();
                         break;
                     case R.id.navigation_notifications_button:
                         setActiveFragment(notificationsFragment);
@@ -87,6 +86,11 @@ public class ApplicationHomeActivity extends AppCompatActivity {
     private void setActiveFragment(Fragment fragment) {
         fm.beginTransaction().hide(activeFragment).show(fragment).commit();
         activeFragment = fragment;
+        if(fragment instanceof CreateTaskFragment) {
+            ((CreateTaskFragment) createTaskFragment).showFragment();
+        } else if(fragment instanceof ProfileFragment) {
+            ((ProfileFragment) fragment).showFragment();
+        }
     }
 
     private void setClickedElement(int id) {

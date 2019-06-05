@@ -6,12 +6,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import ru.group12.tinytasks.R;
-import ru.group12.tinytasks.activities.MainActivity;
+import ru.group12.tinytasks.popups.signin.SignInScreen;
+import ru.group12.tinytasks.util.ActivityManager;
 import ru.group12.tinytasks.util.database.Database;
 import ru.group12.tinytasks.util.database.objects.User;
 
@@ -24,36 +26,71 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         inflatedView = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        /*TextView name = inflatedView.findViewById(R.id.tv1a);
-
-        name.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(container.getContext(), MainActivity.class);
-                container.getContext().startActivity(intent);
-            }
-        });
-
-        //TextView surname = findViewById(R.id.tv2a);
-        TextView phoneNumber = container.findViewById(R.id.tv3a);
-        TextView birthDate = container.findViewById(R.id.tv4a);
-        TextView gender = container.findViewById(R.id.tv5a);
-
-        if(FirebaseAuth.getInstance().getCurrentUser() != null) {
-            System.out.println("===============================");
-            System.out.println(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        if(inflatedView == null) {
+            System.out.println("Wtf deze zooi is null?");
         }
 
-        if(Database.userSignedIn()) {
-            User signedInUser = Database.getCurrentUser();
+        initializeContents();
 
-            name.setText(signedInUser.getName());
-            //surname.setText(signedInUser.getSurname());
-            phoneNumber.setText(signedInUser.getPhoneNumber());
-            birthDate.setText(signedInUser.getBirthdate());
-            gender.setText(signedInUser.getGender());
-        }*/
+        if(inflatedView == null) {
+            System.out.println("Wtf deze zooi is null? 2");
+        }
 
         return inflatedView;
+    }
+
+    private void initializeContents() {
+        setLayout();
+
+        Button signInButton = inflatedView.findViewById(R.id.B_profile_sign_in_button);
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityManager.startNewActivity(inflatedView.getContext(), SignInScreen.class, Intent.FLAG_ACTIVITY_NEW_TASK);
+            }
+        });
+    }
+
+    private void setLayout() {
+        ConstraintLayout profile_signed_in = inflatedView.findViewById(R.id.A_profile);
+        ConstraintLayout profile_not_signed_in = inflatedView.findViewById(R.id.B_profile);
+        if(Database.userSignedIn()) {
+            profile_signed_in.setVisibility(View.VISIBLE);
+            profile_signed_in.setClickable(true);
+            profile_not_signed_in.setVisibility(View.INVISIBLE);
+            profile_not_signed_in.setClickable(false);
+            setUserData();
+        } else {
+            profile_signed_in.setVisibility(View.INVISIBLE);
+            profile_signed_in.setClickable(false);
+            profile_not_signed_in.setVisibility(View.VISIBLE);
+            profile_not_signed_in.setClickable(true);
+        }
+    }
+
+    private void setUserData() {
+        TextView userNameText = inflatedView.findViewById(R.id.A_name_text_view);
+        TextView birthDateText = inflatedView.findViewById(R.id.A_birthdate_text_view);
+        TextView genderText = inflatedView.findViewById(R.id.A_gender_text_view);
+        TextView emailText = inflatedView.findViewById(R.id.A_email_text_view);
+        TextView phoneNumberText = inflatedView.findViewById(R.id.A_phone_number_text_view);
+
+        User user = Database.getCurrentUser();
+
+        userNameText.setText(user.getFullName());
+        birthDateText.setText("Birth date: " + user.getBirthdate());
+        genderText.setText("Gender: " + user.getGender());
+        emailText.setText("Email: " + user.getEmail());
+        phoneNumberText.setText("Phone number: " + user.getPhoneNumber());
+    }
+
+    public void showFragment() {
+        if(inflatedView != null) setLayout();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        showFragment();
     }
 }
