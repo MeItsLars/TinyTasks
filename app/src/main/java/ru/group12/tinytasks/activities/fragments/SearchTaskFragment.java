@@ -113,7 +113,7 @@ public class SearchTaskFragment extends Fragment {
         List<Task> tasks = new ArrayList<>();
         for(DataSnapshot users : dataSnapshot.getChildren()) {
             for(DataSnapshot userTask : users.getChildren()) {
-                tasks.add(new Task(
+                Task task = new Task(
                         userTask.getKey(),
                         users.getKey(),
                         CarmenFeature.fromJson((String) userTask.child("location").getValue()),
@@ -123,7 +123,9 @@ public class SearchTaskFragment extends Fragment {
                         (String) userTask.child("price").getValue(),
                         (String) userTask.child("work").getValue(),
                         (double) userTask.child("latitude").getValue(),
-                        (double) userTask.child("longitude").getValue()));
+                        (double) userTask.child("longitude").getValue());
+                //TODO: Add images to task
+                tasks.add(task);
             }
         }
         return tasks;

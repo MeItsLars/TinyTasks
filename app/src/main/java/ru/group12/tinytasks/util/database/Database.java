@@ -1,5 +1,6 @@
 package ru.group12.tinytasks.util.database;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -112,7 +113,7 @@ public class Database {
         ref.child(uid).child("gender").setValue(gender);
     }
 
-    public static void uploadTask(ru.group12.tinytasks.util.database.objects.Task task) {
+    public static void uploadTask(Activity activity, ru.group12.tinytasks.util.database.objects.Task task) {
         DatabaseReference tasksReference = mDatabase.getReference().child("tasks");
         DatabaseReference userTasksReference = tasksReference.child(task.getUserID());
         DatabaseReference taskReference = userTasksReference.child(task.getUniqueTaskID());
@@ -125,6 +126,8 @@ public class Database {
         taskReference.child("location").setValue(task.getLocation().toJson());
         taskReference.child("latitude").setValue(task.getLatitude());
         taskReference.child("longitude").setValue(task.getLongitude());
+
+        ImageManager.uploadTaskImages(activity, task);
     }
 
     public static Query searchTasks() {

@@ -144,9 +144,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clickable="false"
-        android:visibility="invisible"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:visibility="visible">
 
         <TextView
             android:id="@+id/B_profile_text_view"

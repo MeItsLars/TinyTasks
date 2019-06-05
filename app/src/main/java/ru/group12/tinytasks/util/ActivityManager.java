@@ -43,14 +43,6 @@ public class ActivityManager {
         if(finishCurrent) activity.finish();
     }
 
-    public static void startNewActivityTask(Activity activity, Class newClass, boolean finishCurrent, int flags, Task task) {
-        Intent intent = new Intent(activity, newClass);
-        intent.addFlags(flags);
-        intent.putExtra("task", task);
-        activity.startActivity(intent);
-        if(finishCurrent) activity.finish();
-    }
-
     public static void startNewActivityForResult(Activity activity, Class newClass, int requestCode) {
         Intent intent = new Intent(activity, newClass);
         activity.startActivityForResult(intent, requestCode);
