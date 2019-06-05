@@ -40,6 +40,7 @@
         <activity android:name=".popups.createtask.CreateTaskPart2Screen" />
         <activity android:name=".popups.createtask.CreateTaskPart3Screen" />
         <activity android:name=".popups.createtask.CreateTaskSuccessScreen" />
+        <activity android:name=".popups.tasks.SearchSettingsScreen" />
         <activity android:name=".popups.internet.InternetUnavailableScreen" />
         <activity android:name=".popups.location.LocationSelectionScreen" />
 

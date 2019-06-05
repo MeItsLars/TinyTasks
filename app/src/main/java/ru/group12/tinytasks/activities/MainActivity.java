@@ -159,7 +159,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getLocation() {
-        System.out.println("Retrieving location...");
         if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission
                 (MainActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {

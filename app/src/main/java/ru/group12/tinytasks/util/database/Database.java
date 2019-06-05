@@ -13,10 +13,15 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.twitter.sdk.android.core.models.Search;
+
+import java.util.List;
 
 import ru.group12.tinytasks.popups.signin.SignInSuccessScreen;
 import ru.group12.tinytasks.util.ActivityManager;
+import ru.group12.tinytasks.util.database.objects.SearchSettings;
 import ru.group12.tinytasks.util.database.objects.User;
 
 public class Database {
@@ -108,7 +113,6 @@ public class Database {
     }
 
     public static void uploadTask(ru.group12.tinytasks.util.database.objects.Task task) {
-        System.out.println("User: " + task.getUserID() + ", Task id: " + task.getUniqueTaskID());
         DatabaseReference tasksReference = mDatabase.getReference().child("tasks");
         DatabaseReference userTasksReference = tasksReference.child(task.getUserID());
         DatabaseReference taskReference = userTasksReference.child(task.getUniqueTaskID());
@@ -119,5 +123,11 @@ public class Database {
         taskReference.child("price").setValue(task.getPrice());
         taskReference.child("work").setValue(task.getWork());
         taskReference.child("location").setValue(task.getLocation().toJson());
+        taskReference.child("latitude").setValue(task.getLatitude());
+        taskReference.child("longitude").setValue(task.getLongitude());
+    }
+
+    public static Query searchTasks() {
+        return mDatabase.getReference("tasks");
     }
 }

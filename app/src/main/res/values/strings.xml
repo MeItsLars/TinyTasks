@@ -17,7 +17,7 @@
     <string name="task_created">Task created!</string>
     <string name="create_task_3_3">Create Task 3/3</string>
     <string name="add_images_optional">Add images (optional)</string>
-    <string name="create_my_task">CREATE MY TASK</string>
+    <string name="create_my_task">Create task</string>
     <string name="create_task_1_3">Create Task 1/3</string>
     <string name="task_name">Task name:</string>
     <string name="mowing_the_lawn">Mowing the lawn</string>
@@ -65,24 +65,20 @@
     <string name="add_image">add image</string>
     <string name="Choose_location_for_task">choose location for task</string>
     <string name="recommended_tasks">Recommended tasks</string>
+
     <string-array name="task_price_types">
         <item>Enter price</item>
         <item>To be determined</item>
     </string-array>
 
-    <string-array name="create_task_categories">
-        <item>Brick laying</item>
-        <item>Carpenting</item>
-        <item>Cleaning</item>
-        <item>Cooking</item>
-        <item>Gardening</item>
-        <item>Groceries Shopping</item>
-        <item>Householding</item>
-        <item>Painting</item>
-        <item>Plumbing</item>
-        <item>Repairing</item>
-        <item>Tutoring</item>
-        <item>Other</item>
+    <string-array name="search_ordering">
+        <item>Ascending</item>
+        <item>Descending</item>
     </string-array>
 
+    <string-array name="search_type">
+        <item>Price</item>
+        <item>Work amount</item>
+        <item>Distance</item>
+    </string-array>
 </resources>

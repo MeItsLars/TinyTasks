@@ -44,6 +44,8 @@ public class CreateTaskPart2Screen extends AppCompatActivity {
     private EditText taskPrice;
     private EditText amountOfWork;
     private CarmenFeature feature;
+    private double latitude;
+    private double longitude;
 
     private boolean priceCorrect = false;
     private boolean amountOfWorkCorect = false;
@@ -144,6 +146,8 @@ public class CreateTaskPart2Screen extends AppCompatActivity {
                         put("category", category);
                         put("work", amountOfWork.getText().toString());
                         put("location", feature.toJson());
+                        put("latitude", String.valueOf(latitude));
+                        put("longitude", String.valueOf(longitude));
                     }};
                     if(priceType.getSelectedItem().toString().equals("Enter price")) data.put("price", taskPrice.getText().toString());
                     else data.put("price", "To be determined");
@@ -194,6 +198,8 @@ public class CreateTaskPart2Screen extends AppCompatActivity {
         if(requestCode == MAP_REQUEST_CODE) {
             if(resultCode == Activity.RESULT_OK) {
                 feature = CarmenFeature.fromJson(data.getStringExtra("resultFeature"));
+                latitude = data.getDoubleExtra("latitude", 0);
+                longitude = data.getDoubleExtra("longitude", 0);
                 taskLocationText.setText(feature.placeName());
                 locationCorrect = true;
             }

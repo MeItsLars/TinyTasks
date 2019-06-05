@@ -34,7 +34,9 @@ public class CreateTaskPart3Screen extends AppCompatActivity {
                 getIntent().getStringExtra("title"),
                 getIntent().getStringExtra("description"),
                 getIntent().getStringExtra("price"),
-                getIntent().getStringExtra("work"));
+                getIntent().getStringExtra("work"),
+                Double.parseDouble(getIntent().getStringExtra("latitude")),
+                Double.parseDouble(getIntent().getStringExtra("longitude")));
     }
 
     private void initializeContents() {

@@ -56,7 +56,7 @@
 
         android:contentDescription="@string/add_image"
 
-        android:background=""
+        android:background="#00000000"
         android:src="@drawable/ic_add_to_photos_blue_24dp"
 
         app:layout_constraintLeft_toLeftOf="parent"
@@ -73,7 +73,7 @@
 
         android:contentDescription="@string/add_image"
 
-        android:background=""
+        android:background="#00000000"
         android:src="@drawable/ic_add_to_photos_blue_24dp"
 
         app:layout_constraintLeft_toLeftOf="parent"
@@ -90,7 +90,7 @@
 
         android:contentDescription="@string/add_image"
 
-        android:background=""
+        android:background="#00000000"
         android:src="@drawable/ic_add_to_photos_blue_24dp"
 
         app:layout_constraintLeft_toRightOf="@+id/add_image_1"
@@ -107,7 +107,7 @@
 
         android:contentDescription="@string/add_image"
 
-        android:background=""
+        android:background="#00000000"
         android:src="@drawable/ic_add_to_photos_blue_24dp"
 
         app:layout_constraintLeft_toRightOf="@+id/add_image_2"
@@ -124,7 +124,7 @@
 
         android:contentDescription="@string/add_image"
 
-        android:background=""
+        android:background="#00000000"
         android:src="@drawable/ic_add_to_photos_blue_24dp"
 
         app:layout_constraintLeft_toRightOf="@+id/add_image_3"
@@ -141,7 +141,7 @@
 
         android:contentDescription="@string/add_image"
 
-        android:background=""
+        android:background="#00000000"
         android:src="@drawable/ic_add_to_photos_blue_24dp"
 
         app:layout_constraintLeft_toRightOf="@+id/add_image_4"
@@ -161,12 +161,12 @@
         android:background="@drawable/button_custom"
         android:linksClickable="false"
         android:textAllCaps="false"
-        android:text="@string/create_my_taskC"
+        android:text="@string/create_my_task"
         android:textSize="20sp"
         android:textColor="#fff"
 
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constrainedLeft_toLeftOf="parent"
-        app:layout_constraintRightOf_toRightOf="parent"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

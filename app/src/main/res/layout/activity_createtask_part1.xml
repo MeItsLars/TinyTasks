@@ -72,10 +72,10 @@
 
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
 
         android:fontFamily="@font/roboto"
-        android:text="@string/task_name"
+        android:text="Task desecription:"
         android:textSize="15sp"
 
         app:layout_constraintLeft_toLeftOf="parent"
@@ -95,7 +95,7 @@
         android:gravity="start|top"
         android:padding="10dp"
         android:background="@drawable/edittext_custom"
-        android:hint="@string/mowing_the_lawn"
+        android:hint="Please help me, and mow my lawn! \nIt is 30 m^2, thank you!"
         android:inputType="textMultiLine"
 
         app:layout_constraintTop_toBottomOf="@+id/task_description_text"
@@ -108,25 +108,24 @@
 
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
 
         android:fontFamily="@font/roboto"
-        android:text="@string/categoryC"
+        android:text="@string/category"
         android:textSize="15sp"
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/task_description_edittext" />
 
     <Spinner
-        android:id="@+id/categories_listview"
+        android:id="@+id/categories_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
 
-        android:layout_marginTop="40dp"
-        android:entries="@array/create_task_categories"
+        android:layout_marginTop="10dp"
 
         android:padding="10dp"
         app:layout_constraintLeft_toRightOf="@+id/create_task_choose_category_text"
