@@ -10,7 +10,7 @@
         android:id="@+id/A_profile"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
+        android:visibility="invisible"
         android:clickable="false">
 
         <TextView
