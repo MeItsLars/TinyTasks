@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/TPSettingsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="60dp"
+        android:text="Task \nPreferences"
+        android:textColor="#000000"
+        android:textSize="60sp"
+        app:fontFamily="roboto"
+        android:textStyle="bold"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TPSettingsTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:fontFamily="@font/roboto"
+        android:text="Which types of task do you want to see?"
+        android:textSize="15sp"
+
+        app:layout_constraintLeft_toLeftOf="@+id/TPSettingsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/TPSettingsTextView" />
+
+    <CheckBox
+        android:id="@+id/categories_checkbox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Brick laying"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/TPSettingsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/TPSettingsTextView2" />
+
+    <CheckBox
+        android:id="@+id/categories_checkbox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Carpenting"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/TPSettingsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/categories_checkbox1" />
+
+    <CheckBox
+        android:id="@+id/categories_checkbox3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Cleaning"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/TPSettingsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/categories_checkbox2" />
+
+    <CheckBox android:id="@+id/categories_checkbox4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Cooking"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/TPSettingsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/categories_checkbox3" />
+
+    <CheckBox android:id="@+id/categories_checkbox5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Gardening"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/TPSettingsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/categories_checkbox4" />
+
+    <CheckBox android:id="@+id/categories_checkbox6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Groceries Shopping"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/TPSettingsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/categories_checkbox5" />
+
+    <CheckBox android:id="@+id/categories_checkbox7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Householding"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/TPSettingsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/categories_checkbox6" />
+
+    <CheckBox android:id="@+id/categories_checkbox8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Painting"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/TPSettingsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/categories_checkbox7" />
+
+    <CheckBox android:id="@+id/categories_checkbox9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Plumbing"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/TPSettingsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/categories_checkbox8" />
+
+    <CheckBox android:id="@+id/categories_checkbox10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Repairing"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/TPSettingsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/categories_checkbox9" />
+
+    <CheckBox android:id="@+id/categories_checkbox11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Tutoring"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/TPSettingsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/categories_checkbox10" />
+
+    <CheckBox android:id="@+id/categories_checkbox12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Other"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/TPSettingsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/categories_checkbox11" />
+
+</android.support.constraint.ConstraintLayout>
