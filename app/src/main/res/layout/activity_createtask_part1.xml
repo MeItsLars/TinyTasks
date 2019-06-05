@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@drawable/background_test8">
+    <!--android:background="#FFFFFF">-->
 
     <TextView
         android:id="@+id/create_task_text_p1"
@@ -110,7 +111,7 @@
         android:layout_marginTop="50dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Category:"
+        android:text="@string/categoryC"
         android:textSize="15sp"
 
         app:layout_constraintLeft_toLeftOf="parent"

@@ -64,6 +64,7 @@
     <string name="demo">Demo</string>
     <string name="add_image">add image</string>
     <string name="Choose_location_for_task">choose location for task</string>
+    <string name="recommended_tasks">Recommended tasks</string>
     <string-array name="task_price_types">
         <item>Enter price</item>
         <item>To be determined</item>

@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@drawable/background_test8">
+    <!--android:background="#FFFFFF">-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/A_profile"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
+        android:visibility="invisible"
         android:clickable="false">
 
         <TextView
@@ -25,7 +26,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:fontFamily="@font/roboto"
-            android:text="Your profile"
+            android:text="@string/your_profile"
             android:textAllCaps="false"
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
 
@@ -57,7 +58,7 @@
             android:layout_marginTop="8dp"
 
             android:fontFamily="@font/roboto"
-            android:text="{FULL NAME}"
+            android:text="@string/full_nameF"
             android:textAllCaps="false"
             android:textColor="#000"
             android:textSize="28sp"
@@ -75,7 +76,7 @@
             android:layout_marginTop="5dp"
 
             android:fontFamily="@font/roboto"
-            android:text="Birth date: {BIRTH DATE}"
+            android:text="@string/birth_date_birth_date"
             android:textAllCaps="false"
             android:textColor="#000"
             android:textSize="15sp"
@@ -92,7 +93,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/roboto"
-            android:text="Gender: {GENDER}"
+            android:text="@string/gender_gender"
 
             android:textAllCaps="false"
             android:textColor="#000"
@@ -110,7 +111,7 @@
             android:layout_marginTop="5dp"
 
             android:fontFamily="@font/roboto"
-            android:text="Email: {EMAIL}"
+            android:text="@string/email_email"
             android:textAllCaps="false"
             android:textColor="#000"
             android:textSize="15sp"
@@ -128,7 +129,7 @@
             android:layout_marginTop="5dp"
 
             android:fontFamily="@font/roboto"
-            android:text="Phone number: {PHONE NUMBER}"
+            android:text="@string/phone_number_phone_number"
             android:textAllCaps="false"
             android:textColor="#000"
             android:textSize="15sp"
@@ -159,7 +160,7 @@
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
             android:fontFamily="@font/roboto"
-            android:text="Your profile"
+            android:text="@string/your_profile"
             android:textAllCaps="false"
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
 
@@ -191,7 +192,7 @@
             android:layout_marginTop="100dp"
 
             android:fontFamily="@font/roboto"
-            android:text="You need to sign in to view your profile"
+            android:text="@string/you_need_to_sign_in_to_view_your_profile"
             android:textAllCaps="false"
             android:textColor="#000"
             android:textSize="30sp"

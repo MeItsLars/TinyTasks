@@ -204,41 +204,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getTasks() {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("tasks");
 
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot users : dataSnapshot.getChildren()) {
-                    for(DataSnapshot userTask : users.getChildren()) {
-                        Task task = new Task(
-                                userTask.getKey(),
-                                users.getKey(),
-                                CarmenFeature.fromJson((String) userTask.child("location").getValue()),
-                                Category.valueOf((String) userTask.child("category").getValue()),
-                                (String) userTask.child("title").getValue(),
-                                (String) userTask.child("description").getValue(),
-                                (String) userTask.child("price").getValue(),
-                                (String) userTask.child("work").getValue()
-                        );
-
-                        System.out.println("TASK LOADED:");
-                        System.out.println("TaskID: " + task.getUniqueTaskID());
-                        System.out.println("UserID: " + task.getUserID());
-                        System.out.println("Title: " + task.getTitle());
-                        System.out.println("Description: " + task.getDescription());
-                        System.out.println("Category: " + task.getCategory().getName());
-                        System.out.println("Price: " + task.getPrice());
-                        System.out.println("Work: " + task.getWork());
-                        System.out.println("Location: " + task.getLocation().toJson());
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                //Do nothing
-            }
-        });
     }
 }

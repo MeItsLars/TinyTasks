@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/NotificationSettingsTextView"
+        android:id="@+id/SettingsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -34,8 +34,8 @@
         android:text="@string/navigate_your_recommended_tiny_tasks"
         android:textSize="15sp"
 
-        app:layout_constraintLeft_toLeftOf="@+id/NotificationSettingsTextView"
-        app:layout_constraintTop_toBottomOf="@+id/NotificationSettingsTextView" />
+        app:layout_constraintLeft_toLeftOf="@+id/SettingsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/SettingsTextView" />
 
 
     <Switch
@@ -49,7 +49,7 @@
         android:layout_marginRight="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.527"
-        app:layout_constraintLeft_toLeftOf="@+id/NotificationSettingsTextView"
+        app:layout_constraintLeft_toLeftOf="@+id/SettingsTextView"
         app:layout_constraintBottom_toBottomOf="@+id/notificationSetting1" />
 
     <TextView
@@ -64,7 +64,7 @@
         android:text="@string/navigate_your_recommended_tiny_tasks"
         android:textSize="15sp"
 
-        app:layout_constraintLeft_toLeftOf="@+id/NotificationSettingsTextView"
+        app:layout_constraintLeft_toLeftOf="@+id/SettingsTextView"
         app:layout_constraintTop_toBottomOf="@+id/notificationSetting1" />
 
 
@@ -79,7 +79,7 @@
         android:layout_marginRight="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.527"
-        app:layout_constraintLeft_toLeftOf="@+id/NotificationSettingsTextView"
+        app:layout_constraintLeft_toLeftOf="@+id/SettingsTextView"
         app:layout_constraintBottom_toBottomOf="@+id/notificationSetting2" />
 
     <TextView
@@ -93,7 +93,7 @@
         android:text="@string/navigate_your_recommended_tiny_tasks"
         android:textSize="15sp"
 
-        app:layout_constraintLeft_toLeftOf="@+id/NotificationSettingsTextView"
+        app:layout_constraintLeft_toLeftOf="@+id/SettingsTextView"
         app:layout_constraintTop_toBottomOf="@+id/notificationSetting2" />
 
 
@@ -101,11 +101,14 @@
         android:id="@+id/simpleSwitch3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/notificationSetting3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="@+id/NotificationSettingsTextView" />
+        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintLeft_toLeftOf="@+id/SettingsTextView"
+        app:layout_constraintBottom_toBottomOf="@+id/notificationSetting3" />
 
 </android.support.constraint.ConstraintLayout>

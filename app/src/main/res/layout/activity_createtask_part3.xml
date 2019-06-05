@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff">
+    android:background="@drawable/background_test8">
+    <!--android:background="#fff">-->
 
     <TextView
         android:id="@+id/create_task_text_p3"
@@ -160,7 +161,7 @@
         android:background="@drawable/button_custom"
         android:linksClickable="false"
         android:textAllCaps="false"
-        android:text="Create my task"
+        android:text="@string/create_my_taskC"
         android:textSize="20sp"
         android:textColor="#fff"
 

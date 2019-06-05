@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
-    <!--android:background="@drawable/background_loginscreen"-->
+    android:background="@drawable/background_test8">
+    <!--android:background="#FFFFFF">-->
 
     <TextView
         android:id="@+id/create_task_text_p2"
@@ -53,36 +53,33 @@
 
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
 
         android:entries="@array/task_price_types"
-        android:padding="10dp"
+        android:padding="5dp"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/task_price_edittext"
         app:layout_constraintTop_toBottomOf="@+id/task_price" />
 
     <EditText
         android:id="@+id/task_price_edittext"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
-        android:layout_marginStart="170dp"
-        android:layout_marginLeft="170dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
         android:layout_marginTop="10dp"
 
         android:background="@drawable/edittext_custom"
         android:gravity="start|top"
-        android:hint="Task price"
+        android:hint="@string/task_priceT"
         android:inputType=""
         android:padding="10dp"
 
         app:layout_constraintTop_toBottomOf="@+id/task_price"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/price_type_listview"
         app:layout_constraintRight_toRightOf="parent"/>
 
     <TextView
@@ -132,7 +129,7 @@
         android:layout_marginTop="50dp"
 
         android:fontFamily="@font/roboto"
-        android:text="@string/choose_location_for_task"
+        android:text="@string/Choose_location_for_task"
         android:textSize="15sp"
 
         app:layout_constraintLeft_toLeftOf="parent"
