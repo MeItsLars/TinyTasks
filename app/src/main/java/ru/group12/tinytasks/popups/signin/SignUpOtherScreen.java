@@ -1,6 +1,5 @@
 package ru.group12.tinytasks.popups.signin;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;

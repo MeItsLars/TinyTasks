@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +23,11 @@ import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.AutocompleteActivity;
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mapbox.api.geocoding.v5.models.CarmenFeature;
 import com.mapbox.mapboxsdk.Mapbox;
 
@@ -33,6 +39,8 @@ import ru.group12.tinytasks.popups.createtask.CreateTaskPart1Screen;
 import ru.group12.tinytasks.popups.location.LocationSelectionScreen;
 import ru.group12.tinytasks.util.ActivityManager;
 import ru.group12.tinytasks.util.database.Database;
+import ru.group12.tinytasks.util.database.objects.Task;
+import ru.group12.tinytasks.util.database.objects.enums.Category;
 import ru.group12.tinytasks.util.internet.Network;
 import ru.group12.tinytasks.popups.signin.SignInScreen;
 
@@ -50,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         activity = this;
 
+        getTasks();
 
         Network.registerInternetStateChangedListener(this);
         // Load current user *IF* they exist.
@@ -112,15 +121,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button viewProfileButton = findViewById(R.id.viewProfileButton);
-        viewProfileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(activity, ProfileActivity.class);
-                activity.startActivity(intent);
-            }
-        });
-
         Button signOutButton = findViewById(R.id.signOutButton);
         signOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,6 +134,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ActivityManager.startNewActivity(MainActivity.this, CreateTaskPart1Screen.class);
+            }
+        });
+
+        Button testAppButton = findViewById(R.id.testAppButton);
+        testAppButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityManager.startNewActivity(MainActivity.this, ApplicationHomeActivity.class);
             }
         });
     }
@@ -193,5 +201,44 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("Your current location is" + "\n" + "Lattitude = " + lattitude
                     + "\n" + "Longitude = " + longitude);
         }
+    }
+
+    private void getTasks() {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("tasks");
+
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot users : dataSnapshot.getChildren()) {
+                    for(DataSnapshot userTask : users.getChildren()) {
+                        Task task = new Task(
+                                userTask.getKey(),
+                                users.getKey(),
+                                CarmenFeature.fromJson((String) userTask.child("location").getValue()),
+                                Category.valueOf((String) userTask.child("category").getValue()),
+                                (String) userTask.child("title").getValue(),
+                                (String) userTask.child("description").getValue(),
+                                (String) userTask.child("price").getValue(),
+                                (String) userTask.child("work").getValue()
+                        );
+
+                        System.out.println("TASK LOADED:");
+                        System.out.println("TaskID: " + task.getUniqueTaskID());
+                        System.out.println("UserID: " + task.getUserID());
+                        System.out.println("Title: " + task.getTitle());
+                        System.out.println("Description: " + task.getDescription());
+                        System.out.println("Category: " + task.getCategory().getName());
+                        System.out.println("Price: " + task.getPrice());
+                        System.out.println("Work: " + task.getWork());
+                        System.out.println("Location: " + task.getLocation().toJson());
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                //Do nothing
+            }
+        });
     }
 }

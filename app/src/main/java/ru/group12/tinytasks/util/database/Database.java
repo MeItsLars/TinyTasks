@@ -15,7 +15,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import io.opencensus.common.Function;
 import ru.group12.tinytasks.popups.signin.SignInSuccessScreen;
 import ru.group12.tinytasks.util.ActivityManager;
 import ru.group12.tinytasks.util.database.objects.User;
@@ -99,12 +98,26 @@ public class Database {
     }
 
     public static void registerNewUser(String uid, String name, String surname, String phoneNumber, String birthDate, String gender) {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
+        DatabaseReference ref = mDatabase.getReference().child("users");
 
         ref.child(uid).child("name").setValue(name);
         ref.child(uid).child("surname").setValue(surname);
         ref.child(uid).child("phoneNumber").setValue(phoneNumber);
         ref.child(uid).child("birthDate").setValue(birthDate);
         ref.child(uid).child("gender").setValue(gender);
+    }
+
+    public static void uploadTask(ru.group12.tinytasks.util.database.objects.Task task) {
+        System.out.println("User: " + task.getUserID() + ", Task id: " + task.getUniqueTaskID());
+        DatabaseReference tasksReference = mDatabase.getReference().child("tasks");
+        DatabaseReference userTasksReference = tasksReference.child(task.getUserID());
+        DatabaseReference taskReference = userTasksReference.child(task.getUniqueTaskID());
+
+        taskReference.child("title").setValue(task.getTitle());
+        taskReference.child("description").setValue(task.getDescription());
+        taskReference.child("category").setValue(task.getCategory().name());
+        taskReference.child("price").setValue(task.getPrice());
+        taskReference.child("work").setValue(task.getWork());
+        taskReference.child("location").setValue(task.getLocation().toJson());
     }
 }

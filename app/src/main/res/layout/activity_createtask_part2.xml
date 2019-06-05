@@ -4,23 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_loginscreen">
+    android:background="#FFFFFF">
+    <!--android:background="@drawable/background_loginscreen"-->
 
     <TextView
-        android:id="@+id/create_task_text"
+        android:id="@+id/create_task_text_p2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="32dp"
 
-        android:fontFamily="@font/roboto"
+
         android:text="Create Task 2/3"
-        android:textSize="30sp"
+        android:fontFamily="@font/roboto"
+        android:textColor="#000000"
+        android:textSize="40sp"
+        android:textStyle="bold"
 
+        app:fontFamily="@font/roboto"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/task_price"
@@ -29,14 +37,14 @@
 
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
 
         android:fontFamily="@font/roboto"
         android:text="Task price:"
         android:textSize="15sp"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_task_text" />
+        app:layout_constraintTop_toBottomOf="@+id/create_task_text_p2" />
 
     <Spinner
         android:id="@+id/price_type_listview"
@@ -47,9 +55,10 @@
         android:layout_marginLeft="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="10dp"
 
         android:entries="@array/task_price_types"
+        android:padding="10dp"
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/task_price_edittext"
@@ -64,7 +73,7 @@
         android:layout_marginLeft="170dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
 
         android:background="@drawable/edittext_custom"
         android:gravity="start|top"
@@ -83,7 +92,7 @@
 
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
 
         android:fontFamily="@font/roboto"
         android:text="Estimated amount of work (hours):"
@@ -120,10 +129,10 @@
 
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Task location:"
+        android:text="Choose location for task:"
         android:textSize="15sp"
 
         app:layout_constraintLeft_toLeftOf="parent"
@@ -134,10 +143,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
         android:layout_marginTop="10dp"
 
         android:background="@drawable/button_custom"
@@ -147,8 +156,8 @@
         android:textColor="#fff"
 
         app:layout_constraintTop_toBottomOf="@+id/task_location"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/task_location_text"
@@ -190,7 +199,7 @@
         android:textColor="#fff"
 
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

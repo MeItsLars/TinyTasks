@@ -11,6 +11,8 @@ public class User {
     private String gender;
 
     public User(String uid, String email, String name, String surname, String phoneNumber, String birthdate, String gender) {
+        this.uid =  uid;
+        this.email = email;
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;

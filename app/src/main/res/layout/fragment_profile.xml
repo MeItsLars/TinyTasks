@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/A_profile"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:clickable="false">
+
+        <TextView
+            android:id="@+id/A_profile_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="32dp"
+
+            android:fontFamily="@font/roboto"
+            android:text="Your profile"
+            android:textAllCaps="false"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="50sp"
+            android:textStyle="bold"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/A_profile_image"
+            android:layout_width="75dp"
+            android:layout_height="71dp"
+
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="32dp"
+
+            android:src="@drawable/ic_person_black_24dp"
+
+            app:layout_constraintStart_toEndOf="@+id/A_profile_text_view"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/A_name_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+
+            android:fontFamily="@font/roboto"
+            android:text="{FULL NAME}"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="28sp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/A_profile_text_view" />
+
+        <TextView
+            android:id="@+id/A_birthdate_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+
+            android:fontFamily="@font/roboto"
+            android:text="Birth date: {BIRTH DATE}"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="15sp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/A_name_text_view" />
+
+        <TextView
+            android:id="@+id/A_gender_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+
+            android:fontFamily="@font/roboto"
+            android:text="Gender: {GENDER}"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="15sp"
+
+            app:layout_constraintStart_toEndOf="@+id/A_birthdate_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/A_name_text_view" />
+
+        <TextView
+            android:id="@+id/A_email_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+
+            android:fontFamily="@font/roboto"
+            android:text="Email: {EMAIL}"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="15sp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/A_birthdate_text_view" />
+
+        <TextView
+            android:id="@+id/A_phone_number_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+
+            android:fontFamily="@font/roboto"
+            android:text="Phone number: {PHONE NUMBER}"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="15sp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/A_email_text_view" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/B_profile"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:clickable="false">
+
+        <TextView
+            android:id="@+id/B_profile_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="32dp"
+
+            android:fontFamily="@font/roboto"
+            android:text="Your profile"
+            android:textAllCaps="false"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="50sp"
+            android:textStyle="bold"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/B_profile_image"
+            android:layout_width="75dp"
+            android:layout_height="71dp"
+
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="32dp"
+
+            android:src="@drawable/ic_person_black_24dp"
+
+            app:layout_constraintStart_toEndOf="@+id/B_profile_text_view"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/B_profile_description_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+
+            android:fontFamily="@font/roboto"
+            android:text="Please sign in to view your profile"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="20sp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/B_profile_text_view" />
+
+        <Button
+            android:id="@+id/B_profile_sign_in_button"
+            android:layout_width="312dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginRight="50dp"
+
+            android:layout_marginBottom="340dp"
+            android:background="@drawable/button_custom"
+            android:fontFamily="sans-serif-condensed-light"
+            android:padding="5dp"
+            android:text="@string/sign_up"
+
+            android:textAllCaps="true"
+            android:textColor="#fff7f7"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/roboto"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gender" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
