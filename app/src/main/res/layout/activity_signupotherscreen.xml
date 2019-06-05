@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+
 
     <TextView
         android:id="@+id/signUpTextView"
@@ -18,12 +21,14 @@
         android:textStyle="bold"
 
         app:fontFamily="@font/roboto"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/emailText"
+        android:id="@+id/usernameText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
@@ -45,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/signUpTextView" />
 
     <EditText
-        android:id="@+id/name"
+        android:id="@+id/firstnameText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
@@ -65,10 +70,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailText" />
+        app:layout_constraintTop_toBottomOf="@+id/usernameText" />
 
     <EditText
-        android:id="@+id/surname"
+        android:id="@+id/surnameText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
@@ -88,10 +93,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+        app:layout_constraintTop_toBottomOf="@+id/firstnameText" />
 
     <EditText
-        android:id="@+id/phoneNumber"
+        android:id="@+id/phoneNumberText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
@@ -111,10 +116,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/surname" />
+        app:layout_constraintTop_toBottomOf="@+id/surnameText" />
 
     <EditText
-        android:id="@+id/birthDate"
+        android:id="@+id/birthDateText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
@@ -134,10 +139,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumberText" />
 
     <EditText
-        android:id="@+id/gender"
+        android:id="@+id/genderText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
@@ -157,17 +162,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/birthDate" />
+        app:layout_constraintTop_toBottomOf="@+id/birthDateText" />
 
     <Button
-        android:id="@+id/signupButton"
+        android:id="@+id/signupButtonText"
         android:layout_width="312dp"
         android:layout_height="wrap_content"
 
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:layout_marginRight="50dp"
 
+        android:layout_marginBottom="88dp"
         android:background="@drawable/button_custom"
         android:fontFamily="sans-serif-condensed-light"
         android:padding="5dp"
@@ -177,9 +183,10 @@
         android:textColor="#fff7f7"
         android:textSize="16sp"
         app:fontFamily="@font/roboto"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gender"
-         />
+        app:layout_constraintTop_toBottomOf="@+id/genderText"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

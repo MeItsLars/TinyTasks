@@ -22,7 +22,7 @@ public class InternetUnavailableScreen extends AppCompatActivity {
         setContentView(R.layout.activity_internetunavailable);
 
         activity = this;
-
+/*
         Button internetCheckButton = findViewById(R.id.internetCheckButton);
         internetCheckButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,5 +39,7 @@ public class InternetUnavailableScreen extends AppCompatActivity {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+        */
     }
+
 }
