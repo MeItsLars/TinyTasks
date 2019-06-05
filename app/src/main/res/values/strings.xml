@@ -67,4 +67,20 @@
         <item>Enter price</item>
         <item>To be determined</item>
     </string-array>
+
+    <string-array name="create_task_categories">
+        <item>Brick laying</item>
+        <item>Carpenting</item>
+        <item>Cleaning</item>
+        <item>Cooking</item>
+        <item>Garden work</item>
+        <item>Groceries Shopping</item>
+        <item>Householding</item>
+        <item>Painting</item>
+        <item>Plumbing</item>
+        <item>Repairing</item>
+        <item>Tutoring</item>
+        <item>Other</item>
+    </string-array>
+
 </resources>
