@@ -3,23 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_loginscreen">
+    android:background="#FFFFFF">
 
     <TextView
-        android:id="@+id/create_task_text"
+        android:id="@+id/create_task_text_p1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="32dp"
 
+
+        android:text="Create Task 1/3"
         android:fontFamily="@font/roboto"
-        android:text="@string/create_task_1_3"
-        android:textSize="30sp"
+        android:textColor="#000000"
+        android:textSize="40sp"
+        android:textStyle="bold"
 
+        app:fontFamily="@font/roboto"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/task_name_text"
@@ -31,11 +38,11 @@
         android:layout_marginTop="20dp"
 
         android:fontFamily="@font/roboto"
-        android:text="@string/task_name"
+        android:text="Task name:"
         android:textSize="15sp"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_task_text" />
+        app:layout_constraintTop_toBottomOf="@+id/create_task_text_p1" />
 
     <EditText
         android:id="@+id/task_name_edittext"
@@ -51,12 +58,11 @@
         android:gravity="start|top"
         android:padding="10dp"
         android:background="@drawable/edittext_custom"
-        android:hint="@string/mowing_the_lawn"
+        android:hint="Mowing the lawn"
         android:inputType="textMultiLine"
-        android:maxLength="100"
 
         app:layout_constraintTop_toBottomOf="@+id/task_name_text"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/task_description_text"
@@ -65,10 +71,10 @@
 
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="50dp"
 
         android:fontFamily="@font/roboto"
-        android:text="@string/task_name"
+        android:text="Task name:"
         android:textSize="15sp"
 
         app:layout_constraintLeft_toLeftOf="parent"
@@ -88,12 +94,11 @@
         android:gravity="start|top"
         android:padding="10dp"
         android:background="@drawable/edittext_custom"
-        android:hint="@string/mowing_the_lawn"
+        android:hint="Mowing the lawn"
         android:inputType="textMultiLine"
-        android:maxLength="1000"
 
         app:layout_constraintTop_toBottomOf="@+id/task_description_text"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/create_task_choose_category_text"
@@ -102,26 +107,29 @@
 
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
 
         android:fontFamily="@font/roboto"
-        android:text="@string/category"
+        android:text="Category:"
         android:textSize="15sp"
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/task_description_edittext" />
 
     <Spinner
-        android:id="@+id/categories_spinner"
+        android:id="@+id/categories_listview"
         android:layout_width="wrap_content"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
 
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
 
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_task_choose_category_text"
-        android:layout_marginStart="20dp" />
+        android:layout_marginTop="40dp"
+        android:entries="@array/create_task_categories"
+
+        android:padding="10dp"
+        app:layout_constraintLeft_toRightOf="@+id/create_task_choose_category_text"
+        app:layout_constraintTop_toBottomOf="@+id/task_description_edittext" />
 
     <Button
         android:id="@+id/task_next_page_button"
@@ -135,13 +143,13 @@
         android:layout_marginBottom="60dp"
 
         android:background="@drawable/button_custom"
+        android:text="Next page"
         android:textAllCaps="false"
-        android:text="@string/next_page"
-        android:textSize="20sp"
         android:textColor="#fff"
+        android:textSize="20sp"
 
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

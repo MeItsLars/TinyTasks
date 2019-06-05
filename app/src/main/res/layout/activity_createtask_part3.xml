@@ -7,20 +7,26 @@
     android:background="#fff">
 
     <TextView
-        android:id="@+id/create_task_text"
+        android:id="@+id/create_task_text_p3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="32dp"
 
+        android:text="Create Task 3/3"
         android:fontFamily="@font/roboto"
-        android:text="@string/create_task_3_3"
-        android:textSize="30sp"
+        android:textColor="#000000"
+        android:textSize="40sp"
+        android:textStyle="bold"
 
+        app:fontFamily="@font/roboto"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/add_images_text"
@@ -29,14 +35,14 @@
 
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
 
         android:fontFamily="@font/roboto"
-        android:text="@string/add_images_optional"
+        android:text="Add images (optional)"
         android:textSize="15sp"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_task_text" />
+        app:layout_constraintTop_toBottomOf="@+id/create_task_text_p3" />
 
     <ImageButton
         android:id="@+id/add_image_1"
@@ -47,7 +53,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
 
-        android:background="#00000000"
+        android:contentDescription="add image"
+
+        android:background=""
         android:src="@drawable/ic_add_to_photos_blue_24dp"
 
         app:layout_constraintLeft_toLeftOf="parent"
@@ -62,7 +70,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
 
-        android:background="#00000000"
+        android:contentDescription="add image"
+
+        android:background=""
         android:src="@drawable/ic_add_to_photos_blue_24dp"
 
         app:layout_constraintLeft_toLeftOf="parent"
@@ -77,7 +87,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
 
-        android:background="#00000000"
+        android:contentDescription="add image"
+
+        android:background=""
         android:src="@drawable/ic_add_to_photos_blue_24dp"
 
         app:layout_constraintLeft_toRightOf="@+id/add_image_1"
@@ -92,7 +104,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
 
-        android:background="#00000000"
+        android:contentDescription="add image"
+
+        android:background=""
         android:src="@drawable/ic_add_to_photos_blue_24dp"
 
         app:layout_constraintLeft_toRightOf="@+id/add_image_2"
@@ -107,7 +121,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
 
-        android:background="#00000000"
+        android:contentDescription="add image"
+
+        android:background=""
         android:src="@drawable/ic_add_to_photos_blue_24dp"
 
         app:layout_constraintLeft_toRightOf="@+id/add_image_3"
@@ -122,7 +138,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
 
-        android:background="#00000000"
+        android:contentDescription="add image"
+
+        android:background=""
         android:src="@drawable/ic_add_to_photos_blue_24dp"
 
         app:layout_constraintLeft_toRightOf="@+id/add_image_4"
@@ -130,18 +148,24 @@
 
     <Button
         android:id="@+id/create_task_button"
-        android:layout_width="362dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginLeft="22dp"
-        android:layout_marginEnd="27dp"
-        android:layout_marginRight="27dp"
-        android:layout_marginBottom="74dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="60dp"
+
         android:background="@drawable/button_custom"
         android:linksClickable="false"
-        android:text="@string/create_my_task"
-        android:textColor="#fff7f7"
+        android:textAllCaps="false"
+        android:text="Create my task"
+        android:textSize="20sp"
+        android:textColor="#fff"
+
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constrainedLeft_toLeftOf="parent"
+        app:layout_constraintRightOf_toRightOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

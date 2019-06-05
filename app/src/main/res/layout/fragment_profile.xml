@@ -142,7 +142,7 @@
         android:id="@+id/B_profile"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="invisible"
+        android:visibility="visible"
         android:clickable="false">
 
         <TextView
@@ -198,17 +198,32 @@
 
         <Button
             android:id="@+id/B_profile_sign_in_button"
-            android:layout_width="wrap_content"
+            android:layout_width="312dp"
             android:layout_height="wrap_content"
 
-            android:layout_marginTop="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginRight="50dp"
 
-            android:text="Sign in/Sign up"
-            android:textAllCaps="false"
+            android:layout_marginBottom="340dp"
+            android:background="@drawable/button_custom"
+            android:fontFamily="sans-serif-condensed-light"
+            android:padding="5dp"
+            android:text="@string/sign_up"
 
+            android:textAllCaps="true"
+            android:textColor="#fff7f7"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/roboto"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/B_profile_description_view"/>
+            app:layout_constraintTop_toBottomOf="@+id/gender" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
