@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff">
+    android:background="@drawable/background_test8">
+    <!--android:background="#fff">-->
 
     <TextView
         android:id="@+id/created_task_text"
