@@ -19,7 +19,7 @@
         android:layout_marginTop="32dp"
 
 
-        android:text="Create Task 2/3"
+        android:text="@string/create_task_2_3"
         android:fontFamily="@font/roboto"
         android:textColor="#000000"
         android:textSize="40sp"
@@ -40,7 +40,7 @@
         android:layout_marginTop="30dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Task price:"
+        android:text="@string/task_price"
         android:textSize="15sp"
 
         app:layout_constraintLeft_toLeftOf="parent"
@@ -95,7 +95,7 @@
         android:layout_marginTop="50dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Estimated amount of work (hours):"
+        android:text="@string/estimated_amount_of_work_hours"
         android:textSize="15sp"
 
         app:layout_constraintLeft_toLeftOf="parent"
@@ -114,7 +114,7 @@
 
         android:background="@drawable/edittext_custom"
         android:gravity="start|top"
-        android:hint="Hours"
+        android:hint="@string/hours"
         android:inputType=""
         android:padding="10dp"
 
@@ -132,7 +132,7 @@
         android:layout_marginTop="50dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Choose location for task:"
+        android:text="@string/choose_location_for_task"
         android:textSize="15sp"
 
         app:layout_constraintLeft_toLeftOf="parent"
@@ -151,7 +151,7 @@
 
         android:background="@drawable/button_custom"
         android:textAllCaps="false"
-        android:text="Select location on map"
+        android:text="@string/select_location_on_map"
         android:textSize="20sp"
         android:textColor="#fff"
 
@@ -194,7 +194,7 @@
 
         android:background="@drawable/button_custom"
         android:textAllCaps="false"
-        android:text="Next page"
+        android:text="@string/next_page"
         android:textSize="20sp"
         android:textColor="#fff"
 
