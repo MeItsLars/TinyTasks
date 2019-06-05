@@ -16,7 +16,7 @@
 
         android:layout_marginTop="32dp"
 
-        android:text="Sign up"
+        android:text="@string/sign_up"
         android:textColor="#000000"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -44,11 +44,14 @@
         android:drawablePadding="10dp"
         android:padding="5dp"
         android:paddingLeft="10dp"
+        android:paddingRight="10dp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signUpTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/signUpTextView"
+        android:paddingStart="10dp"
+        android:drawableStart="@drawable/ic_person_black_35dp" />
 
     <EditText
         android:id="@+id/firstnameText"
@@ -62,12 +65,16 @@
         android:layout_marginRight="50dp"
 
         android:background="@drawable/edittext_custom"
+        android:drawableStart="@drawable/ic_lock_open_black_35dp"
         android:drawableLeft="@drawable/ic_lock_open_black_35dp"
         android:drawablePadding="10dp"
-        android:hint="First name"
+        android:hint="@string/first_name"
+        android:inputType="textPersonName"
         android:padding="5dp"
-        android:paddingLeft="10dp"
 
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,12 +92,16 @@
         android:layout_marginRight="50dp"
 
         android:background="@drawable/edittext_custom"
+        android:drawableStart="@drawable/ic_lock_open_black_35dp"
         android:drawableLeft="@drawable/ic_lock_open_black_35dp"
         android:drawablePadding="10dp"
-        android:hint="Last name"
+        android:hint="@string/last_name"
+        android:inputType="textPersonName"
         android:padding="5dp"
-        android:paddingLeft="10dp"
 
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -108,12 +119,17 @@
         android:layout_marginRight="50dp"
 
         android:background="@drawable/edittext_custom"
+        android:drawableStart="@drawable/ic_lock_open_black_35dp"
         android:drawableLeft="@drawable/ic_lock_open_black_35dp"
         android:drawablePadding="10dp"
-        android:hint="Phone number"
-        android:padding="5dp"
-        android:paddingLeft="10dp"
+        android:hint="@string/phone_number"
+        android:inputType="phone"
 
+        android:padding="5dp"
+
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -131,12 +147,16 @@
 
         android:layout_marginRight="50dp"
         android:background="@drawable/edittext_custom"
+        android:drawableStart="@drawable/ic_lock_open_black_35dp"
         android:drawableLeft="@drawable/ic_lock_open_black_35dp"
         android:drawablePadding="10dp"
-        android:hint="Date of birth (dd-mm-yyyy)"
-        android:padding="5dp"
+        android:hint="@string/date_of_birth_dd_mm_yyyy"
 
+        android:inputType="date"
+        android:padding="5dp"
+        android:paddingStart="10dp"
         android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -154,12 +174,16 @@
 
         android:layout_marginRight="50dp"
         android:background="@drawable/edittext_custom"
+        android:drawableStart="@drawable/ic_lock_open_black_35dp"
         android:drawableLeft="@drawable/ic_lock_open_black_35dp"
         android:drawablePadding="10dp"
-        android:hint="Gender (M/F/U)"
-        android:padding="5dp"
+        android:hint="@string/gender_m_f_u"
 
+        android:inputType="textShortMessage"
+        android:padding="5dp"
+        android:paddingStart="10dp"
         android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -178,7 +202,7 @@
         android:background="@drawable/button_custom"
         android:fontFamily="sans-serif-condensed-light"
         android:padding="5dp"
-        android:text="Sign up"
+        android:text="@string/sign_up"
         android:textAllCaps="true"
 
         android:textColor="#fff"

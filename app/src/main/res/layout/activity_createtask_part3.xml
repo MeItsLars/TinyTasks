@@ -161,7 +161,7 @@
         android:background="@drawable/button_custom"
         android:linksClickable="false"
         android:textAllCaps="false"
-        android:text="Create my task"
+        android:text="@string/create_my_taskC"
         android:textSize="20sp"
         android:textColor="#fff"
 

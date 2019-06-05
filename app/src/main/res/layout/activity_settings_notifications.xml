@@ -37,7 +37,8 @@
         android:textSize="15sp"
 
         app:layout_constraintLeft_toLeftOf="@+id/SettingsTextView"
-        app:layout_constraintTop_toBottomOf="@+id/SettingsTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/SettingsTextView"
+        android:layout_marginStart="20dp" />
 
 
     <Switch
@@ -96,7 +97,8 @@
         android:textSize="15sp"
 
         app:layout_constraintLeft_toLeftOf="@+id/SettingsTextView"
-        app:layout_constraintTop_toBottomOf="@+id/notificationSetting2" />
+        app:layout_constraintTop_toBottomOf="@+id/notificationSetting2"
+        android:layout_marginStart="20dp" />
 
 
     <Switch
