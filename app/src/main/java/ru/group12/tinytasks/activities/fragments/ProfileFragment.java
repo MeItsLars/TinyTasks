@@ -1,5 +1,6 @@
 package ru.group12.tinytasks.activities.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -35,7 +36,7 @@ public class ProfileFragment extends Fragment {
         if(inflatedView == null) {
             System.out.println("Wtf deze zooi is null? 2");
         }
-
+        initializeLogOutButton();
         return inflatedView;
     }
 
@@ -92,5 +93,16 @@ public class ProfileFragment extends Fragment {
     public void onResume() {
         super.onResume();
         showFragment();
+    }
+
+    private void initializeLogOutButton() {
+        Button logOut = inflatedView.findViewById(R.id.A_profile_sign_out_button);
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Database.signOutCurrentUser(getContext());
+                setLayout();
+            }
+        });
     }
 }
