@@ -93,6 +93,8 @@
     <string name="google">Google</string>
     <string name="confirm_password">Confirm password</string>
     <string name="profileimg">Profile Image</string>
+    <string name="another_users_profile">General Profile</string>
+    <string name="copy_number">Copy Phonenumber</string>
 
     <string-array name="task_price_types">
         <item>Enter price</item>
