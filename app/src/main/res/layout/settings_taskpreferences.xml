@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/backgroundblur">
 
     <TextView
         android:id="@+id/TPSettingsTextView"
@@ -28,8 +29,9 @@
 
         android:fontFamily="@font/roboto"
         android:text="@string/which_types_of_task_do_you_want_to_see"
-        android:textSize="15sp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
 
+        android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="@+id/TPSettingsTextView"
         app:layout_constraintTop_toBottomOf="@+id/TPSettingsTextView" />
 
@@ -38,9 +40,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="24dp"
         android:text="@string/brick_laying"
 
         app:layout_constraintRight_toRightOf="parent"
