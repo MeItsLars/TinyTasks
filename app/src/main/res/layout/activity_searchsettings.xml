@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_test7">
+
+    <TextView
+        android:id="@+id/search_settings_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="32dp"
+
+
+        android:text="Search tasks"
+        android:fontFamily="@font/roboto"
+        android:textColor="#000000"
+        android:textSize="35sp"
+        android:textStyle="bold"
+
+        app:fontFamily="@font/roboto"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/price_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="Price"
+        android:textColor="#000000"
+        android:textSize="25sp"
+
+        app:fontFamily="@font/roboto"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_settings_text"/>
+
+    <TextView
+        android:id="@+id/price_from_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="From"
+        android:textColor="#000000"
+        android:textSize="20sp"
+
+        app:fontFamily="@font/roboto"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/price_text" />
+
+    <EditText
+        android:id="@+id/price_from_edittext"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+
+        android:inputType="numberDecimal"
+        android:padding="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+
+        android:background="@drawable/edittext_custom"
+
+        app:layout_constraintLeft_toRightOf="@+id/price_from_text"
+        app:layout_constraintTop_toBottomOf="@+id/price_text" />
+
+    <TextView
+        android:id="@+id/price_to_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="to"
+        android:textColor="#000000"
+        android:textSize="20sp"
+
+        app:fontFamily="@font/roboto"
+        app:layout_constraintLeft_toRightOf="@+id/price_from_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/price_text" />
+
+    <EditText
+        android:id="@+id/price_to_edittext"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+
+        android:inputType="numberDecimal"
+        android:padding="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+
+        android:background="@drawable/edittext_custom"
+
+        app:layout_constraintLeft_toRightOf="@+id/price_to_text"
+        app:layout_constraintTop_toBottomOf="@+id/price_text" />
+
+    <TextView
+        android:id="@+id/price_final_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="€"
+        android:textColor="#000000"
+        android:textSize="20sp"
+
+        app:fontFamily="@font/roboto"
+        app:layout_constraintLeft_toRightOf="@+id/price_to_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/price_text" />
+
+    <TextView
+        android:id="@+id/work_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="Amount of work"
+        android:textColor="#000000"
+        android:textSize="25sp"
+
+        app:fontFamily="@font/roboto"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/price_from_text"/>
+
+    <TextView
+        android:id="@+id/work_from_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="From"
+        android:textColor="#000000"
+        android:textSize="20sp"
+
+        app:fontFamily="@font/roboto"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/work_text" />
+
+    <EditText
+        android:id="@+id/work_from_edittext"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+
+        android:inputType="numberDecimal"
+        android:padding="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+
+        android:background="@drawable/edittext_custom"
+
+        app:layout_constraintLeft_toRightOf="@+id/work_from_text"
+        app:layout_constraintTop_toBottomOf="@+id/work_text" />
+
+    <TextView
+        android:id="@+id/work_to_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="to"
+        android:textColor="#000000"
+        android:textSize="20sp"
+
+        app:fontFamily="@font/roboto"
+        app:layout_constraintLeft_toRightOf="@+id/work_from_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/work_text" />
+
+    <EditText
+        android:id="@+id/work_to_edittext"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+
+        android:inputType="numberDecimal"
+        android:padding="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+
+        android:background="@drawable/edittext_custom"
+
+        app:layout_constraintLeft_toRightOf="@+id/work_to_text"
+        app:layout_constraintTop_toBottomOf="@+id/work_text" />
+
+    <TextView
+        android:id="@+id/work_final_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="hr(s)"
+        android:textColor="#000000"
+        android:textSize="20sp"
+
+        app:fontFamily="@font/roboto"
+        app:layout_constraintLeft_toRightOf="@+id/work_to_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/work_text" />
+
+    <TextView
+        android:id="@+id/distance_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="Distance"
+        android:textColor="#000000"
+        android:textSize="25sp"
+
+        app:fontFamily="@font/roboto"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/work_from_text"/>
+
+    <TextView
+        android:id="@+id/distance_upto_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="Up to"
+        android:textColor="#000000"
+        android:textSize="20sp"
+
+        app:fontFamily="@font/roboto"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/distance_text" />
+
+    <EditText
+        android:id="@+id/distance_to_edittext"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+
+        android:inputType="numberDecimal"
+        android:padding="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+
+        android:background="@drawable/edittext_custom"
+
+        app:layout_constraintLeft_toRightOf="@+id/distance_upto_text"
+        app:layout_constraintTop_toBottomOf="@+id/distance_text" />
+
+    <TextView
+        android:id="@+id/distance_final_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="km"
+        android:textColor="#000000"
+        android:textSize="20sp"
+
+        app:fontFamily="@font/roboto"
+        app:layout_constraintLeft_toRightOf="@+id/distance_to_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/distance_text" />
+
+    <TextView
+        android:id="@+id/category_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="Category"
+        android:textColor="#000000"
+        android:textSize="20sp"
+
+        app:fontFamily="@font/roboto"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/distance_upto_text" />
+
+    <Spinner
+        android:id="@+id/category_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:padding="10dp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/category_text" />
+
+    <TextView
+        android:id="@+id/search_by_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="Search by"
+        android:textColor="#000000"
+        android:textSize="20sp"
+
+        app:fontFamily="@font/roboto"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/search_type_spinner" />
+
+    <Spinner
+        android:id="@+id/search_type_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="30dp"
+
+        android:entries="@array/search_type"
+        android:padding="10dp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button_done" />
+
+    <Spinner
+        android:id="@+id/search_ordering_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="30dp"
+
+        android:entries="@array/search_ordering"
+        android:padding="10dp"
+
+        app:layout_constraintLeft_toRightOf="@+id/search_type_spinner"
+        app:layout_constraintBottom_toTopOf="@+id/button_done" />
+
+
+    <Button
+        android:id="@+id/button_done"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="27dp"
+        android:layout_marginLeft="27dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginRight="27dp"
+        android:layout_marginBottom="40dp"
+
+        android:background="@drawable/button_custom"
+        android:text="Search"
+        android:textAllCaps="false"
+        android:textColor="#fff"
+        android:textSize="20sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
