@@ -65,6 +65,36 @@
     <string name="add_image">add image</string>
     <string name="Choose_location_for_task">choose location for task</string>
     <string name="recommended_tasks">Recommended tasks</string>
+    <string name="task_desecription">Task desecription:</string>
+    <string name="please_help_me_and_mow_my_lawn_nit_is_30_m_2_thank_you">Please help me, and mow my lawn!  It is 30 m^2, thank you!</string>
+    <string name="you_need_to_sign_in_to_view_your_profile">You need to sign in to view your profile.</string>
+    <string name="phone_number_phone_number">Phone number: {PHONE NUMBER}</string>
+    <string name="email_email">Email: {EMAIL}</string>
+    <string name="gender_gender">Gender: {GENDER}</string>
+    <string name="birth_date_birth_date">Birth date: {BIRTH DATE}</string>
+    <string name="your_profile">Your profile</string>
+    <string name="search_tasks">Search tasks</string>
+    <string name="tutoring">Tutoring</string>
+    <string name="repairing">Repairing</string>
+    <string name="plumbing">Plumbing</string>
+    <string name="painting">Painting</string>
+    <string name="householding">Householding</string>
+    <string name="groceries_shopping">Groceries Shopping</string>
+    <string name="gardening">Gardening</string>
+    <string name="cooking">Cooking</string>
+    <string name="cleaning">Cleaning</string>
+    <string name="carpenting">Carpenting</string>
+    <string name="brick_laying">Brick laying</string>
+    <string name="which_types_of_task_do_you_want_to_see">Which types of task do you want to see?</string>
+    <string name="task_npreferences">Task  Preferences</string>
+    <string name="other">Other</string>
+    <string name="facebook">Facebook</string>
+    <string name="twitter">Twitter</string>
+    <string name="google">Google</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="profileimg">Profile Image</string>
+    <string name="another_users_profile">General Profile</string>
+    <string name="copy_number">Copy Phonenumber</string>
 
     <string-array name="task_price_types">
         <item>Enter price</item>

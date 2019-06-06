@@ -44,7 +44,8 @@
 
         android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_task_text_p2" />
+        app:layout_constraintTop_toBottomOf="@+id/create_task_text_p2"
+        android:layout_marginStart="20dp" />
 
     <Spinner
         android:id="@+id/price_type_listview"
@@ -79,7 +80,9 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toRightOf="@+id/price_type_listview"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_price" />
+        app:layout_constraintTop_toBottomOf="@+id/task_price"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="25dp" />
 
     <TextView
         android:id="@+id/work_amount"
@@ -95,7 +98,8 @@
 
         android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_price_edittext" />
+        app:layout_constraintTop_toBottomOf="@+id/task_price_edittext"
+        android:layout_marginStart="20dp" />
 
     <EditText
         android:id="@+id/work_amount_edittext"
@@ -132,7 +136,8 @@
 
         android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/work_amount_edittext" />
+        app:layout_constraintTop_toBottomOf="@+id/work_amount_edittext"
+        android:layout_marginStart="20dp" />
 
     <Button
         android:id="@+id/select_location_button"
@@ -186,7 +191,7 @@
 
         android:background="@drawable/button_custom"
         android:text="@string/next_page"
-        android:textAllCaps="true"
+        android:textAllCaps="false"
         android:textColor="#fff"
         android:textSize="20sp"
 
