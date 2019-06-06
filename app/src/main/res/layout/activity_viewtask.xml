@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+        android:id="@+id/ViewTask"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="32dp"
+
+
+        android:text="WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+        android:fontFamily="@font/roboto"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="10sp"
+        app:autoSizeMaxTextSize="60sp"
+        app:autoSizeStepGranularity="2sp"
+
+        app:fontFamily="@font/roboto"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+
+    <TextView
+        android:id="@+id/taskdescription1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="Task description"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textStyle="bold"
+
+        android:textSize="15sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ViewTask"
+        android:layout_marginStart="20dp" />
+
+    <TextView
+        android:id="@+id/taskdescription2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="BLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLA"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+
+        android:textSize="15sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskdescription1"
+        android:layout_marginStart="20dp" />
+
+    <TextView
+        android:id="@+id/taskcategory1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="Category"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textStyle="bold"
+
+        android:textSize="15sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskdescription2"
+        android:layout_marginStart="20dp" />
+
+    <TextView
+        android:id="@+id/taskcategory2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="Bricklaying"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+
+        android:textSize="15sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskcategory1"
+        android:layout_marginStart="20dp" />
+
+    <TextView
+        android:id="@+id/taskprice1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="60dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="Price"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textStyle="bold"
+
+        android:textSize="15sp"
+        app:layout_constraintLeft_toRightOf="@id/taskcategory1"
+        app:layout_constraintTop_toBottomOf="@+id/taskdescription2" />
+
+    <TextView
+        android:id="@+id/taskprice2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="5 euro"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="15sp"
+        app:layout_constraintLeft_toLeftOf="@id/taskprice1"
+        app:layout_constraintTop_toBottomOf="@+id/taskprice1"
+        />
+
+    <TextView
+        android:id="@+id/tasktime1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="60dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="Estimated time of task"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textStyle="bold"
+
+        android:textSize="15sp"
+        app:layout_constraintLeft_toRightOf="@id/taskprice1"
+        app:layout_constraintTop_toBottomOf="@+id/taskdescription2" />
+
+    <TextView
+        android:id="@+id/tasktime2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="0.5 hours"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="15sp"
+        app:layout_constraintLeft_toLeftOf="@id/tasktime1"
+        app:layout_constraintTop_toBottomOf="@+id/tasktime1"
+        />
+
+    <TextView
+        android:id="@+id/tasklocation1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="Location"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textStyle="bold"
+
+        android:textSize="15sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskcategory2"
+        android:layout_marginStart="20dp" />
+
+    <TextView
+        android:id="@+id/tasklocation2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+
+        android:fontFamily="@font/roboto"
+        android:text="          "
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+
+        android:textSize="15sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tasklocation1"
+        android:layout_marginStart="20dp" />
+</android.support.constraint.ConstraintLayout>
