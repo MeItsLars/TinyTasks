@@ -124,30 +124,4 @@
         app:layout_constraintLeft_toRightOf="@+id/notificationSetting3"
         app:layout_constraintTop_toBottomOf="@+id/simpleSwitch2" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_margin
-
-        android:background="@drawable/button_custom"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-
-
-        />
-
-    <!--app:layout_constraintBottom_toBottomOf=""-->
-
-    <!--app:layout_constraintStart_toStartOf=""-->
-    <!--app:layout_constraintLeft_toLeftOf=""-->
-
-    <!--app:layout_constraintEnd_toEndOf=""-->
-    <!--app:layout_constraintRight_toRightOf=""-->
-
-    <!--app:layout_constrainTop_toTopOf=""-->
-
-
 </android.support.constraint.ConstraintLayout>
