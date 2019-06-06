@@ -118,9 +118,10 @@
             android:layout_height="match_parent"
 
             android:background="@drawable/button_custom_signup_other"
+            android:contentDescription="@string/facebook"
             android:padding="1dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/facebook_icon"/>
+            android:src="@drawable/facebook_icon" />
     </FrameLayout>
 
     <FrameLayout
@@ -146,6 +147,7 @@
             android:layout_height="match_parent"
 
             android:background="@drawable/button_custom_signup_other"
+            android:contentDescription="@string/twitter"
             android:padding="1dp"
             android:scaleType="fitCenter"
             android:src="@drawable/twitter_icon" />
@@ -156,16 +158,17 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
 
-        android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
         android:layout_marginBottom="70dp"
 
         android:background="@drawable/button_custom_signup_other"
+        android:contentDescription="@string/google"
         android:padding="4dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/google_icon"
 
+        android:src="@drawable/google_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/twitterFrameLayout"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:layout_marginStart="60dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

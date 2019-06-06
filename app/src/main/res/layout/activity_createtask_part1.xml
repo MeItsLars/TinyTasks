@@ -43,7 +43,8 @@
 
         android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_task_text_p1" />
+        app:layout_constraintTop_toBottomOf="@+id/create_task_text_p1"
+        android:layout_marginStart="20dp" />
 
     <EditText
         android:id="@+id/task_name_edittext"
@@ -74,12 +75,13 @@
         android:layout_marginTop="28dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Task desecription:"
+        android:text="@string/task_desecription"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
 
         android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_name_edittext" />
+        app:layout_constraintTop_toBottomOf="@+id/task_name_edittext"
+        android:layout_marginStart="20dp" />
 
     <EditText
         android:id="@+id/task_description_edittext"
@@ -95,7 +97,7 @@
         android:gravity="start|top"
         android:padding="10dp"
         android:background="@drawable/edittext_custom"
-        android:hint="Please help me, and mow my lawn! \nIt is 30 m^2, thank you!"
+        android:hint="@string/please_help_me_and_mow_my_lawn_nit_is_30_m_2_thank_you"
         android:inputType="textMultiLine"
 
         app:layout_constraintTop_toBottomOf="@+id/task_description_text"
@@ -115,7 +117,8 @@
 
         android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_description_edittext" />
+        app:layout_constraintTop_toBottomOf="@+id/task_description_edittext"
+        android:layout_marginStart="20dp" />
 
     <Spinner
         android:id="@+id/categories_spinner"
