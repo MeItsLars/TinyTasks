@@ -17,7 +17,7 @@ import java.util.Map;
 
 import ru.group12.tinytasks.R;
 import ru.group12.tinytasks.util.ActivityManager;
-import ru.group12.tinytasks.util.CustomAdapter;
+import ru.group12.tinytasks.util.adapters.CategoryAdapter;
 import ru.group12.tinytasks.util.database.objects.enums.Category;
 
 public class CreateTaskPart1Screen extends AppCompatActivity {
@@ -40,7 +40,7 @@ public class CreateTaskPart1Screen extends AppCompatActivity {
     private void initializeContents() {
         categorySpinner = findViewById(R.id.categories_spinner);
 
-        CustomAdapter customAdapter = new CustomAdapter(getApplicationContext(), Category.values());
+        CategoryAdapter customAdapter = new CategoryAdapter(getApplicationContext(), Category.values());
         categorySpinner.setAdapter(customAdapter);
 
         taskNameEditText = findViewById(R.id.task_name_edittext);

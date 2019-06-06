@@ -54,11 +54,11 @@ public class SignUpOtherScreen extends AppCompatActivity {
         emailText.setText(email);
         changeDrawableState(emailText.getBackground(), DrawableState.RIGHT);
 
-        EditText nameEditText = findViewById(R.id.name);
+        EditText nameEditText = findViewById(R.id.firstnameText);
         addChangeListener(nameEditText, DrawablePattern.namePattern, "Please enter a valid first name.");
         if(name != null) nameEditText.setText(name);
 
-        EditText surnameEditText = findViewById(R.id.surname);
+        EditText surnameEditText = findViewById(R.id.surnameText);
         addChangeListener(surnameEditText, DrawablePattern.namePattern, "Please enter a valid surname.");
         if(surname != null) surnameEditText.setText(surname);
 
@@ -101,8 +101,8 @@ public class SignUpOtherScreen extends AppCompatActivity {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final EditText nameEditText = findViewById(R.id.name);
-                final EditText surnameEditText = findViewById(R.id.surname);
+                final EditText nameEditText = findViewById(R.id.firstnameText);
+                final EditText surnameEditText = findViewById(R.id.surnameText);
                 final EditText phoneNumberEditText = findViewById(R.id.phoneNumber);
                 final EditText birthDateEditText = findViewById(R.id.birthDate);
                 final EditText genderEditText = findViewById(R.id.gender);

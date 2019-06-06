@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@drawable/background_test8">
+    <!--android:background="#FFFFFF">-->
 
     <TextView
         android:id="@+id/create_task_text_p1"
@@ -18,7 +18,7 @@
         android:layout_marginTop="32dp"
 
 
-        android:text="Create Task 1/3"
+        android:text="@string/create_task_1_3"
         android:fontFamily="@font/roboto"
         android:textColor="#000000"
         android:textSize="40sp"
@@ -27,25 +27,24 @@
         app:fontFamily="@font/roboto"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/task_name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Task name:"
-        android:textSize="15sp"
+        android:text="@string/task_name"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
 
+        android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create_task_text_p1"
-        tools:ignore="HardcodedText" />
+        android:layout_marginStart="20dp" />
 
     <EditText
         android:id="@+id/task_name_edittext"
@@ -61,29 +60,28 @@
         android:gravity="start|top"
         android:padding="10dp"
         android:background="@drawable/edittext_custom"
-        android:hint="Mowing the lawn"
+        android:hint="@string/mowing_the_lawn"
         android:inputType="textMultiLine"
 
         app:layout_constraintTop_toBottomOf="@+id/task_name_text"
-        app:layout_constraintLeft_toLeftOf="parent"
-        tools:ignore="Autofill,HardcodedText" />
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/task_description_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="28dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Task name:"
-        android:textSize="15sp"
+        android:text="@string/task_desecription"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
 
+        android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/task_name_edittext"
-        tools:ignore="HardcodedText" />
+        android:layout_marginStart="20dp" />
 
     <EditText
         android:id="@+id/task_description_edittext"
@@ -99,40 +97,38 @@
         android:gravity="start|top"
         android:padding="10dp"
         android:background="@drawable/edittext_custom"
-        android:hint="Mowing the lawn"
+        android:hint="@string/please_help_me_and_mow_my_lawn_nit_is_30_m_2_thank_you"
         android:inputType="textMultiLine"
 
         app:layout_constraintTop_toBottomOf="@+id/task_description_text"
-        app:layout_constraintLeft_toLeftOf="parent"
-        tools:ignore="Autofill,HardcodedText" />
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/create_task_choose_category_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Category:"
-        android:textSize="15sp"
+        android:text="@string/category"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
 
+        android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/task_description_edittext"
-        tools:ignore="HardcodedText" />
+        android:layout_marginStart="20dp" />
 
     <Spinner
-        android:id="@+id/categories_listview"
+        android:id="@+id/categories_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
 
-        android:layout_marginTop="40dp"
-        android:entries="@array/create_task_categories"
+        android:layout_marginTop="10dp"
 
         android:padding="10dp"
         app:layout_constraintLeft_toRightOf="@+id/create_task_choose_category_text"
@@ -143,23 +139,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginLeft="27dp"
+        android:layout_marginRight="27dp"
+        android:layout_marginBottom="74dp"
 
-        android:layout_marginBottom="60dp"
         android:background="@drawable/button_custom"
-        android:text="Next page"
-        android:textAllCaps="false"
+        android:text="@string/next_page"
+        android:textAllCaps="true"
         android:textColor="#fff"
-
         android:textSize="20sp"
+
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.969"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintRight_toRightOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

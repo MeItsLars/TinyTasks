@@ -1,5 +1,6 @@
 package ru.group12.tinytasks.popups.createtask;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -18,7 +19,8 @@ public class CreateTaskSuccessScreen extends AppCompatActivity {
         setContentView(R.layout.activity_createtask_success);
 
         Task task = getIntent().getParcelableExtra("task");
-        Database.uploadTask(task);
+
+        Database.uploadTask(this, task);
 
         initializeContents();
     }

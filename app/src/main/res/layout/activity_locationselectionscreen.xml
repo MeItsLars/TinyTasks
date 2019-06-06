@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@drawable/background_test8">
+    <!--android:background="#FFFFFF">-->
 
     <com.mapbox.mapboxsdk.maps.MapView
         android:id="@+id/mapView"
@@ -47,15 +48,16 @@
         android:layout_marginBottom="10dp"
 
         android:background="@drawable/button_custom"
+        android:textAllCaps="false"
         android:fontFamily="@font/roboto"
         android:text="@string/select_location"
-        android:textAllCaps="true"
-        android:textColor="@color/cardview_light_background"
-        android:textSize="18sp"
+        android:textColor="#fff"
+        android:textSize="20sp"
 
         app:layout_constraintBottom_toTopOf="@+id/confirm_location_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+    <!--android:textColor="@color/cardview_light_background"-->
 
     <Button
         android:id="@+id/confirm_location_button"

@@ -63,7 +63,10 @@ public class LocationSelectionScreen extends AppCompatActivity implements Permis
     private TextView messageTextView;
     private PermissionsManager permissionsManager;
     private ImageView hoveringMarker;
+
     private CarmenFeature lastSelectedFeature;
+    private double lastSelectedLatitude;
+    private double lastSelectedLongitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,9 +160,10 @@ public class LocationSelectionScreen extends AppCompatActivity implements Permis
         confirmLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: data terugsturen en finishen hoera
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("resultFeature", lastSelectedFeature.toJson());
+                returnIntent.putExtra("latitude", lastSelectedLatitude);
+                returnIntent.putExtra("longitude", lastSelectedLongitude);
                 setResult(Activity.RESULT_OK, returnIntent);
                 finish();
             }
@@ -266,6 +270,8 @@ public class LocationSelectionScreen extends AppCompatActivity implements Permis
                     .geocodingTypes(GeocodingCriteria.TYPE_ADDRESS)
                     .build();
 
+            System.out.println("Coördinates: " + point.coordinates());
+
             client.enqueueCall(new Callback<GeocodingResponse>() {
                 @Override
                 public void onResponse(Call<GeocodingResponse> call, Response<GeocodingResponse> response) {
@@ -279,6 +285,8 @@ public class LocationSelectionScreen extends AppCompatActivity implements Permis
                             sendMessage("Location: " + feature.placeName());
                             setConfirm(feature.placeName());
                             lastSelectedFeature = feature;
+                            lastSelectedLatitude = point.latitude();
+                            lastSelectedLongitude = point.longitude();
                         }
 
                     } else {
