@@ -28,6 +28,7 @@ public class CreateTaskFragment extends Fragment {
         return inflatedView;
     }
 
+    // Makes the button go to an activity to sign in if needed or go to the first create task activity.
     private void initializeContents() {
         checkTaskButtonState();
         Button createTaskButton = inflatedView.findViewById(R.id.create_task_or_sign_in_button);

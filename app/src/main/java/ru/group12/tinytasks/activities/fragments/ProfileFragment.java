@@ -36,10 +36,11 @@ public class ProfileFragment extends Fragment {
         if(inflatedView == null) {
             System.out.println("Wtf deze zooi is null? 2");
         }
-        initializeLogOutButton();
         return inflatedView;
     }
 
+    // Calls setlayout to decide which screen to show and initialises the buttons to make
+    // sure logout logs you out and signIn lets you sign in.
     private void initializeContents() {
         setLayout();
 
@@ -50,8 +51,20 @@ public class ProfileFragment extends Fragment {
                 ActivityManager.startNewActivity(inflatedView.getContext(), SignInScreen.class, Intent.FLAG_ACTIVITY_NEW_TASK);
             }
         });
-    }
+            Button logOut = inflatedView.findViewById(R.id.A_profile_sign_out_button);
+            logOut.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Database.signOutCurrentUser(getContext());
+                    setLayout();
+                }
+            });
+        }
 
+    /*
+    Checks right away if the user is signed in. If so it will present the user's profile information.
+    If not it will present a placeholder profile that helps you sign in.
+     */
     private void setLayout() {
         ConstraintLayout profile_signed_in = inflatedView.findViewById(R.id.A_profile);
         ConstraintLayout profile_not_signed_in = inflatedView.findViewById(R.id.B_profile);
@@ -69,6 +82,7 @@ public class ProfileFragment extends Fragment {
         }
     }
 
+    // Gets the user data from the database and edits the fields.
     private void setUserData() {
         TextView userNameText = inflatedView.findViewById(R.id.A_name_text_view);
         TextView birthDateText = inflatedView.findViewById(R.id.A_birthdate_text_view);
@@ -93,16 +107,5 @@ public class ProfileFragment extends Fragment {
     public void onResume() {
         super.onResume();
         showFragment();
-    }
-
-    private void initializeLogOutButton() {
-        Button logOut = inflatedView.findViewById(R.id.A_profile_sign_out_button);
-        logOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Database.signOutCurrentUser(getContext());
-                setLayout();
-            }
-        });
     }
 }

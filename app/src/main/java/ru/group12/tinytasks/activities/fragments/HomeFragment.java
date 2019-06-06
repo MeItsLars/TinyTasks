@@ -41,6 +41,10 @@ public class HomeFragment extends Fragment {
         return inflatedView;
     }
 
+    /*
+    Gets a list of tasks from the database and decides which to show.
+    Ambition is to remove the users own tasks from this list and recommend based on preferences the user might set in settings.
+     */
     private void loadRecommendedTasks() {
         final LinearLayout parentLayout = inflatedView.findViewById(R.id.recommended_task_list);
 
