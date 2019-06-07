@@ -6,7 +6,46 @@
     android:background="@drawable/backgroundblur">
     <!--android:background="#FFFFFF">-->
 
-        <TextView
+    <Button
+        android:id="@+id/getPhoneButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="27dp"
+        android:layout_marginRight="27dp"
+        android:layout_marginBottom="74dp"
+
+        android:background="@drawable/button_custom"
+        android:text="@string/copy_number"
+        android:textAllCaps="false"
+        android:textColor="#fff"
+        android:textSize="20sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/getMailButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="27dp"
+        android:layout_marginRight="27dp"
+        android:layout_marginBottom="132dp"
+
+        android:background="@drawable/button_custom"
+        android:text="Copy Email"
+        android:textAllCaps="false"
+        android:textColor="#fff"
+        android:textSize="20sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
             android:id="@+id/another_users_profile_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -130,22 +169,4 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/A_email_text_view" />
 
-    <Button
-        android:id="@+id/task_next_page_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:layout_marginLeft="27dp"
-        android:layout_marginRight="27dp"
-        android:layout_marginBottom="74dp"
-
-        android:background="@drawable/button_custom"
-        android:text="@string/copy_number"
-        android:textAllCaps="false"
-        android:textColor="#fff"
-        android:textSize="20sp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
