@@ -1,6 +1,5 @@
 package ru.group12.tinytasks.activities.fragments;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -27,22 +26,27 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         inflatedView = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        if(inflatedView == null) {
-            System.out.println("Wtf deze zooi is null?");
-        }
+        System.out.println(" ON CREATE CALLED ");
 
         initializeContents();
 
-        if(inflatedView == null) {
-            System.out.println("Wtf deze zooi is null? 2");
-        }
         return inflatedView;
     }
 
-    // Calls setlayout to decide which screen to show and initialises the buttons to make
-    // sure logout logs you out and signIn lets you sign in.
+    private TextView userNameText;
+    private TextView birthDateText;
+    private TextView genderText;
+    private TextView emailText;
+    private TextView phoneNumberText;
+
     private void initializeContents() {
         setLayout();
+
+        userNameText = inflatedView.findViewById(R.id.A_name_text_view);
+        birthDateText = inflatedView.findViewById(R.id.A_birthdate_text_view);
+        genderText = inflatedView.findViewById(R.id.A_gender_text_view);
+        emailText = inflatedView.findViewById(R.id.A_email_text_view);
+        phoneNumberText = inflatedView.findViewById(R.id.A_phone_number_text_view);
 
         Button signInButton = inflatedView.findViewById(R.id.B_profile_sign_in_button);
         signInButton.setOnClickListener(new View.OnClickListener() {
@@ -51,20 +55,17 @@ public class ProfileFragment extends Fragment {
                 ActivityManager.startNewActivity(inflatedView.getContext(), SignInScreen.class, Intent.FLAG_ACTIVITY_NEW_TASK);
             }
         });
-            Button logOut = inflatedView.findViewById(R.id.A_profile_sign_out_button);
-            logOut.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Database.signOutCurrentUser(getContext());
-                    setLayout();
-                }
-            });
-        }
 
-    /*
-    Checks right away if the user is signed in. If so it will present the user's profile information.
-    If not it will present a placeholder profile that helps you sign in.
-     */
+        Button signOutButton = inflatedView.findViewById(R.id.SignOutButton);
+        signOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Database.signOutCurrentUser(getActivity());
+                ActivityManager.backToHomeActivity(getActivity(), "Home");
+            }
+        });
+    }
+
     private void setLayout() {
         ConstraintLayout profile_signed_in = inflatedView.findViewById(R.id.A_profile);
         ConstraintLayout profile_not_signed_in = inflatedView.findViewById(R.id.B_profile);
@@ -73,7 +74,6 @@ public class ProfileFragment extends Fragment {
             profile_signed_in.setClickable(true);
             profile_not_signed_in.setVisibility(View.INVISIBLE);
             profile_not_signed_in.setClickable(false);
-            setUserData();
         } else {
             profile_signed_in.setVisibility(View.INVISIBLE);
             profile_signed_in.setClickable(false);
@@ -82,25 +82,22 @@ public class ProfileFragment extends Fragment {
         }
     }
 
-    // Gets the user data from the database and edits the fields.
     private void setUserData() {
-        TextView userNameText = inflatedView.findViewById(R.id.A_name_text_view);
-        TextView birthDateText = inflatedView.findViewById(R.id.A_birthdate_text_view);
-        TextView genderText = inflatedView.findViewById(R.id.A_gender_text_view);
-        TextView emailText = inflatedView.findViewById(R.id.A_email_text_view);
-        TextView phoneNumberText = inflatedView.findViewById(R.id.A_phone_number_text_view);
+        try {
+            User user = Database.getCurrentUser();
 
-        User user = Database.getCurrentUser();
-
-        userNameText.setText(user.getFullName());
-        birthDateText.setText("Birth date: " + user.getBirthdate());
-        genderText.setText("Gender: " + user.getGender());
-        emailText.setText("Email: " + user.getEmail());
-        phoneNumberText.setText("Phone number: " + user.getPhoneNumber());
+            userNameText.setText(user.getFullName());
+            birthDateText.setText("Birth date: " + user.getBirthdate());
+            genderText.setText("Gender: " + user.getGender());
+            emailText.setText("Email: " + user.getEmail());
+            phoneNumberText.setText("Phone number: " + user.getPhoneNumber());
+        } catch(Exception e) {
+        }
     }
 
     public void showFragment() {
         if(inflatedView != null) setLayout();
+        if(Database.getCurrentUser() != null) setUserData();
     }
 
     @Override

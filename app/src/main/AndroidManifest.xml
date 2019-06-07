@@ -10,8 +10,9 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
+        android:name="android.support.multidex.MultiDexApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/app_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -22,15 +23,12 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
-
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".activities.ApplicationHomeActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ApplicationHomeActivity" />
         <activity android:name=".popups.signin.SignInScreen" />
         <activity android:name=".popups.signin.SignUpEmailScreen" />
         <activity android:name=".popups.signin.SignUpOtherScreen" />
@@ -41,6 +39,8 @@
         <activity android:name=".popups.createtask.CreateTaskPart3Screen" />
         <activity android:name=".popups.createtask.CreateTaskSuccessScreen" />
         <activity android:name=".popups.tasks.SearchSettingsScreen" />
+        <activity android:name=".popups.tasks.ViewTaskScreen" />
+        <activity android:name=".popups.user.ViewUserProfileScreen" />
         <activity android:name=".popups.internet.InternetUnavailableScreen" />
         <activity android:name=".popups.location.LocationSelectionScreen" />
 

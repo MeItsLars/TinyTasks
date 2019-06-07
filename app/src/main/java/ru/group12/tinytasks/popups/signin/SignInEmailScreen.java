@@ -1,6 +1,5 @@
 package ru.group12.tinytasks.popups.signin;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -18,9 +17,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import ru.group12.tinytasks.R;
-import ru.group12.tinytasks.activities.MainActivity;
-import ru.group12.tinytasks.util.ActivityManager;
 import ru.group12.tinytasks.util.database.Database;
+import ru.group12.tinytasks.util.internet.Network;
 
 public class SignInEmailScreen extends AppCompatActivity {
 
@@ -30,6 +28,7 @@ public class SignInEmailScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signinemailscreen);
+        Network.registerInternetStateChangedListener(this);
 
         activity = this;
 

@@ -10,6 +10,7 @@ import ru.group12.tinytasks.R;
 import ru.group12.tinytasks.util.ActivityManager;
 import ru.group12.tinytasks.util.database.Database;
 import ru.group12.tinytasks.util.database.objects.Task;
+import ru.group12.tinytasks.util.internet.Network;
 
 public class CreateTaskSuccessScreen extends AppCompatActivity {
 
@@ -17,10 +18,14 @@ public class CreateTaskSuccessScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_createtask_success);
+        Network.registerInternetStateChangedListener(this);
 
         Task task = getIntent().getParcelableExtra("task");
+        String uriString = getIntent().getStringExtra("uri");
+        Uri uri = null;
+        if(uriString != null) uri = Uri.parse(uriString);
 
-        Database.uploadTask(this, task);
+        Database.uploadTask(this, task, uri);
 
         initializeContents();
     }

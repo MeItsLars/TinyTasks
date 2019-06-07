@@ -2,42 +2,102 @@ package ru.group12.tinytasks.util;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Paint;
-import android.graphics.Rect;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
+import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
-import android.support.v4.widget.TextViewCompat;
-import android.util.TypedValue;
+import android.text.Layout;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.mapbox.api.geocoding.v5.models.CarmenFeature;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import ru.group12.tinytasks.R;
+import ru.group12.tinytasks.popups.tasks.ViewTaskScreen;
+import ru.group12.tinytasks.util.database.Database;
+import ru.group12.tinytasks.util.database.ImageManager;
 import ru.group12.tinytasks.util.database.objects.SearchSettings;
 import ru.group12.tinytasks.util.database.objects.Task;
-import ru.group12.tinytasks.util.internet.PixelManager;
+import ru.group12.tinytasks.util.database.objects.User;
+import ru.group12.tinytasks.util.database.objects.enums.Category;
 
 public class TaskManager {
+
+    public static void loadRandomTasks(final Activity context, final LinearLayout parent) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("tasks");
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                List<Task> tasks = new ArrayList<>();
+
+                for(DataSnapshot user : dataSnapshot.getChildren()) {
+                    if(Database.getCurrentUser() != null) {
+                        if(!Database.getCurrentUser().getUid().equals(user.getKey())) {
+                            for(DataSnapshot userTask : user.getChildren()) {
+                                tasks.add(new Task(
+                                        userTask.getKey(),
+                                        user.getKey(),
+                                        CarmenFeature.fromJson((String) userTask.child("location").getValue()),
+                                        Category.valueOf((String) userTask.child("category").getValue()),
+                                        (String) userTask.child("title").getValue(),
+                                        (String) userTask.child("description").getValue(),
+                                        (String) userTask.child("price").getValue(),
+                                        (String) userTask.child("work").getValue(),
+                                        (double) userTask.child("latitude").getValue(),
+                                        (double) userTask.child("longitude").getValue()));
+                            }
+                        }
+                    } else {
+                        for(DataSnapshot userTask : user.getChildren()) {
+                            tasks.add(new Task(
+                                    userTask.getKey(),
+                                    user.getKey(),
+                                    CarmenFeature.fromJson((String) userTask.child("location").getValue()),
+                                    Category.valueOf((String) userTask.child("category").getValue()),
+                                    (String) userTask.child("title").getValue(),
+                                    (String) userTask.child("description").getValue(),
+                                    (String) userTask.child("price").getValue(),
+                                    (String) userTask.child("work").getValue(),
+                                    (double) userTask.child("latitude").getValue(),
+                                    (double) userTask.child("longitude").getValue()));
+                        }
+                    }
+                }
+
+                Collections.shuffle(tasks);
+                for(int i = 0; i < Math.min(5, tasks.size()); i++) {
+                    parent.addView(getTaskButton(tasks.get(i), context));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                //Do nothing
+            }
+        });
+    }
 
     public static List<Task> sortTasks(Activity context, LocationManager locationManager, List<Task> tasks, SearchSettings settings, int limit) {
         Location userLocation = DeviceLocationManager.getDeviceLocation(context, locationManager);
 
         List<Task> rawSortedTasks = new ArrayList<>();
         for(Task task : tasks) {
-            System.out.println("Data:");
-            System.out.println("Task price: " + task.getPrice());
-            System.out.println("Settings price: " + settings.getPriceFrom() + " to " + settings.getPriceTo());
-            System.out.println("Task work: " + task.getWork());
-            System.out.println("Settings work: " + settings.getWorkFrom() + " to " + settings.getWorkTo());
-            System.out.println("Settings distance: " + settings.getDistanceTo());
-            
             double taskPrice = Double.valueOf(task.getPrice());
             double minPrice = Double.valueOf(settings.getPriceFrom());
             double maxPrice = Double.valueOf(settings.getPriceTo());
@@ -48,33 +108,42 @@ public class TaskManager {
 
             double maxDistance = Double.valueOf(settings.getDistanceTo());
 
+            User currentUser = Database.getCurrentUser();
+
             if((settings.getCategory().equals("All") || settings.getCategory().equals(task.getCategory().name())) &&
                     ((minPrice <= taskPrice && taskPrice <= maxPrice) || maxPrice <= 0) &&
                     ((minWork <= taskWork && taskWork <= maxWork) || maxWork <= 0) &&
                     (maxDistance <= 0 || isLocationInRange(userLocation, task.getAndroidLocation(), maxDistance))) {
-                rawSortedTasks.add(task);
-                task.prepareSort(context, locationManager, settings.getSortBy(), settings.getOrderBy());
+
+                if(currentUser != null) {
+                    System.out.println("======================");
+                    System.out.println("Current user ID: " + currentUser.getUid());
+                    System.out.println("Task user ID: " + task.getUserID());
+                    System.out.println("======================");
+                    if(!task.getUserID().equals(currentUser.getUid())) {
+                        rawSortedTasks.add(task);
+                        task.prepareSort(context, locationManager, settings.getSortBy(), settings.getOrderBy());
+                    }
+                } else {
+                    rawSortedTasks.add(task);
+                    task.prepareSort(context, locationManager, settings.getSortBy(), settings.getOrderBy());
+                }
             }
         }
-        System.out.println(rawSortedTasks.size() + " tasks left after removing non valid tasks.");
 
         Collections.sort(rawSortedTasks);
-        System.out.println(rawSortedTasks.size() + " tasks left after ordering.");
 
         List<Task> sortedTasks = new ArrayList<>();
-        for(int i = 0; i < Math.min(10, rawSortedTasks.size()); i++) sortedTasks.add(rawSortedTasks.get(i));
-        System.out.println(rawSortedTasks.size() + " tasks left after limiting.");
+        for(int i = 0; i < Math.min(limit, rawSortedTasks.size()); i++) sortedTasks.add(rawSortedTasks.get(i));
 
         return sortedTasks;
     }
 
     public static boolean isLocationInRange(Location location1, Location location2, double distance) {
-        boolean value = (location1 == null || location2 == null) || location1.distanceTo(location2) <= distance * 1000;
-        System.out.println("Location in range: " + value);
-        return value;
+        return (location1 == null || location2 == null) || location1.distanceTo(location2) <= distance * 1000;
     }
 
-    public static ConstraintLayout getTaskButton(Task task, Context context) {
+    public static ConstraintLayout getTaskButton(final Task task, final Context context) {
         ConstraintLayout constraintLayout = new ConstraintLayout(context);
         constraintLayout.setId(ViewCompat.generateViewId());
         ConstraintLayout.LayoutParams params = new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT);
@@ -108,13 +177,19 @@ public class TaskManager {
         workText.setId(ViewCompat.generateViewId());
 
         TextView cityText = new TextView(context);
-        cityText.setText("Location: Nijmegen");
+        cityText.setText("Location: " + task.getLocation().context().get(1).text());
+
+
+        System.out.println(task.getLocation().toJson());
         cityText.setId(ViewCompat.generateViewId());
 
         ImageView taskImage = new ImageView(context);
         taskImage.setLayoutParams(new ConstraintLayout.LayoutParams(PixelManager.convertDpToPixel(90, context), PixelManager.convertDpToPixel(90, context)));
         taskImage.setImageResource(R.drawable.app_logo);
         taskImage.setId(ViewCompat.generateViewId());
+
+        // Load image to task
+        ImageManager.loadTaskImage(context, task, taskImage);
 
         constraintLayout.addView(titleText);
         constraintLayout.addView(descriptionText);
@@ -153,6 +228,15 @@ public class TaskManager {
         set.connect(workText.getId(), ConstraintSet.BOTTOM, constraintLayout.getId(), ConstraintSet.BOTTOM, PixelManager.convertDpToPixel(8, context));
 
         set.applyTo(constraintLayout);
+
+        constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ViewTaskScreen.class);
+                intent.putExtra("task", task);
+                context.startActivity(intent);
+            }
+        });
 
         return constraintLayout;
     }

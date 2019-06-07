@@ -40,6 +40,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import ru.group12.tinytasks.R;
+import ru.group12.tinytasks.util.internet.Network;
 
 import static com.mapbox.mapboxsdk.style.layers.Property.NONE;
 import static com.mapbox.mapboxsdk.style.layers.Property.VISIBLE;
@@ -77,6 +78,7 @@ public class LocationSelectionScreen extends AppCompatActivity implements Permis
 
         // This contains the MapView in XML
         setContentView(R.layout.activity_locationselectionscreen);
+        Network.registerInternetStateChangedListener(this);
 
         // Initialize the mapboxMap view
         mapView = findViewById(R.id.mapView);

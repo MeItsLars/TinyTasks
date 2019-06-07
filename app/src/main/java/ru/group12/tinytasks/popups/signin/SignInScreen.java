@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.net.wifi.hotspot2.pps.Credential;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -35,11 +36,17 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.auth.TwitterAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.DefaultLogger;
 import com.twitter.sdk.android.core.Result;
@@ -58,10 +65,10 @@ import java.util.List;
 
 import ru.group12.tinytasks.R;
 import ru.group12.tinytasks.util.ActivityManager;
+import ru.group12.tinytasks.util.database.Database;
+import ru.group12.tinytasks.util.internet.Network;
 
 public class SignInScreen extends AppCompatActivity {
-
-    SignInScreen activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +83,7 @@ public class SignInScreen extends AppCompatActivity {
         Twitter.initialize(config);
 
         setContentView(R.layout.activity_signinscreen);
-
-        activity = this;
+        Network.registerInternetStateChangedListener(this);
 
         if(FirebaseAuth.getInstance().getCurrentUser() != null) {
             AuthUI.getInstance().signOut(this);
@@ -135,9 +141,12 @@ public class SignInScreen extends AppCompatActivity {
                                 SignInMethodQueryResult result = task.getResult();
                                 List<String> signInMethods = result.getSignInMethods();
                                 if(signInMethods.isEmpty()) {
-                                    ActivityManager.startNewActivity(activity, SignUpEmailScreen.class, true);
+                                    Intent intent = new Intent(SignInScreen.this, SignUpEmailScreen.class);
+                                    intent.putExtra("email", emailEditText.getText().toString());
+                                    SignInScreen.this.startActivity(intent);
+                                    SignInScreen.this.finish();
                                 } else {
-                                    ActivityManager.startNewActivity(activity, SignInEmailScreen.class, true);
+                                    ActivityManager.startNewActivity(SignInScreen.this, SignInEmailScreen.class, true);
                                 }
                             }
                         }
@@ -212,22 +221,39 @@ public class SignInScreen extends AppCompatActivity {
     }
 
     private void handleFacebookAccessToken(AccessToken token) {
-        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+        final AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
 
-        Intent intent = new Intent(this, SignUpOtherScreen.class);
-        intent.putExtra("credential", credential);
-        intent.putExtra("email", facebookEmail);
-        String name = facebookFullName.substring(0, facebookFullName.indexOf(' '));
-        intent.putExtra("name", name);
-        String surname = facebookFullName.substring(facebookFullName.indexOf(' ') + 1);
-        intent.putExtra("surname", surname);
-        intent.putExtra("phoneNumber", "");
-        intent.putExtra("birthDate", facebookBirthDate.replaceAll("/", "-"));
-        String gender = facebookGender.equals("male") ? "M" : facebookGender.equals("female") ? "F" : "U";
-        intent.putExtra("gender", gender);
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("accounts").child(facebookEmail.replaceAll("\\.", "_"));
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String value = (String) dataSnapshot.child("facebook").getValue();
+                if(value != null) {
+                    signInUser(credential);
+                } else {
+                    Intent intent = new Intent(SignInScreen.this, SignUpOtherScreen.class);
+                    intent.putExtra("credential", credential);
+                    intent.putExtra("email", facebookEmail);
+                    String name = facebookFullName.substring(0, facebookFullName.indexOf(' '));
+                    intent.putExtra("name", name);
+                    String surname = facebookFullName.substring(facebookFullName.indexOf(' ') + 1);
+                    intent.putExtra("surname", surname);
+                    intent.putExtra("phoneNumber", "");
+                    intent.putExtra("birthDate", facebookBirthDate.replaceAll("/", "-"));
+                    String gender = facebookGender.equals("male") ? "M" : facebookGender.equals("female") ? "F" : "U";
+                    intent.putExtra("gender", gender);
+                    intent.putExtra("provider", "facebook");
 
-        startActivity(intent);
-        finish();
+                    startActivity(intent);
+                    finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     // Google sign in code
@@ -254,19 +280,36 @@ public class SignInScreen extends AppCompatActivity {
     }
 
     private void firebaseAuthWithGoogle(final GoogleSignInAccount acct) {
-        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        final AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
 
-        Intent intent = new Intent(this, SignUpOtherScreen.class);
-        intent.putExtra("credential", credential);
-        intent.putExtra("email", acct.getEmail());
-        intent.putExtra("name", acct.getGivenName());
-        intent.putExtra("surname", acct.getFamilyName());
-        intent.putExtra("phoneNumber", "");
-        intent.putExtra("birthDate", "");
-        intent.putExtra("gender", "");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("accounts").child(acct.getEmail().replaceAll("\\.", "_"));
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String value = (String) dataSnapshot.child("google").getValue();
+                if(value != null) {
+                    signInUser(credential);
+                } else {
+                    Intent intent = new Intent(SignInScreen.this, SignUpOtherScreen.class);
+                    intent.putExtra("credential", credential);
+                    intent.putExtra("email", acct.getEmail());
+                    intent.putExtra("name", acct.getGivenName());
+                    intent.putExtra("surname", acct.getFamilyName());
+                    intent.putExtra("phoneNumber", "");
+                    intent.putExtra("birthDate", "");
+                    intent.putExtra("gender", "");
+                    intent.putExtra("provider", "google");
 
-        startActivity(intent);
-        finish();
+                    startActivity(intent);
+                    finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     // Twitter sign in code
@@ -298,41 +341,85 @@ public class SignInScreen extends AppCompatActivity {
         });
     }
 
-    private void handleTwitterSession(TwitterSession session) {
-        AuthCredential credential = TwitterAuthProvider.getCredential(
-                session.getAuthToken().token,
-                session.getAuthToken().secret);
+    private void handleTwitterSession(final TwitterSession session) {
 
-        final Intent intent = new Intent(this, SignUpOtherScreen.class);
-        intent.putExtra("credential", credential);
-
-        String userName = session.getUserName();
-
-        String name = userName.indexOf(' ') == -1 ? userName : userName.substring(0, userName.indexOf(' '));
-        String surname = (userName.indexOf(' ') == -1 || userName.indexOf(' ') + 1 >= userName.length()) ? "" : userName.substring(userName.indexOf(' ') + 1);
-
-        intent.putExtra("name", name);
-        intent.putExtra("surname", surname);
-        intent.putExtra("phoneNumber", "");
-        intent.putExtra("birthDate", "");
-        intent.putExtra("gender", "");
 
         TwitterAuthClient authClient = new TwitterAuthClient();
         authClient.requestEmail(session, new Callback<String>() {
             @Override
             public void success(Result<String> result) {
-                intent.putExtra("email", result.data);
-                startActivity(intent);
-                finish();
+                String email = result.data;
+                completeHandleTwitterSession(email, session);
             }
 
             @Override
             public void failure(TwitterException exception) {
-                intent.putExtra("email", "");
-                startActivity(intent);
-                finish();
+                completeHandleTwitterSession("", session);
             }
         });
+    }
+
+    private void completeHandleTwitterSession(final String email, final TwitterSession session) {
+        final AuthCredential credential = TwitterAuthProvider.getCredential(
+                session.getAuthToken().token,
+                session.getAuthToken().secret);
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("accounts").child(email.replaceAll("\\.", "_"));
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String value = (String) dataSnapshot.child("twitter").getValue();
+                if(value != null) {
+                    signInUser(credential);
+                } else {
+
+                    final Intent intent = new Intent(SignInScreen.this, SignUpOtherScreen.class);
+                    intent.putExtra("credential", credential);
+
+                    String userName = session.getUserName();
+
+                    String name = userName.indexOf(' ') == -1 ? userName : userName.substring(0, userName.indexOf(' '));
+                    String surname = (userName.indexOf(' ') == -1 || userName.indexOf(' ') + 1 >= userName.length()) ? "" : userName.substring(userName.indexOf(' ') + 1);
+
+                    intent.putExtra("name", name);
+                    intent.putExtra("surname", surname);
+                    intent.putExtra("phoneNumber", "");
+                    intent.putExtra("birthDate", "");
+                    intent.putExtra("gender", "");
+                    intent.putExtra("provider", "twitter");
+                    intent.putExtra("email", email);
+
+                    startActivity(intent);
+                    finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    // Code for signing in users with existing accounts
+    private void signInUser(AuthCredential credential) {
+        FirebaseAuth.getInstance().signInWithCredential(credential)
+                .addOnCompleteListener(SignInScreen.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            if(Database.userSignedIn()) {
+                                Database.loadCurrentUser(SignInScreen.this);
+                            } else {
+                                //TODO: Failed.
+                                System.out.println("User account registration failed. User not signed in.");
+                            }
+                        } else {
+                            //TODO: Failed.
+                            System.out.println("User account registration failed due to an unknown reason.");
+                        }
+                    }
+                });
     }
 
     // Activity result function used by multiple inlog methods

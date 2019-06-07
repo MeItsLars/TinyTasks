@@ -25,6 +25,7 @@ import java.util.regex.Pattern;
 import ru.group12.tinytasks.R;
 import ru.group12.tinytasks.popups.location.LocationSelectionScreen;
 import ru.group12.tinytasks.util.ActivityManager;
+import ru.group12.tinytasks.util.internet.Network;
 
 public class CreateTaskPart2Screen extends AppCompatActivity {
 
@@ -34,6 +35,7 @@ public class CreateTaskPart2Screen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_createtask_part2);
+        Network.registerInternetStateChangedListener(this);
 
         initializeContents();
     }

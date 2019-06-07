@@ -16,7 +16,7 @@
     <string name="back_to_home">Back to home</string>
     <string name="task_created">Task created!</string>
     <string name="create_task_3_3">Create Task 3/3</string>
-    <string name="add_images_optional">Add images (optional)</string>
+    <string name="add_images_optional">Add image (optional)</string>
     <string name="create_my_task">Create task</string>
     <string name="create_task_1_3">Create Task 1/3</string>
     <string name="task_name">Task name:</string>
@@ -86,14 +86,14 @@
     <string name="carpenting">Carpenting</string>
     <string name="brick_laying">Brick laying</string>
     <string name="which_types_of_task_do_you_want_to_see">Which types of task do you want to see?</string>
-    <string name="task_npreferences">Task  Preferences</string>
+    <string name="task_npreferences">Task Preferences</string>
     <string name="other">Other</string>
     <string name="facebook">Facebook</string>
     <string name="twitter">Twitter</string>
     <string name="google">Google</string>
     <string name="confirm_password">Confirm password</string>
     <string name="profileimg">Profile Image</string>
-    <string name="another_users_profile">General Profile</string>
+    <string name="another_users_profile">User Profile</string>
     <string name="copy_number">Copy Phonenumber</string>
 
     <string-array name="task_price_types">

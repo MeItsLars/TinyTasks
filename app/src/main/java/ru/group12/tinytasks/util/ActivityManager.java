@@ -29,7 +29,6 @@ public class ActivityManager {
     }
 
     public static void backToHomeActivity(Activity activity, String fragment) {
-        activity.finishAffinity();
         Intent intent = new Intent(activity, ApplicationHomeActivity.class);
         intent.putExtra("fragment", fragment);
         activity.startActivity(intent);

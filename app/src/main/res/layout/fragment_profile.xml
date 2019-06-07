@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_test8">
+    android:background="@drawable/backgroundblur">
     <!--android:background="#FFFFFF">-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/A_profile"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
+        android:visibility="invisible"
         android:clickable="false">
 
         <Button
@@ -163,6 +163,30 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/A_email_text_view" />
 
+        <Button
+            android:id="@+id/SignOutButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="80dp"
+
+            android:background="@drawable/button_custom"
+            android:fontFamily="@font/roboto"
+            android:padding="5dp"
+            android:text="Sign out"
+            android:textAllCaps="false"
+            android:textColor="#fff7f7"
+            android:textSize="18sp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -194,27 +218,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/B_profile_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginTop="192dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:contentDescription="@string/profileimg"
-            android:src="@drawable/ic_person_black_102dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/B_profile_description_view"
-            android:layout_width="264dp"
-            android:layout_height="90dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="20dp"
 
             android:fontFamily="@font/roboto"
             android:text="@string/you_need_to_sign_in_to_view_your_profile"
@@ -222,18 +235,22 @@
             android:textColor="#000"
             android:textSize="30sp"
 
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/B_profile_text_view" />
 
         <Button
             android:id="@+id/B_profile_sign_in_button"
-            android:layout_width="312dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
+            android:layout_marginStart="50dp"
             android:layout_marginLeft="50dp"
 
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="50dp"
             android:layout_marginRight="50dp"
+            android:layout_marginEnd="50dp"
+
             android:background="@drawable/button_custom"
             android:fontFamily="sans-serif-condensed-light"
 

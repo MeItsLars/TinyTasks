@@ -1,8 +1,10 @@
 package ru.group12.tinytasks.activities;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +16,8 @@ import ru.group12.tinytasks.activities.fragments.HomeFragment;
 import ru.group12.tinytasks.activities.fragments.NotificationsFragment;
 import ru.group12.tinytasks.activities.fragments.ProfileFragment;
 import ru.group12.tinytasks.activities.fragments.SearchTaskFragment;
+import ru.group12.tinytasks.util.database.Database;
+import ru.group12.tinytasks.util.internet.Network;
 
 public class ApplicationHomeActivity extends AppCompatActivity {
 
@@ -21,8 +25,11 @@ public class ApplicationHomeActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_applicationhome);
+        Network.registerInternetStateChangedListener(this);
 
         initializeNavigationBar();
+        loadUser();
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
 
         String fragment = getIntent().getStringExtra("fragment");
         if(fragment != null) {
@@ -32,6 +39,10 @@ public class ApplicationHomeActivity extends AppCompatActivity {
             else if(fragment.equals("Notifications")) {setActiveFragment(notificationsFragment); setClickedElement(R.id.navigation_notifications_button);}
             else if(fragment.equals("Profile")) {setActiveFragment(profileFragment); setClickedElement(R.id.navigation_profile_button);}
         }
+    }
+
+    private void loadUser() {
+        Database.loadCurrentUser((HomeFragment) homeFragment);
     }
 
     final Fragment homeFragment = new HomeFragment();
@@ -90,6 +101,10 @@ public class ApplicationHomeActivity extends AppCompatActivity {
             ((CreateTaskFragment) createTaskFragment).showFragment();
         } else if(fragment instanceof ProfileFragment) {
             ((ProfileFragment) fragment).showFragment();
+        } else if(fragment instanceof NotificationsFragment) {
+            ((NotificationsFragment) fragment).showFragment();
+        } else if(fragment instanceof  HomeFragment) {
+            ((HomeFragment) fragment).showFragment();
         }
     }
 
