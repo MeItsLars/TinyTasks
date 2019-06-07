@@ -148,8 +148,15 @@ public class Task implements Parcelable, Comparable<Task> {
     @Override
     public int compareTo(Task task) {
         if(sortBy.equals("Price")) {
-            if(orderBy.equals("Ascending")) return Double.compare(Double.valueOf(getPrice()), Double.valueOf(task.getPrice()));
-            else return Double.compare(Double.valueOf(task.getPrice()), Double.valueOf(getPrice()));
+            if(orderBy.equals("Ascending")) {
+                if(price.equals("To be determined")) return -1;
+                else if(task.getPrice().equals("To be determined")) return 1;
+                else return Double.compare(Double.valueOf(getPrice()), Double.valueOf(task.getPrice()));
+            } else {
+                if(price.equals("To be determined")) return 1;
+                else if(task.getPrice().equals("To be determined")) return -1;
+                else return Double.compare(Double.valueOf(task.getPrice()), Double.valueOf(getPrice()));
+            }
         } else if(sortBy.equals("Work amount")) {
             if(orderBy.equals("Ascending")) return Double.compare(Double.valueOf(getWork()), Double.valueOf(task.getWork()));
             else return Double.compare(Double.valueOf(task.getWork()), Double.valueOf(getWork()));

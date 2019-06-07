@@ -98,7 +98,7 @@ public class TaskManager {
 
         List<Task> rawSortedTasks = new ArrayList<>();
         for(Task task : tasks) {
-            double taskPrice = Double.valueOf(task.getPrice());
+            String taskPrice = task.getPrice();
             double minPrice = Double.valueOf(settings.getPriceFrom());
             double maxPrice = Double.valueOf(settings.getPriceTo());
 
@@ -111,15 +111,11 @@ public class TaskManager {
             User currentUser = Database.getCurrentUser();
 
             if((settings.getCategory().equals("All") || settings.getCategory().equals(task.getCategory().name())) &&
-                    ((minPrice <= taskPrice && taskPrice <= maxPrice) || maxPrice <= 0) &&
+                    (taskPrice.equals("To be determined") || ((minPrice <= Double.valueOf(taskPrice) && Double.valueOf(taskPrice) <= maxPrice) || maxPrice <= 0)) &&
                     ((minWork <= taskWork && taskWork <= maxWork) || maxWork <= 0) &&
                     (maxDistance <= 0 || isLocationInRange(userLocation, task.getAndroidLocation(), maxDistance))) {
 
                 if(currentUser != null) {
-                    System.out.println("======================");
-                    System.out.println("Current user ID: " + currentUser.getUid());
-                    System.out.println("Task user ID: " + task.getUserID());
-                    System.out.println("======================");
                     if(!task.getUserID().equals(currentUser.getUid())) {
                         rawSortedTasks.add(task);
                         task.prepareSort(context, locationManager, settings.getSortBy(), settings.getOrderBy());
