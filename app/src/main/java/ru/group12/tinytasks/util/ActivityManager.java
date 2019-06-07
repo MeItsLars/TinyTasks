@@ -10,6 +10,7 @@ import java.util.Map;
 import ru.group12.tinytasks.activities.ApplicationHomeActivity;
 import ru.group12.tinytasks.util.database.objects.Task;
 
+// A bunch of methods focused on starting new activities, taking users to a different screen
 public class ActivityManager {
     public static void startNewActivity(Activity activity, Class newClass) {
         Intent intent = new Intent(activity, newClass);

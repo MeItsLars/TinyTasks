@@ -18,7 +18,7 @@
         android:layout_marginTop="10dp"
 
 
-        android:text="{TASK TITLE}"
+        android:text="@string/task_title"
         android:fontFamily="@font/roboto"
         android:textColor="#000000"
         android:textStyle="bold"
@@ -44,7 +44,7 @@
         android:layout_marginTop="20dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Task description"
+        android:text="@string/task_descriptionD"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textStyle="bold"
 
@@ -67,7 +67,7 @@
         android:layout_marginTop="0dp"
 
         android:fontFamily="@font/roboto"
-        android:text="{TASK DESCRIPTION}"
+        android:text="@string/task_description"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="22sp"
         app:autoSizeTextType="uniform"
@@ -88,7 +88,7 @@
         android:layout_marginTop="20dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Category"
+        android:text="@string/category"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textStyle="bold"
 
@@ -106,7 +106,7 @@
         android:layout_marginTop="10dp"
 
         android:fontFamily="@font/roboto"
-        android:text="{CATEGORY}"
+        android:text="@string/categoryC"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
 
         android:textSize="15sp"
@@ -124,13 +124,14 @@
         android:layout_marginLeft="90dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Price"
+        android:text="@string/priceP"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textStyle="bold"
 
         android:textSize="15sp"
         app:layout_constraintLeft_toRightOf="@id/taskcategory1"
-        app:layout_constraintTop_toBottomOf="@+id/task_description" />
+        app:layout_constraintTop_toBottomOf="@+id/task_description"
+        android:layout_marginStart="90dp" />
 
     <TextView
         android:id="@+id/taskprice2"
@@ -140,7 +141,7 @@
         android:layout_marginTop="10dp"
 
         android:fontFamily="@font/roboto"
-        android:text="€ {PRICE}"
+        android:text="@string/price"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="@id/taskprice1"
@@ -158,7 +159,7 @@
         android:layout_marginStart="20dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Estimated time of task"
+        android:text="@string/estimated_time_of_task"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textStyle="bold"
 
@@ -174,7 +175,7 @@
         android:layout_marginTop="10dp"
 
         android:fontFamily="@font/roboto"
-        android:text="{TIME} hr(s)"
+        android:text="@string/time_hr_s"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="@id/tasktime1"
@@ -190,7 +191,7 @@
         android:layout_marginTop="20dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Location"
+        android:text="@string/location"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textStyle="bold"
 
@@ -209,7 +210,7 @@
         android:layout_marginTop="10dp"
 
         android:fontFamily="@font/roboto"
-        android:text="{LOCATION}"
+        android:text="@string/locationL"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
 
         android:textSize="15sp"
@@ -223,20 +224,18 @@
         android:layout_height="0dp"
 
         android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
 
-        android:src="@drawable/app_logo"
+        android:contentDescription="@string/task_image"
 
+        android:src="@drawable/app_logo"
+        app:layout_constraintBottom_toTopOf="@+id/react_to_task_button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tasklocation2"
-        app:layout_constraintBottom_toTopOf="@+id/react_to_task_button"
 
-        />
+        app:layout_constraintTop_toBottomOf="@+id/tasklocation2" />
 
     <Button
         android:id="@+id/react_to_task_button"
@@ -250,7 +249,7 @@
         android:layout_marginBottom="10dp"
 
         android:background="@drawable/button_custom"
-        android:text="Apply to this task"
+        android:text="@string/apply_to_this_task"
         android:textAllCaps="false"
         android:textColor="#fff"
         android:textSize="20sp"

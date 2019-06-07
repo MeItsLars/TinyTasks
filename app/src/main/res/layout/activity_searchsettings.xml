@@ -18,7 +18,7 @@
         android:layout_marginTop="32dp"
 
 
-        android:text="Search tasks"
+        android:text="@string/search_tasks"
         android:fontFamily="@font/roboto"
         android:textColor="#000000"
         android:textSize="35sp"
@@ -39,7 +39,7 @@
         android:layout_marginTop="20dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Price"
+        android:text="@string/priceP"
         android:textColor="#000000"
         android:textSize="25sp"
 
@@ -56,7 +56,7 @@
         android:layout_marginLeft="20dp"
 
         android:fontFamily="@font/roboto"
-        android:text="From"
+        android:text="@string/from"
         android:textColor="#000000"
         android:textSize="20sp"
 
@@ -88,7 +88,7 @@
         android:layout_marginLeft="20dp"
 
         android:fontFamily="@font/roboto"
-        android:text="to"
+        android:text="@string/to"
         android:textColor="#000000"
         android:textSize="20sp"
 
@@ -138,7 +138,7 @@
         android:layout_marginTop="20dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Amount of work"
+        android:text="@string/amount_of_work"
         android:textColor="#000000"
         android:textSize="25sp"
 
@@ -155,7 +155,7 @@
         android:layout_marginLeft="20dp"
 
         android:fontFamily="@font/roboto"
-        android:text="From"
+        android:text="@string/from"
         android:textColor="#000000"
         android:textSize="20sp"
 
@@ -187,7 +187,7 @@
         android:layout_marginLeft="20dp"
 
         android:fontFamily="@font/roboto"
-        android:text="to"
+        android:text="@string/to"
         android:textColor="#000000"
         android:textSize="20sp"
 
@@ -219,7 +219,7 @@
         android:layout_marginLeft="20dp"
 
         android:fontFamily="@font/roboto"
-        android:text="hr(s)"
+        android:text="@string/hr_s"
         android:textColor="#000000"
         android:textSize="20sp"
 
@@ -237,7 +237,7 @@
         android:layout_marginTop="20dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Distance"
+        android:text="@string/distance"
         android:textColor="#000000"
         android:textSize="25sp"
 
@@ -254,7 +254,7 @@
         android:layout_marginLeft="20dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Up to"
+        android:text="@string/up_to"
         android:textColor="#000000"
         android:textSize="20sp"
 
@@ -286,7 +286,7 @@
         android:layout_marginLeft="20dp"
 
         android:fontFamily="@font/roboto"
-        android:text="km"
+        android:text="@string/km"
         android:textColor="#000000"
         android:textSize="20sp"
 
@@ -304,7 +304,7 @@
         android:layout_marginTop="20dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Category"
+        android:text="@string/category"
         android:textColor="#000000"
         android:textSize="20sp"
 
@@ -333,7 +333,7 @@
         android:layout_marginStart="20dp"
 
         android:fontFamily="@font/roboto"
-        android:text="Search by"
+        android:text="@string/search_by"
         android:textColor="#000000"
         android:textSize="20sp"
 
@@ -384,7 +384,7 @@
         android:layout_marginBottom="40dp"
 
         android:background="@drawable/button_custom"
-        android:text="Search"
+        android:text="@string/search"
         android:textAllCaps="false"
         android:textColor="#fff"
         android:textSize="20sp"

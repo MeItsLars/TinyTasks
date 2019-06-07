@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
 
         android:layout_marginTop="60dp"
-        android:text="Task \nPreferences"
+        android:text="@string/task_npreferencesT"
         android:textColor="#000000"
         android:textSize="60sp"
         app:fontFamily="roboto"

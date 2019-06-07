@@ -3,6 +3,7 @@ package ru.group12.tinytasks.util.database.objects;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+// All info used to make a profile and keep track of different users.
 public class User implements Parcelable {
 
     private String uid;

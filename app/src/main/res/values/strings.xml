@@ -95,6 +95,31 @@
     <string name="profileimg">Profile Image</string>
     <string name="another_users_profile">User Profile</string>
     <string name="copy_number">Copy Phonenumber</string>
+    <string name="task_npreferencesT">Task  Preferences</string>
+    <string name="my_tasks">My tasks</string>
+    <string name="locationL">{LOCATION}</string>
+    <string name="time_hr_s">{TIME} hr(s)</string>
+    <string name="estimated_time_of_task">Estimated time of task</string>
+    <string name="price">€ {PRICE}</string>
+    <string name="priceP">Price</string>
+    <string name="task_title">{TASK TITLE}</string>
+    <string name="categoryC">{CATEGORY}</string>
+    <string name="task_description">{TASK DESCRIPTION}</string>
+    <string name="apply_to_this_task">Apply to this task</string>
+    <string name="task_descriptionD">Task description</string>
+    <string name="task_image">task_image</string>
+    <string name="copy_email">Copy Email</string>
+    <string name="to">to</string>
+    <string name="eur">€</string>
+    <string name="up_to">Up to</string>
+    <string name="distance">Distance</string>
+    <string name="you_can_now_view_your_task_on_your_profile">You can now view your task on your profile</string>
+    <string name="hr_s">hr(s)</string>
+    <string name="from">From</string>
+    <string name="km">km</string>
+    <string name="amount_of_work">Amount of work</string>
+    <string name="search_by">Search by</string>
+    <string name="view_my_tasks">View my tasks</string>
 
     <string-array name="task_price_types">
         <item>Enter price</item>

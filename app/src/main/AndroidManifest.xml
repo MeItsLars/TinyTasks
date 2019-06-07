@@ -17,15 +17,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".popups.tasks.MyTasksScreen"></activity>
 
         <receiver android:name=".util.internet.InternetChangeReciever">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
-        <activity android:name=".activities.ApplicationHomeActivity" >
+
+        <activity android:name=".activities.ApplicationHomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
