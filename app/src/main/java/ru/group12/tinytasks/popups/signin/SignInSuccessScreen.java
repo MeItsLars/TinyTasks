@@ -13,6 +13,10 @@ import ru.group12.tinytasks.util.internet.Network;
 
 public class SignInSuccessScreen extends AppCompatActivity {
 
+    /*
+    When a user successfully signs in they are sent to this activity.
+    Their username is displayed and they get the option between going to the homescreen and their profile.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

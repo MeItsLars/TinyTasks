@@ -103,7 +103,12 @@ public class SignInScreen extends AppCompatActivity {
         finish();
     }
 
+    /************************
+     start email based sign in code
+     ************************/
+
     // Email edittext correctness code
+    // Asserts the input from the edittextfield is a valid email address.
     public void initializeEmailEditText(final EditText emailText) {
         emailText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -164,7 +169,10 @@ public class SignInScreen extends AppCompatActivity {
         });
     }
 
-    // Facebook sign in code
+    /************************
+     start Facebook sign in code
+     ************************/
+
     private CallbackManager mCallbackManager;
 
     private String facebookEmail = "";
@@ -224,7 +232,7 @@ public class SignInScreen extends AppCompatActivity {
         });
     }
 
-    // Method for handling
+    // Method for for getting the facebook account info into the relevant fields after login
     private void handleFacebookAccessToken(AccessToken token) {
         final AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
 
@@ -261,7 +269,11 @@ public class SignInScreen extends AppCompatActivity {
         });
     }
 
-    // Google sign in code
+
+    /************************
+     start Google sign in code
+     ************************/
+
     private static final int RC_SIGN_IN = 0;
     private GoogleSignInClient mGoogleSignInClient;
 
@@ -316,9 +328,12 @@ public class SignInScreen extends AppCompatActivity {
         });
     }
 
-    // Twitter sign in code
+    /************************
+     start Twitter sign in code
+     ************************/
     private TwitterLoginButton mTwitterLoginButton;
 
+    // Sets the button to go to a twitter login when pressed
     private void initializeTwitterSignIn() {
         mTwitterLoginButton = findViewById(R.id.twitterSignInButton);
 
@@ -339,14 +354,13 @@ public class SignInScreen extends AppCompatActivity {
 
             @Override
             public void failure(TwitterException exception) {
-                //TODO: Twitter sign in failed
                 System.out.println("Twitter sign in failed.");
             }
         });
     }
 
+    // Tries getting an email from twitter, if these is no email then it will send a placeholder
     private void handleTwitterSession(final TwitterSession session) {
-
 
         TwitterAuthClient authClient = new TwitterAuthClient();
         authClient.requestEmail(session, new Callback<String>() {
@@ -363,6 +377,7 @@ public class SignInScreen extends AppCompatActivity {
         });
     }
 
+    // Gets the needed info from a twitter account after the user logs in and gives permission
     private void completeHandleTwitterSession(final String email, final TwitterSession session) {
         final AuthCredential credential = TwitterAuthProvider.getCredential(
                 session.getAuthToken().token,
@@ -415,11 +430,9 @@ public class SignInScreen extends AppCompatActivity {
                             if(Database.userSignedIn()) {
                                 Database.loadCurrentUser(SignInScreen.this);
                             } else {
-                                //TODO: Failed.
                                 System.out.println("User account registration failed. User not signed in.");
                             }
                         } else {
-                            //TODO: Failed.
                             System.out.println("User account registration failed due to an unknown reason.");
                         }
                     }

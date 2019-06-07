@@ -43,7 +43,7 @@ public class SignUpOtherScreen extends AppCompatActivity {
         initializeSignUpButton(credential);
     }
 
-    // Initialize filled in texts:
+    // Initialize filled in texts and asserts the user inputs are up to a certain standard
     private void initializeTextFields() {
         @NotNull String email = getIntent().getStringExtra("email");
         String name = getIntent().getStringExtra("name");
@@ -97,7 +97,7 @@ public class SignUpOtherScreen extends AppCompatActivity {
         });
     }
 
-    // Initialize sign up button
+    // Initialize sign up button that puts the data from the fields into the database
     private void initializeSignUpButton(final AuthCredential credential) {
         final String provider = getIntent().getStringExtra("provider");
 

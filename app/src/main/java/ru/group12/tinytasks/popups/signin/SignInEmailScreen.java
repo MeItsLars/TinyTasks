@@ -43,7 +43,7 @@ public class SignInEmailScreen extends AppCompatActivity {
         finish();
     }
 
-    // Method for initializing important views, and adding functionality to buttons and edittexts
+    // Method for initializing important textfields, and adding functionality to buttons and inputfields
     private void initializeContents() {
         final TextView emailText = findViewById(R.id.emailText);
         emailText.setText(getIntent().getStringExtra("email"));

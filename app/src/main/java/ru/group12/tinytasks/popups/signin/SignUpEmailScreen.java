@@ -27,6 +27,11 @@ import ru.group12.tinytasks.util.database.Database;
 import ru.group12.tinytasks.util.internet.Network;
 
 public class SignUpEmailScreen extends AppCompatActivity {
+    /*
+    This sign up screen is slightly different from other logins
+     because it needs an email input while twitter, facebook and google do not.
+     As such the name is handled differently and some fields expect different inputs.
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +69,7 @@ public class SignUpEmailScreen extends AppCompatActivity {
         final EditText gender = findViewById(R.id.gender);
 
         final Button signUpButton = findViewById(R.id.signupButton);
+        // Sends the filled in information to the database
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,6 +106,7 @@ public class SignUpEmailScreen extends AppCompatActivity {
             }
 
             @Override
+            // Asserts the password adheres to a minimal standard
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(!checkDrawableState(password, DrawablePattern.passwordPattern)) {
                     password.setError("Please enter a password that is 6 or more characters long.");
@@ -123,6 +130,7 @@ public class SignUpEmailScreen extends AppCompatActivity {
             }
 
             @Override
+            // Checks if the passwords match
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(charSequence.toString().equals(password.getText().toString())) {
                     changeDrawableState(confirmPassword.getBackground(), DrawableState.RIGHT);
