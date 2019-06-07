@@ -19,8 +19,8 @@
 
         android:layout_marginRight="50dp"
         android:background="@drawable/edittext_custom"
-        android:drawableStart="@drawable/ic_lock_open_black_35dp"
-        android:drawableLeft="@drawable/ic_lock_open_black_35dp"
+        android:drawableStart="@drawable/ic_wc_black_35dp"
+        android:drawableLeft="@drawable/ic_wc_black_35dp"
         android:drawablePadding="10dp"
         android:hint="@string/gender_m_f_u"
 
@@ -147,8 +147,8 @@
         android:layout_marginRight="50dp"
 
         android:background="@drawable/edittext_custom"
-        android:drawableStart="@drawable/ic_lock_open_black_35dp"
-        android:drawableLeft="@drawable/ic_lock_open_black_35dp"
+        android:drawableStart="@drawable/ic_assignment_black_35dp"
+        android:drawableLeft="@drawable/ic_assignment_black_35dp"
         android:drawablePadding="10dp"
         android:hint="@string/full_name"
         android:inputType="textPersonName"
@@ -175,8 +175,8 @@
         android:layout_marginRight="50dp"
 
         android:background="@drawable/edittext_custom"
-        android:drawableStart="@drawable/ic_lock_open_black_35dp"
-        android:drawableLeft="@drawable/ic_lock_open_black_35dp"
+        android:drawableStart="@drawable/ic_contact_phone_black_35dp"
+        android:drawableLeft="@drawable/ic_contact_phone_black_35dp"
         android:drawablePadding="10dp"
         android:hint="@string/phone_number"
         android:inputType="phone"
@@ -203,8 +203,8 @@
         android:layout_marginRight="50dp"
 
         android:background="@drawable/edittext_custom"
-        android:drawableStart="@drawable/ic_lock_open_black_35dp"
-        android:drawableLeft="@drawable/ic_lock_open_black_35dp"
+        android:drawableStart="@drawable/ic_date_range_black_35dp"
+        android:drawableLeft="@drawable/ic_date_range_black_35dp"
         android:drawablePadding="10dp"
         android:hint="@string/date_of_birth_dd_mm_yyyy"
         android:inputType="date"
