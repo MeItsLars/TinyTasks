@@ -119,6 +119,7 @@
     <string name="km">km</string>
     <string name="amount_of_work">Amount of work</string>
     <string name="search_by">Search by</string>
+    <string name="view_my_tasks">View my tasks</string>
 
     <string-array name="task_price_types">
         <item>Enter price</item>
