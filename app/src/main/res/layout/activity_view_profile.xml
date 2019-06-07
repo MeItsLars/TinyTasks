@@ -32,7 +32,7 @@
 
         android:layout_marginLeft="27dp"
         android:layout_marginRight="27dp"
-        android:layout_marginBottom="132dp"
+        android:layout_marginBottom="20dp"
 
         android:background="@drawable/button_custom"
         android:text="@string/copy_email"
@@ -40,8 +40,7 @@
         android:textColor="#fff"
         android:textSize="20sp"
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintBottom_toTopOf="@+id/getPhoneButton"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
@@ -54,7 +53,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="25dp"
 
             android:fontFamily="@font/roboto"
             android:text="@string/another_users_profile"
@@ -64,21 +63,20 @@
             android:textSize="40sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/A_profile_image"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/A_profile_image"
-            android:layout_width="102dp"
-            android:layout_height="102dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
 
-            android:layout_marginTop="30dp"
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
             android:contentDescription="@string/profileimg"
             android:src="@drawable/ic_person_black_24dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/another_users_profile_text_view" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/A_name_text_view"

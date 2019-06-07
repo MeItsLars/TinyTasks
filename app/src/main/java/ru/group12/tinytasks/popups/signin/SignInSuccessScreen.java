@@ -41,4 +41,10 @@ public class SignInSuccessScreen extends AppCompatActivity {
             }
         });
     }
+
+    // Method for determining correct actions when the phone's 'back' button is pressed.
+    @Override
+    public void onBackPressed() {
+        ActivityManager.backToHomeActivity(this, "Profile");
+    }
 }

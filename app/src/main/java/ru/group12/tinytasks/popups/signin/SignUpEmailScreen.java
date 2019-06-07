@@ -37,6 +37,12 @@ public class SignUpEmailScreen extends AppCompatActivity {
         initializeContents();
     }
 
+    // Method for determining correct actions when the phone's 'back' button is pressed.
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
     private boolean passwordCorrect = false;
     private boolean confirmPasswordCorrect = false;
     private boolean fullNameCorrect = false;

@@ -1,7 +1,9 @@
 package ru.group12.tinytasks.popups.tasks;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +13,6 @@ import android.widget.TextView;
 import ru.group12.tinytasks.R;
 import ru.group12.tinytasks.popups.signin.SignInScreen;
 import ru.group12.tinytasks.util.ActivityManager;
-import ru.group12.tinytasks.util.TaskManager;
 import ru.group12.tinytasks.util.database.Database;
 import ru.group12.tinytasks.util.database.ImageManager;
 import ru.group12.tinytasks.util.database.NotificationsManager;
@@ -28,6 +29,12 @@ public class ViewTaskScreen extends AppCompatActivity {
         Network.registerInternetStateChangedListener(this);
 
         initializeContents();
+    }
+
+    // Method for determining correct actions when the phone's 'back' button is pressed.
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 
     public void initializeContents() {
@@ -63,9 +70,23 @@ public class ViewTaskScreen extends AppCompatActivity {
             reactToTask.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    User sender = Database.getCurrentUser();
-                    if(sender != null) NotificationsManager.sendRespondNotification(sender.getUid(), sender.getName(), task.getUserID(), task.getUniqueTaskID());
-                    reactToTask.setText("Reaction sent");
+                    new AlertDialog.Builder(ViewTaskScreen.this)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .setTitle("React to task")
+                            .setMessage("Are you sure you want to react to this task?\n" +
+                                    "By reacting you give your profile data to the task owner.")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    User sender = Database.getCurrentUser();
+                                    if(sender != null) NotificationsManager.sendRespondNotification(sender.getUid(), sender.getName(), task.getUserID(), task.getUniqueTaskID());
+                                    reactToTask.setText("Reaction sent");
+                                    reactToTask.setBackgroundResource(R.drawable.button_custom_red);
+                                    reactToTask.setClickable(false);
+                                }
+                            })
+                            .setNegativeButton("No", null)
+                            .show();
                 }
             });
         } else {

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -12,8 +13,9 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import ru.group12.tinytasks.R;
+import ru.group12.tinytasks.activities.ApplicationHomeActivity;
 import ru.group12.tinytasks.popups.signin.SignInScreen;
-import ru.group12.tinytasks.popups.tasks.MyTasksScreen;
+import ru.group12.tinytasks.popups.tasks.ViewMyTasksScreen;
 import ru.group12.tinytasks.util.ActivityManager;
 import ru.group12.tinytasks.util.database.Database;
 import ru.group12.tinytasks.util.database.objects.User;
@@ -70,7 +72,7 @@ public class ProfileFragment extends Fragment {
         myTaskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityManager.startNewActivity(inflatedView.getContext(), MyTasksScreen.class, Intent.FLAG_ACTIVITY_NEW_TASK);
+                ActivityManager.startNewActivity(inflatedView.getContext(), ViewMyTasksScreen.class, Intent.FLAG_ACTIVITY_NEW_TASK);
             }
         });
     }
@@ -101,6 +103,8 @@ public class ProfileFragment extends Fragment {
             emailText.setText("Email: " + user.getEmail());
             phoneNumberText.setText("Phone number: " + user.getPhoneNumber());
         } catch(Exception e) {
+            // Unresolved error, doesn't influence application
+            // The error has to do with our fragment structure, that makes it hard to resolve.
         }
     }
 

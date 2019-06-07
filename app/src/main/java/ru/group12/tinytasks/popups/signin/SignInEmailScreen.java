@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,45 +33,55 @@ public class SignInEmailScreen extends AppCompatActivity {
 
         activity = this;
 
-        // Initialising top textview
-        TextView emailText = findViewById(R.id.emailText);
-        emailText.setText("larsjeurissen@hotmail.nl");
+        initializeContents();
+
+    }
+
+    // Method for determining correct actions when the phone's 'back' button is pressed.
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
+    // Method for initializing important views, and adding functionality to buttons and edittexts
+    private void initializeContents() {
+        final TextView emailText = findViewById(R.id.emailText);
+        emailText.setText(getIntent().getStringExtra("email"));
         GradientDrawable emailTextBackground = (GradientDrawable) emailText.getBackground();
         emailTextBackground.setColor(Color.argb(51, 152, 229, 121));
         emailTextBackground.setStroke(2, Color.argb(255, 82, 173, 46));
 
-        EditText password = findViewById(R.id.enterPassword);
-        changeDrawableState(password.getBackground(), DrawableState.NEUTRAL);
+        final EditText passwordEditText = findViewById(R.id.enterPassword);
+        changeDrawableState(passwordEditText.getBackground(), DrawableState.NEUTRAL);
 
         Button signInButton = findViewById(R.id.signInButton);
-        initializeSignInButton(signInButton, emailText.getText().toString(), password);
-    }
-
-    // Sign in button code
-    public void initializeSignInButton(Button signInButton, final String email, final EditText password) {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FirebaseAuth auth = FirebaseAuth.getInstance();
-                auth.signInWithEmailAndPassword(email, password.getText().toString())
+                auth.signInWithEmailAndPassword(emailText.getText().toString(), passwordEditText.getText().toString())
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(task.isSuccessful()) {
+                                    // Load user and start new activity when done
+                                    Database.loadCurrentUser(activity);
+                                } else {
+                                    passwordEditText.setError("Incorrect password. Please try again.");
+                                }
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()) {
-                            // Load user and start new activity when done
-                            Database.loadCurrentUser(activity);
-                        } else {
-                            password.setError("Incorrect password. Please try again.");
-                        }
+                    public void onFailure(@NonNull Exception e) {
+                        passwordEditText.setError("Wrong password. Please try again!");
                     }
                 });
             }
         });
     }
 
-
     // ============= Code for changing edittext appearance ===========
-
+    // EditText border colors are changed when the input is right/wrong
     private enum DrawableState {RIGHT, WRONG, NEUTRAL}
 
     private void changeDrawableState(Drawable drawable, DrawableState state) {

@@ -86,6 +86,12 @@ public class LocationSelectionScreen extends AppCompatActivity implements Permis
         mapView.getMapAsync(this);
     }
 
+    // Method for determining correct actions when the phone's 'back' button is pressed.
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
     @Override
     public void onMapReady(@NonNull final MapboxMap mapboxMap) {
         LocationSelectionScreen.this.mapboxMap = mapboxMap;
@@ -271,8 +277,6 @@ public class LocationSelectionScreen extends AppCompatActivity implements Permis
                     .query(Point.fromLngLat(point.longitude(), point.latitude()))
                     .geocodingTypes(GeocodingCriteria.TYPE_ADDRESS)
                     .build();
-
-            System.out.println("Coördinates: " + point.coordinates());
 
             client.enqueueCall(new Callback<GeocodingResponse>() {
                 @Override

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.content.ClipboardManager;
+import android.widget.Toast;
 
 import ru.group12.tinytasks.R;
 import ru.group12.tinytasks.util.database.objects.User;
@@ -26,6 +27,12 @@ public class ViewUserProfileScreen extends AppCompatActivity {
         user = getIntent().getParcelableExtra("user");
 
         initializeContents();
+    }
+
+    // Method for determining correct actions when the phone's 'back' button is pressed.
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 
     private void initializeContents() {
@@ -49,6 +56,7 @@ public class ViewUserProfileScreen extends AppCompatActivity {
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 ClipData clip = ClipData.newPlainText("copied to clipboard", user.getPhoneNumber());
                 clipboard.setPrimaryClip(clip);
+                Toast.makeText(ViewUserProfileScreen.this, "Phone number copied to clipboard", Toast.LENGTH_SHORT).show();
             }
         });
         copyMail.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +65,7 @@ public class ViewUserProfileScreen extends AppCompatActivity {
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 ClipData clip = ClipData.newPlainText("copied to clipboard", user.getEmail());
                 clipboard.setPrimaryClip(clip);
+                Toast.makeText(ViewUserProfileScreen.this, "Email address copied to clipboard", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -33,8 +33,8 @@
         android:layout_marginStart="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginTop="100dp"
 
+        android:padding="10dp"
         android:background="@drawable/button_custom"
         android:textAllCaps="false"
         android:textColor="#fff"
@@ -45,26 +45,16 @@
         app:layout_constraintTop_toBottomOf="@+id/create_task_text" />
 
     <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintStart_toEndOf="@+id/create_task_or_sign_in_button"
-        app:layout_constraintTop_toBottomOf="@+id/create_task_text"
-        app:srcCompat="@drawable/nointernet" />
-
-    <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="180dp"
+        android:layout_height="150dp"
         android:layout_marginTop="50dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+
         android:scaleX="-1"
-        app:layout_constraintEnd_toStartOf="@+id/create_task_or_sign_in_button"
-        app:layout_constraintTop_toBottomOf="@+id/create_task_text"
-        app:srcCompat="@drawable/nointernet" />
+        android:src="@drawable/nointernet"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_task_or_sign_in_button" />
 
 </android.support.constraint.ConstraintLayout>

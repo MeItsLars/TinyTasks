@@ -31,17 +31,17 @@ public class ImageManager {
             fileReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    System.out.println("Image added!");
+                    // Success
                 }
             }).addOnCanceledListener(new OnCanceledListener() {
                 @Override
                 public void onCanceled() {
-
+                    // Cancelled
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-
+                    // Failed
                 }
             });
         }

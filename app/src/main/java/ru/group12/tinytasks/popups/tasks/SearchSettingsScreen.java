@@ -26,6 +26,12 @@ public class SearchSettingsScreen extends AppCompatActivity {
         initializeContents();
     }
 
+    // Method for determining correct actions when the phone's 'back' button is pressed.
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
     private void initializeContents() {
         final EditText priceFrom = findViewById(R.id.price_from_edittext);
         final EditText priceTo = findViewById(R.id.price_to_edittext);

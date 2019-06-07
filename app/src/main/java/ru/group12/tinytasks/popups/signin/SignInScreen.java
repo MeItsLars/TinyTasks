@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.net.wifi.hotspot2.pps.Credential;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +14,6 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 
 import com.facebook.AccessToken;
@@ -100,6 +97,12 @@ public class SignInScreen extends AppCompatActivity {
         initializeGoogleSignIn();
     }
 
+    // Method for determining correct actions when the phone's 'back' button is pressed.
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
     // Email edittext correctness code
     public void initializeEmailEditText(final EditText emailText) {
         emailText.addTextChangedListener(new TextWatcher() {
@@ -143,10 +146,13 @@ public class SignInScreen extends AppCompatActivity {
                                 if(signInMethods.isEmpty()) {
                                     Intent intent = new Intent(SignInScreen.this, SignUpEmailScreen.class);
                                     intent.putExtra("email", emailEditText.getText().toString());
-                                    SignInScreen.this.startActivity(intent);
-                                    SignInScreen.this.finish();
+                                    startActivity(intent);
+                                    finish();
                                 } else {
-                                    ActivityManager.startNewActivity(SignInScreen.this, SignInEmailScreen.class, true);
+                                    Intent intent = new Intent(SignInScreen.this, SignInEmailScreen.class);
+                                    intent.putExtra("email", emailEditText.getText().toString());
+                                    startActivity(intent);
+                                    finish();
                                 }
                             }
                         }
@@ -159,7 +165,6 @@ public class SignInScreen extends AppCompatActivity {
     }
 
     // Facebook sign in code
-
     private CallbackManager mCallbackManager;
 
     private String facebookEmail = "";
@@ -167,6 +172,7 @@ public class SignInScreen extends AppCompatActivity {
     private String facebookBirthDate = "";
     private String facebookGender = "";
 
+    // Method for initializing facebook sign in
     public void initializeFacebookSignIn() {
         ImageButton customFacebookSignInButton = findViewById(R.id.customFacebookSignInButton);
         final LoginButton loginButton = findViewById(R.id.facebookSignInButton);
@@ -210,16 +216,15 @@ public class SignInScreen extends AppCompatActivity {
 
             @Override
             public void onCancel() {
-                //TODO: Facebook sign in failed
             }
 
             @Override
             public void onError(FacebookException error) {
-                //TODO: Facebook sign in failed
             }
         });
     }
 
+    // Method for handling
     private void handleFacebookAccessToken(AccessToken token) {
         final AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
 
@@ -257,7 +262,6 @@ public class SignInScreen extends AppCompatActivity {
     }
 
     // Google sign in code
-
     private static final int RC_SIGN_IN = 0;
     private GoogleSignInClient mGoogleSignInClient;
 

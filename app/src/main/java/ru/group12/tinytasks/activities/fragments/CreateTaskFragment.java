@@ -14,6 +14,7 @@ import ru.group12.tinytasks.popups.signin.SignInScreen;
 import ru.group12.tinytasks.util.ActivityManager;
 import ru.group12.tinytasks.util.database.Database;
 
+// Fragment activity for creating tasks
 public class CreateTaskFragment extends Fragment {
 
     private View inflatedView;
@@ -44,6 +45,7 @@ public class CreateTaskFragment extends Fragment {
         });
     }
 
+    // Check whether the user is signed in, and displays button text accordingly
     private void checkTaskButtonState() {
         Button taskOrLoginButton = inflatedView.findViewById(R.id.create_task_or_sign_in_button);
         taskOrLoginButton.setText(Database.userSignedIn() ? "Create new task" : "Sign up / Sign in");

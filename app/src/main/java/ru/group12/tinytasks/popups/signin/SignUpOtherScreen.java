@@ -23,6 +23,7 @@ import com.google.firebase.database.annotations.NotNull;
 import java.util.regex.Pattern;
 
 import ru.group12.tinytasks.R;
+import ru.group12.tinytasks.util.ActivityManager;
 import ru.group12.tinytasks.util.database.Database;
 import ru.group12.tinytasks.util.internet.Network;
 
@@ -134,12 +135,12 @@ public class SignUpOtherScreen extends AppCompatActivity {
 
                                             Database.loadCurrentUser(activity);
                                         } else {
-                                            //TODO: Failed.
-                                            System.out.println("User account registration failed. User not signed in.");
+                                            // User account registration failed. User not signed in.
+                                            ActivityManager.backToHomeActivity(SignUpOtherScreen.this, "Home");
                                         }
                                     } else {
-                                        //TODO: Failed.
-                                        System.out.println("User account registration failed due to an unknown reason.");
+                                        // User account registration failed due to an unknown reason.
+                                        ActivityManager.backToHomeActivity(SignUpOtherScreen.this, "Home");
                                     }
                                 }
                             });

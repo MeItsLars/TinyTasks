@@ -12,6 +12,7 @@ import ru.group12.tinytasks.util.database.Database;
 import ru.group12.tinytasks.util.database.objects.Task;
 import ru.group12.tinytasks.util.internet.Network;
 
+// Activity for creating tasks
 public class CreateTaskSuccessScreen extends AppCompatActivity {
 
     @Override
@@ -30,6 +31,13 @@ public class CreateTaskSuccessScreen extends AppCompatActivity {
         initializeContents();
     }
 
+    // Method for determining correct actions when the phone's 'back' button is pressed.
+    @Override
+    public void onBackPressed() {
+        ActivityManager.backToHomeActivity(this, "CreateTask");
+    }
+
+    // Method for initializing the 'home' button
     private void initializeContents() {
         Button backToHomeButton = findViewById(R.id.back_to_home_button);
         backToHomeButton.setOnClickListener(new View.OnClickListener() {

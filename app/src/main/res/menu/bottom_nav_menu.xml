@@ -14,14 +14,14 @@
         android:icon="@drawable/ic_search_black_24dp"
         android:enabled="true"
         app:showAsAction="ifRoom"
-        android:title="Search tasks" />
+        android:title="Search" />
 
     <item
         android:id="@+id/navigation_create_task_button"
         android:icon="@drawable/ic_add_black_24dp"
         android:enabled="true"
         app:showAsAction="ifRoom"
-        android:title="Create task" />
+        android:title="Create" />
 
     <item
         android:id="@+id/navigation_notifications_button"

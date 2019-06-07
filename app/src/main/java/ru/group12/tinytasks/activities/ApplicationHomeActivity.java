@@ -1,12 +1,14 @@
 package ru.group12.tinytasks.activities;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
@@ -19,6 +21,7 @@ import ru.group12.tinytasks.activities.fragments.SearchTaskFragment;
 import ru.group12.tinytasks.util.database.Database;
 import ru.group12.tinytasks.util.internet.Network;
 
+// Home activity, manager of the 5 sub fragments
 public class ApplicationHomeActivity extends AppCompatActivity {
 
     @Override
@@ -33,14 +36,28 @@ public class ApplicationHomeActivity extends AppCompatActivity {
 
         String fragment = getIntent().getStringExtra("fragment");
         if(fragment != null) {
-            if(fragment.equals("Home")) {setActiveFragment(homeFragment); setClickedElement(R.id.navigation_home_button);}
-            else if(fragment.equals("SearchTask")) {setActiveFragment(searchTaskFragment); setClickedElement(R.id.navigation_search_button);}
-            else if(fragment.equals("CreateTask")) {setActiveFragment(createTaskFragment); setClickedElement(R.id.navigation_create_task_button);}
-            else if(fragment.equals("Notifications")) {setActiveFragment(notificationsFragment); setClickedElement(R.id.navigation_notifications_button);}
-            else if(fragment.equals("Profile")) {setActiveFragment(profileFragment); setClickedElement(R.id.navigation_profile_button);}
+            setActiveFragment(fragment);
         }
     }
 
+    // Method for determining correct actions when the phone's 'back' button is pressed.
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Exit TinyTasks")
+                .setMessage("Are you sure you want to exit TinyTasks?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finishAffinity();
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
+
+    // Method for loading current user (so that a user doesn't have to sign in every time the app is being re-opened)
     private void loadUser() {
         Database.loadCurrentUser((HomeFragment) homeFragment);
     }
@@ -57,6 +74,8 @@ public class ApplicationHomeActivity extends AppCompatActivity {
 
     BottomNavigationView navigationBar;
 
+    // Method for initializing the navigation bar.
+    // Fragments are loaded, and shown or hidden accordingly.
     private void initializeNavigationBar() {
         fm.beginTransaction().add(R.id.main_container, homeFragment, "1").commit();
         fm.beginTransaction().add(R.id.main_container, searchTaskFragment, "2").hide(searchTaskFragment).commit();
@@ -94,6 +113,8 @@ public class ApplicationHomeActivity extends AppCompatActivity {
         });
     }
 
+    // Method for setting the active fragment in the navigation bar.
+    // Only applied when a user clicks on the button in the navigation bar himself.
     private void setActiveFragment(Fragment fragment) {
         fm.beginTransaction().hide(activeFragment).show(fragment).commit();
         activeFragment = fragment;
@@ -108,6 +129,17 @@ public class ApplicationHomeActivity extends AppCompatActivity {
         }
     }
 
+    // Method for setting the active fragment in the navigation bar.
+    // Applied when a fragment has to be opened without the user clicking on the navigation bar.
+    private void setActiveFragment(String fragment) {
+        if(fragment.equals("Home")) {setActiveFragment(homeFragment); setClickedElement(R.id.navigation_home_button);}
+        else if(fragment.equals("SearchTask")) {setActiveFragment(searchTaskFragment); setClickedElement(R.id.navigation_search_button);}
+        else if(fragment.equals("CreateTask")) {setActiveFragment(createTaskFragment); setClickedElement(R.id.navigation_create_task_button);}
+        else if(fragment.equals("Notifications")) {setActiveFragment(notificationsFragment); setClickedElement(R.id.navigation_notifications_button);}
+        else if(fragment.equals("Profile")) {setActiveFragment(profileFragment); setClickedElement(R.id.navigation_profile_button);}
+    }
+
+    // Method for setting the clicked navigation bar element
     private void setClickedElement(int id) {
         navigationBar.setSelectedItemId(id);
     }

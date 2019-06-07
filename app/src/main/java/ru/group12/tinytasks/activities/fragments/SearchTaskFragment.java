@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -27,6 +28,7 @@ import java.util.List;
 
 import ru.group12.tinytasks.R;
 import ru.group12.tinytasks.popups.tasks.SearchSettingsScreen;
+import ru.group12.tinytasks.popups.tasks.ViewTaskScreen;
 import ru.group12.tinytasks.util.TaskManager;
 import ru.group12.tinytasks.util.database.Database;
 import ru.group12.tinytasks.util.database.objects.SearchSettings;
@@ -42,6 +44,9 @@ public class SearchTaskFragment extends Fragment {
     private SearchSettings settings;
     private LocationManager locationManager;
 
+    private ConstraintLayout taskWaitingLayout;
+    private TextView searchingStateText;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -53,6 +58,10 @@ public class SearchTaskFragment extends Fragment {
     }
 
     private void initializeContents() {
+        taskWaitingLayout = inflaterView.findViewById(R.id.task_waiting_layout);
+        taskWaitingLayout.setClickable(false);
+        searchingStateText = inflaterView.findViewById(R.id.task_searching_state);
+
         settings = new SearchSettings("", "", "", "", "", "All", "Price", "Ascending");
 
         Button searchButton = inflaterView.findViewById(R.id.search_button);
@@ -84,6 +93,7 @@ public class SearchTaskFragment extends Fragment {
     // ==========================================================================
 
     private void searchTasks() {
+        startSearching();
         taskLayout.removeAllViewsInLayout();
         Query taskQuery = Database.searchTasks();
 
@@ -93,11 +103,7 @@ public class SearchTaskFragment extends Fragment {
     ValueEventListener listener = new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            System.out.println("===========================");
-            System.out.println("Datasnapshot:");
-            System.out.println(dataSnapshot.toString());
             List<Task> tasks = getTasksFromSnapshot(dataSnapshot);
-            System.out.println("Retrieved " + tasks.size() + " raw tasks!");
 
             List<Task> sortedTasks = TaskManager.sortTasks(getActivity(), locationManager, tasks, settings, 10);
             updateLayout(sortedTasks);
@@ -124,7 +130,7 @@ public class SearchTaskFragment extends Fragment {
                         (String) userTask.child("work").getValue(),
                         (double) userTask.child("latitude").getValue(),
                         (double) userTask.child("longitude").getValue());
-                //TODO: Add images to task
+
                 tasks.add(task);
             }
         }
@@ -132,11 +138,39 @@ public class SearchTaskFragment extends Fragment {
     }
 
     private void updateLayout(List<Task> tasks) {
-        for(Task task : tasks) {
-            ConstraintLayout constraintLayout = TaskManager.getTaskButton(task, getContext());
+        for(final Task task : tasks) {
+            ConstraintLayout constraintLayout = TaskManager.getTaskButton(task, getContext(), new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getContext(), ViewTaskScreen.class);
+                    intent.putExtra("task", task);
+                    getContext().startActivity(intent);
+                }
+            });
             taskLayout.addView(constraintLayout);
         }
-        System.out.println("Updated screen. Tasks added: " + tasks.size());
-        System.out.println("===========================");
+        System.out.println("Added " + tasks.size() + " tasks");
+        if(tasks.size() == 0) finishSearching(false);
+        else finishSearching(true);
     }
+
+    // ===============================
+    // These methods are for the 'Loading' texts that display while data is being retrieved
+    private void startSearching() {
+        setSearchingState("Searching...");
+        taskWaitingLayout.setVisibility(View.VISIBLE);
+    }
+
+    private void finishSearching(boolean success) {
+        if(success) {
+            taskWaitingLayout.setVisibility(View.INVISIBLE);
+        } else {
+            setSearchingState("No results found");
+        }
+    }
+
+    private void setSearchingState(String state) {
+        searchingStateText.setText(state);
+    }
+    // ===============================
 }

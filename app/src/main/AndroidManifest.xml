@@ -17,7 +17,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".popups.tasks.MyTasksScreen"></activity>
 
         <receiver android:name=".util.internet.InternetChangeReciever">
             <intent-filter>
@@ -43,6 +42,9 @@
         <activity android:name=".popups.createtask.CreateTaskSuccessScreen" />
         <activity android:name=".popups.tasks.SearchSettingsScreen" />
         <activity android:name=".popups.tasks.ViewTaskScreen" />
+        <activity android:name=".popups.tasks.ViewMyTaskScreen" />
+        <activity android:name=".popups.tasks.ViewMyTasksScreen" />
+        <activity android:name=".popups.tasks.TaskDeletedScreen" />
         <activity android:name=".popups.user.ViewUserProfileScreen" />
         <activity android:name=".popups.internet.InternetUnavailableScreen" />
         <activity android:name=".popups.location.LocationSelectionScreen" />

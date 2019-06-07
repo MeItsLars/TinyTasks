@@ -27,6 +27,7 @@ import ru.group12.tinytasks.popups.location.LocationSelectionScreen;
 import ru.group12.tinytasks.util.ActivityManager;
 import ru.group12.tinytasks.util.internet.Network;
 
+// Activity for creating tasks
 public class CreateTaskPart2Screen extends AppCompatActivity {
 
     private final int MAP_REQUEST_CODE = 1;
@@ -38,6 +39,12 @@ public class CreateTaskPart2Screen extends AppCompatActivity {
         Network.registerInternetStateChangedListener(this);
 
         initializeContents();
+    }
+
+    // Method for determining correct actions when the phone's 'back' button is pressed.
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 
     private TextView taskLocationText;
@@ -53,6 +60,7 @@ public class CreateTaskPart2Screen extends AppCompatActivity {
     private boolean amountOfWorkCorect = false;
     private boolean locationCorrect = false;
 
+    // Method for initializing important views, and adding functionality to buttons and edittexts
     private void initializeContents() {
 
         priceType = findViewById(R.id.price_type_listview);
@@ -170,7 +178,8 @@ public class CreateTaskPart2Screen extends AppCompatActivity {
         });
     }
 
-    // ============= Code for changing drawable appearance ===========
+    // ============= Code for changing edittext appearance ===========
+    // EditText border colors are changed when the input is right/wrong
     private enum DrawableState {RIGHT, WRONG, NEUTRAL}
 
     private void changeDrawableState(Drawable drawable, DrawableState state) {
@@ -194,7 +203,7 @@ public class CreateTaskPart2Screen extends AppCompatActivity {
         }
     }
 
-    // MapBox location retriever
+    // Method for retrieving the location that was returned from the location pick activity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == MAP_REQUEST_CODE) {

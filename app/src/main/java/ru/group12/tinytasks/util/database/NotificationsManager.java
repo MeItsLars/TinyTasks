@@ -3,6 +3,7 @@ package ru.group12.tinytasks.util.database;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.view.View;
 import android.widget.ImageView;
@@ -27,6 +28,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import ru.group12.tinytasks.R;
+import ru.group12.tinytasks.activities.fragments.NotificationsFragment;
 import ru.group12.tinytasks.popups.user.ViewUserProfileScreen;
 import ru.group12.tinytasks.util.database.objects.Notification;
 import ru.group12.tinytasks.util.database.objects.Task;
@@ -47,7 +49,7 @@ public class NotificationsManager {
         ref.child("task").setValue(taskUUID);
     }
 
-    public static void updateLatestNotifications(final Context context, final LinearLayout layout, final String receiverUID, final int limit) {
+    public static void updateLatestNotifications(final NotificationsFragment fragment, final LinearLayout layout, final String receiverUID, final int limit) {
         if(receiverUID == null) return;
         DatabaseReference ref = mDatabase.getReference("notifications").child(receiverUID);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -73,7 +75,8 @@ public class NotificationsManager {
                     sortedNotifications.add(notifications.get(i));
                 }
 
-                setNotifications(context, layout, sortedNotifications, receiverUID);
+                if(sortedNotifications.size() == 0) fragment.finishSearching(false);
+                else setNotifications(fragment, layout, sortedNotifications, receiverUID);
             }
 
             @Override
@@ -83,7 +86,7 @@ public class NotificationsManager {
         });
     }
 
-    private static void setNotifications(final Context context, final LinearLayout layout, final List<Notification> notifications, final String receiverUID) {
+    private static void setNotifications(final NotificationsFragment fragment, final LinearLayout layout, final List<Notification> notifications, final String receiverUID) {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("tasks").child(receiverUID);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -107,9 +110,10 @@ public class NotificationsManager {
                                 (String) taskSnapshot.child("work").getValue(),
                                 (double) taskSnapshot.child("latitude").getValue(),
                                 (double) taskSnapshot.child("longitude").getValue());
-                        layout.addView(getNotificationLayout(context, notification, task));
+                        layout.addView(getNotificationLayout(fragment.getContext(), notification, task));
                     }
                 }
+                fragment.finishSearching(true);
             }
 
             @Override

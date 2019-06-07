@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.text.Layout;
 import android.view.View;
@@ -26,9 +27,10 @@ import com.mapbox.api.geocoding.v5.models.CarmenFeature;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 import ru.group12.tinytasks.R;
+import ru.group12.tinytasks.activities.fragments.HomeFragment;
+import ru.group12.tinytasks.popups.tasks.ViewMyTaskScreen;
 import ru.group12.tinytasks.popups.tasks.ViewTaskScreen;
 import ru.group12.tinytasks.util.database.Database;
 import ru.group12.tinytasks.util.database.ImageManager;
@@ -38,14 +40,54 @@ import ru.group12.tinytasks.util.database.objects.User;
 import ru.group12.tinytasks.util.database.objects.enums.Category;
 
 public class TaskManager {
+    public static void loadUserTasks(final Activity context, final LinearLayout parent, final String userUID) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("tasks").child(userUID);
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                final List<Task> tasks = new ArrayList<>();
+
+                for(DataSnapshot taskUID : dataSnapshot.getChildren()) {
+                    tasks.add(new Task(
+                            taskUID.getKey(),
+                            userUID,
+                            CarmenFeature.fromJson((String) taskUID.child("location").getValue()),
+                            Category.valueOf((String) taskUID.child("category").getValue()),
+                            (String) taskUID.child("title").getValue(),
+                            (String) taskUID.child("description").getValue(),
+                            (String) taskUID.child("price").getValue(),
+                            (String) taskUID.child("work").getValue(),
+                            (double) taskUID.child("latitude").getValue(),
+                            (double) taskUID.child("longitude").getValue()));
+                }
+
+                for(final Task task : tasks) {
+                    parent.addView(getTaskButton(task, context, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(context, ViewMyTaskScreen.class);
+                            intent.putExtra("task", task);
+                            context.startActivity(intent);
+                            context.finish();
+                        }
+                    }));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Do nothing
+            }
+        });
+    }
 
     // Gets 5 random tasks from the firebase database
-    public static void loadRandomTasks(final Activity context, final LinearLayout parent) {
+    public static void loadRandomTasks(final HomeFragment fragment, final LinearLayout parent) {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("tasks");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                List<Task> tasks = new ArrayList<>();
+                final List<Task> tasks = new ArrayList<>();
 
                 for(DataSnapshot user : dataSnapshot.getChildren()) {
                     if(Database.getCurrentUser() != null) {
@@ -82,9 +124,22 @@ public class TaskManager {
                 }
 
                 Collections.shuffle(tasks);
-                for(int i = 0; i < Math.min(5, tasks.size()); i++) {
-                    parent.addView(getTaskButton(tasks.get(i), context));
+                if(tasks.size() == 0) {
+                    fragment.finishSearching(false);
+                    return;
                 }
+                for(int i = 0; i < Math.min(5, tasks.size()); i++) {
+                    final int index = i;
+                    parent.addView(getTaskButton(tasks.get(i), fragment.getContext(), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(fragment.getContext(), ViewTaskScreen.class);
+                            intent.putExtra("task", tasks.get(index));
+                            fragment.getContext().startActivity(intent);
+                        }
+                    }));
+                }
+                fragment.finishSearching(true);
             }
 
             @Override
@@ -100,7 +155,9 @@ public class TaskManager {
 
         List<Task> rawSortedTasks = new ArrayList<>();
         for(Task task : tasks) {
-            String taskPrice = task.getPrice();
+            String taskPriceString = task.getPrice();
+            double taskPrice = 0;
+            if(!taskPriceString.equals("To be determined")) taskPrice = Double.parseDouble(taskPriceString);
             double minPrice = Double.valueOf(settings.getPriceFrom());
             double maxPrice = Double.valueOf(settings.getPriceTo());
 
@@ -113,8 +170,8 @@ public class TaskManager {
             User currentUser = Database.getCurrentUser();
 
             if((settings.getCategory().equals("All") || settings.getCategory().equals(task.getCategory().name())) &&
-                    (taskPrice.equals("To be determined") || ((minPrice <= Double.valueOf(taskPrice) && Double.valueOf(taskPrice) <= maxPrice) || maxPrice <= 0)) &&
-                    ((minWork <= taskWork && taskWork <= maxWork) || maxWork <= 0) &&
+                    ((minPrice <= taskPrice && taskPrice <= maxPrice) || (maxPrice <= 0 && minPrice <= 0)) &&
+                    ((minWork <= taskWork && taskWork <= maxWork) || (maxWork <= 0 && minWork <= 0)) &&
                     (maxDistance <= 0 || isLocationInRange(userLocation, task.getAndroidLocation(), maxDistance))) {
 
                 if(currentUser != null) {
@@ -143,7 +200,7 @@ public class TaskManager {
     }
 
     // Displays the tasks and makes them clickable to get more info from the tasks
-    public static ConstraintLayout getTaskButton(final Task task, final Context context) {
+    public static ConstraintLayout getTaskButton(final Task task, final Context context, View.OnClickListener listener) {
         ConstraintLayout constraintLayout = new ConstraintLayout(context);
         constraintLayout.setId(ViewCompat.generateViewId());
         ConstraintLayout.LayoutParams params = new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT);
@@ -179,8 +236,6 @@ public class TaskManager {
         TextView cityText = new TextView(context);
         cityText.setText("Location: " + task.getLocation().context().get(1).text());
 
-
-        System.out.println(task.getLocation().toJson());
         cityText.setId(ViewCompat.generateViewId());
 
         ImageView taskImage = new ImageView(context);
@@ -229,15 +284,12 @@ public class TaskManager {
 
         set.applyTo(constraintLayout);
 
-        constraintLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, ViewTaskScreen.class);
-                intent.putExtra("task", task);
-                context.startActivity(intent);
-            }
-        });
+        constraintLayout.setOnClickListener(listener);
 
         return constraintLayout;
+    }
+
+    public static void deleteTask(Task task) {
+        FirebaseDatabase.getInstance().getReference().child("tasks").child(task.getUserID()).child(task.getUniqueTaskID()).removeValue();
     }
 }

@@ -65,7 +65,7 @@
     <string name="add_image">add image</string>
     <string name="Choose_location_for_task">choose location for task</string>
     <string name="recommended_tasks">Recommended tasks</string>
-    <string name="task_desecription">Task desecription:</string>
+    <string name="task_desecription">Task description:</string>
     <string name="please_help_me_and_mow_my_lawn_nit_is_30_m_2_thank_you">Please help me, and mow my lawn!  It is 30 m^2, thank you!</string>
     <string name="you_need_to_sign_in_to_view_your_profile">You need to sign in to view your profile.</string>
     <string name="phone_number_phone_number">Phone number: {PHONE NUMBER}</string>

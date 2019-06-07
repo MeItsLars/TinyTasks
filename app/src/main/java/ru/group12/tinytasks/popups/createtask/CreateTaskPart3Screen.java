@@ -24,6 +24,7 @@ import ru.group12.tinytasks.util.database.objects.Task;
 import ru.group12.tinytasks.util.database.objects.enums.Category;
 import ru.group12.tinytasks.util.internet.Network;
 
+// Activity for creating tasks
 public class CreateTaskPart3Screen extends AppCompatActivity {
 
     private Task task;
@@ -48,9 +49,16 @@ public class CreateTaskPart3Screen extends AppCompatActivity {
                 Double.parseDouble(getIntent().getStringExtra("longitude")));
     }
 
+    // Method for determining correct actions when the phone's 'back' button is pressed.
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
     private ImageButton addImage;
     private Uri uri;
 
+    // Method for initializing important views, and adding functionality to buttons and edittexts
     private void initializeContents() {
         Button createTaskButton = findViewById(R.id.create_task_button);
         createTaskButton.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +87,7 @@ public class CreateTaskPart3Screen extends AppCompatActivity {
     // UPLOADING IMAGES
     private static int PICK_IMAGE_REQUEST = 1;
 
+    // Method for opening the android file chooser, to select an image.
     private void openFileChooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -86,11 +95,12 @@ public class CreateTaskPart3Screen extends AppCompatActivity {
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
 
+    // Method for retrieving the selected image and putting it into an URI
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == PICK_IMAGE_REQUEST &&resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             uri = data.getData();
 
             Picasso.with(this).load(uri).into(addImage);

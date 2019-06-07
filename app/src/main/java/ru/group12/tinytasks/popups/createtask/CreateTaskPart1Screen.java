@@ -21,6 +21,7 @@ import ru.group12.tinytasks.util.adapters.CategoryAdapter;
 import ru.group12.tinytasks.util.database.objects.enums.Category;
 import ru.group12.tinytasks.util.internet.Network;
 
+// Activity for creating tasks
 public class CreateTaskPart1Screen extends AppCompatActivity {
 
     @Override
@@ -32,6 +33,12 @@ public class CreateTaskPart1Screen extends AppCompatActivity {
         initializeContents();
     }
 
+    // Method for determining correct actions when the phone's 'back' button is pressed.
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
     private EditText taskNameEditText;
     private EditText taskDescriptionEditText;
     private Spinner categorySpinner;
@@ -39,6 +46,7 @@ public class CreateTaskPart1Screen extends AppCompatActivity {
     private boolean taskTitleReady = false;
     private boolean taskDescriptionReady = false;
 
+    // Method for initializing important views, and adding functionality to buttons and edittexts
     private void initializeContents() {
         categorySpinner = findViewById(R.id.categories_spinner);
 
@@ -61,7 +69,8 @@ public class CreateTaskPart1Screen extends AppCompatActivity {
                     taskTitleReady = true;
                 } else {
                     changeDrawableState(taskNameEditText.getBackground(), DrawableState.WRONG);
-                    taskNameEditText.setError("Please use at least 5 characters");
+                    if(taskTitleReady || taskTitle.length() <= 1)
+                        taskNameEditText.setError("Please use at least 5 characters");
                     taskTitleReady = false;
                 }
             }
@@ -81,14 +90,15 @@ public class CreateTaskPart1Screen extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String taskTitle = charSequence.toString();
-                if(taskTitle.length() >= 20) {
+                String taskDescription = charSequence.toString();
+                if(taskDescription.length() >= 20) {
                     changeDrawableState(taskDescriptionEditText.getBackground(), DrawableState.RIGHT);
                     taskDescriptionEditText.setError(null);
                     taskDescriptionReady = true;
                 } else {
                     changeDrawableState(taskDescriptionEditText.getBackground(), DrawableState.WRONG);
-                    taskDescriptionEditText.setError("Please use at least 20 characters for your task description.");
+                    if(taskDescriptionReady || taskDescription.length() <= 1)
+                        taskDescriptionEditText.setError("Please use at least 20 characters for your task description.");
                     taskDescriptionReady = false;
                 }
             }
@@ -104,10 +114,6 @@ public class CreateTaskPart1Screen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(categorySpinner == null) System.out.println("CATEGORY SPINNER NULL");
-                else if(categorySpinner.getSelectedItem() == null) System.out.println("SELECTED ITEM NULL");
-                else System.out.println("AAAAAAAAAAAAAAAAAAH");
-
                 if(taskTitleReady && taskDescriptionReady) {
                     Map<String, String> data = new HashMap<String, String>(){{
                         put("title", taskNameEditText.getText().toString());
@@ -121,6 +127,7 @@ public class CreateTaskPart1Screen extends AppCompatActivity {
     }
 
     // ============= Code for changing edittext appearance ===========
+    // EditText border colors are changed when the input is right/wrong
     private enum DrawableState {RIGHT, WRONG, NEUTRAL}
 
     private void changeDrawableState(Drawable drawable, DrawableState state) {
