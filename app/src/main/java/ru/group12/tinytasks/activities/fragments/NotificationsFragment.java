@@ -21,8 +21,8 @@ public class NotificationsFragment extends Fragment {
         inflatedView = inflater.inflate(R.layout.fragment_notifications, container, false);
 
         layout = inflatedView.findViewById(R.id.notifications_list);
+        // TODO fix that you can log out and still see your alerts.
         retrieveNotifications();
-
         return inflatedView;
     }
 
