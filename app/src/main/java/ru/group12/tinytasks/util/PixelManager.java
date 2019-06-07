@@ -1,4 +1,4 @@
-package ru.group12.tinytasks.util.internet;
+package ru.group12.tinytasks.util;
 
 import android.content.Context;
 import android.util.DisplayMetrics;
@@ -25,6 +25,4 @@ public class PixelManager {
     public static int convertPixelsToDp(float px, Context context){
         return (int) (px / ((float) context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT));
     }
-
-
 }

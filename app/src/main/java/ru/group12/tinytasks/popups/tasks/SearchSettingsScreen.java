@@ -13,6 +13,7 @@ import ru.group12.tinytasks.R;
 import ru.group12.tinytasks.util.adapters.CategoryStringAdapter;
 import ru.group12.tinytasks.util.database.objects.SearchSettings;
 import ru.group12.tinytasks.util.database.objects.enums.Category;
+import ru.group12.tinytasks.util.internet.Network;
 
 public class SearchSettingsScreen extends AppCompatActivity {
 
@@ -20,6 +21,7 @@ public class SearchSettingsScreen extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searchsettings);
+        Network.registerInternetStateChangedListener(this);
 
         initializeContents();
     }

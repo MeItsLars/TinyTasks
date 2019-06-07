@@ -19,6 +19,7 @@ import ru.group12.tinytasks.R;
 import ru.group12.tinytasks.util.ActivityManager;
 import ru.group12.tinytasks.util.adapters.CategoryAdapter;
 import ru.group12.tinytasks.util.database.objects.enums.Category;
+import ru.group12.tinytasks.util.internet.Network;
 
 public class CreateTaskPart1Screen extends AppCompatActivity {
 
@@ -26,6 +27,7 @@ public class CreateTaskPart1Screen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_createtask_part1);
+        Network.registerInternetStateChangedListener(this);
 
         initializeContents();
     }

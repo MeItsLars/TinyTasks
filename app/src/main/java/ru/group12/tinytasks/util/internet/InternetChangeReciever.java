@@ -7,9 +7,9 @@ import android.support.v4.content.LocalBroadcastManager;
 
 public class InternetChangeReciever extends BroadcastReceiver {
 
-    /**
+    /*
     Class for detecting when the internet has been lost.
-     If there is no internet connection available, the user is sent to an activity that enables the user to check the internet connection.
+     If there is no internet connection available, the user is sent to an activity that awaits an internet connection.
      */
 
     @Override

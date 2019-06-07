@@ -59,13 +59,14 @@
 
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="50dp"
 
         android:layout_marginRight="50dp"
         android:background="@drawable/edittext_custom"
         android:drawableLeft="@drawable/ic_person_black_35dp"
         android:drawablePadding="10dp"
+        android:textSize="20sp"
 
         android:padding="5dp"
         android:paddingLeft="10dp"
@@ -95,7 +96,7 @@
         android:drawablePadding="10dp"
         android:hint="@string/enter_password"
 
-        android:inputType="textPassword"
+        android:inputType="textPassword|textWebPassword"
         android:padding="5dp"
 
         android:paddingStart="10dp"
@@ -224,10 +225,13 @@
         android:layout_height="wrap_content"
 
         android:layout_marginLeft="27dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginRight="27dp"
+        android:layout_marginEnd="27dp"
         android:layout_marginTop="48dp"
 
-        android:layout_marginRight="27dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="20dp"
+
         android:background="@drawable/button_custom"
         android:fontFamily="sans-serif-condensed-light"
         android:padding="5dp"
@@ -239,9 +243,6 @@
         android:textStyle="bold"
         app:fontFamily="@font/roboto"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gender"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintRight_toRightOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

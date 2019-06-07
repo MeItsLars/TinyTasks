@@ -9,6 +9,7 @@ import android.widget.TextView;
 import ru.group12.tinytasks.R;
 import ru.group12.tinytasks.util.ActivityManager;
 import ru.group12.tinytasks.util.database.Database;
+import ru.group12.tinytasks.util.internet.Network;
 
 public class SignInSuccessScreen extends AppCompatActivity {
 
@@ -16,6 +17,7 @@ public class SignInSuccessScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signinsuccess);
+        Network.registerInternetStateChangedListener(this);
 
         TextView userFullName = findViewById(R.id.fullNameText);
         if(Database.getCurrentUser() != null) {

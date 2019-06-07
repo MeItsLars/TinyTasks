@@ -9,8 +9,8 @@ import android.net.NetworkInfo;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 
-import ru.group12.tinytasks.activities.MainActivity;
 import ru.group12.tinytasks.popups.internet.InternetUnavailableScreen;
+import ru.group12.tinytasks.util.ActivityManager;
 
 import static android.content.Context.CONNECTIVITY_SERVICE;
 
@@ -39,11 +39,9 @@ public class Network {
             @Override
             public void onReceive(Context context, Intent intent) {
                 if(intent.getBooleanExtra("isNetworkAvailable", false)) {
-                    Intent intent2 = new Intent(activity, MainActivity.class);
-                    activity.startActivity(intent2);
+                    ActivityManager.backToHomeActivity(activity, "Home");
                 } else {
-                    Intent intent2 = new Intent(activity, InternetUnavailableScreen.class);
-                    activity.startActivity(intent2);
+                    ActivityManager.startNewActivity(activity, InternetUnavailableScreen.class);
                 }
             }
         }, intentFilter);

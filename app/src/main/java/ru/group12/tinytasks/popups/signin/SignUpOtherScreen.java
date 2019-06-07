@@ -23,8 +23,8 @@ import com.google.firebase.database.annotations.NotNull;
 import java.util.regex.Pattern;
 
 import ru.group12.tinytasks.R;
-import ru.group12.tinytasks.util.ActivityManager;
 import ru.group12.tinytasks.util.database.Database;
+import ru.group12.tinytasks.util.internet.Network;
 
 public class SignUpOtherScreen extends AppCompatActivity {
 
@@ -34,6 +34,7 @@ public class SignUpOtherScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signupotherscreen);
+        Network.registerInternetStateChangedListener(this);
         activity = this;
 
         AuthCredential credential = getIntent().getParcelableExtra("credential");
@@ -84,8 +85,8 @@ public class SignUpOtherScreen extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(!checkDrawableState(editText, pattern))
-                    editText.setError(message);
+                if(!checkDrawableState(editText, pattern)) editText.setError(message);
+                else editText.setError(null);
             }
 
             @Override
@@ -97,10 +98,13 @@ public class SignUpOtherScreen extends AppCompatActivity {
 
     // Initialize sign up button
     private void initializeSignUpButton(final AuthCredential credential) {
+        final String provider = getIntent().getStringExtra("provider");
+
         Button signUpButton = findViewById(R.id.signupButton);
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final TextView emailText = findViewById(R.id.emailText);
                 final EditText nameEditText = findViewById(R.id.firstnameText);
                 final EditText surnameEditText = findViewById(R.id.surnameText);
                 final EditText phoneNumberEditText = findViewById(R.id.phoneNumber);
@@ -120,11 +124,13 @@ public class SignUpOtherScreen extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         if(Database.userSignedIn()) {
                                             Database.registerNewUser(FirebaseAuth.getInstance().getCurrentUser().getUid(),
+                                                    emailText.getText().toString(),
                                                     nameEditText.getText().toString(),
                                                     surnameEditText.getText().toString(),
                                                     phoneNumberEditText.getText().toString(),
                                                     birthDateEditText.getText().toString(),
-                                                    genderEditText.getText().toString());
+                                                    genderEditText.getText().toString(),
+                                                    provider);
 
                                             Database.loadCurrentUser(activity);
                                         } else {

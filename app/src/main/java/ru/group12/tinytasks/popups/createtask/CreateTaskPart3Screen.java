@@ -22,6 +22,7 @@ import ru.group12.tinytasks.util.ActivityManager;
 import ru.group12.tinytasks.util.database.Database;
 import ru.group12.tinytasks.util.database.objects.Task;
 import ru.group12.tinytasks.util.database.objects.enums.Category;
+import ru.group12.tinytasks.util.internet.Network;
 
 public class CreateTaskPart3Screen extends AppCompatActivity {
 
@@ -31,6 +32,7 @@ public class CreateTaskPart3Screen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_createtask_part3);
+        Network.registerInternetStateChangedListener(this);
 
         initializeContents();
 
@@ -46,12 +48,8 @@ public class CreateTaskPart3Screen extends AppCompatActivity {
                 Double.parseDouble(getIntent().getStringExtra("longitude")));
     }
 
-    ImageButton addImage1;
-    ImageButton addImage2;
-    ImageButton addImage3;
-    ImageButton addImage4;
-    ImageButton addImage5;
-    ImageButton addImage6;
+    private ImageButton addImage;
+    private Uri uri;
 
     private void initializeContents() {
         Button createTaskButton = findViewById(R.id.create_task_button);
@@ -60,56 +58,26 @@ public class CreateTaskPart3Screen extends AppCompatActivity {
             public void onClick(View view) {
                 //ActivityManager.startNewActivityTask(CreateTaskPart3Screen.this, CreateTaskSuccessScreen.class, true, Intent.FLAG_ACTIVITY_CLEAR_TASK, task);
 
-                task.setUri(1, uri1);
-                task.setUri(2, uri2);
-                task.setUri(3, uri3);
-                task.setUri(4, uri4);
-                task.setUri(5, uri5);
-                task.setUri(6, uri6);
-
                 Intent intent = new Intent(CreateTaskPart3Screen.this, CreateTaskSuccessScreen.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent.putExtra("task", task);
+                if(uri != null) intent.putExtra("uri", uri.toString());
                 startActivity(intent);
                 finish();
             }
         });
 
-        addImage1 = findViewById(R.id.add_image_1);
-        addImage2 = findViewById(R.id.add_image_2);
-        addImage3 = findViewById(R.id.add_image_3);
-        addImage4 = findViewById(R.id.add_image_4);
-        addImage5 = findViewById(R.id.add_image_5);
-        addImage6 = findViewById(R.id.add_image_6);
-
-        addImage1.setOnClickListener(clickListener);
-        addImage2.setOnClickListener(clickListener);
-        addImage3.setOnClickListener(clickListener);
-        addImage4.setOnClickListener(clickListener);
-        addImage5.setOnClickListener(clickListener);
-        addImage6.setOnClickListener(clickListener);
+        addImage = findViewById(R.id.add_image_1);
+        addImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openFileChooser();
+            }
+        });
     }
 
     // UPLOADING IMAGES
-
-    private ImageButton lastPressedButton;
     private static int PICK_IMAGE_REQUEST = 1;
-
-    private Uri uri1;
-    private Uri uri2;
-    private Uri uri3;
-    private Uri uri4;
-    private Uri uri5;
-    private Uri uri6;
-
-    private View.OnClickListener clickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            ImageButton button = (ImageButton) view;
-            lastPressedButton = button;
-            openFileChooser();
-        }
-    };
 
     private void openFileChooser() {
         Intent intent = new Intent();
@@ -123,16 +91,9 @@ public class CreateTaskPart3Screen extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == PICK_IMAGE_REQUEST &&resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Uri imageUri = data.getData();
+            uri = data.getData();
 
-            Picasso.with(this).load(imageUri).into(lastPressedButton);
-
-            if(lastPressedButton.getId() == addImage1.getId()) uri1 = imageUri;
-            else if(lastPressedButton.getId() == addImage2.getId()) uri2 = imageUri;
-            else if(lastPressedButton.getId() == addImage3.getId()) uri3 = imageUri;
-            else if(lastPressedButton.getId() == addImage4.getId()) uri4 = imageUri;
-            else if(lastPressedButton.getId() == addImage5.getId()) uri5 = imageUri;
-            else if(lastPressedButton.getId() == addImage6.getId()) uri6 = imageUri;
+            Picasso.with(this).load(uri).into(addImage);
         }
     }
 }

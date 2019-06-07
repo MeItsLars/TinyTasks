@@ -1,6 +1,9 @@
 package ru.group12.tinytasks.util.database.objects;
 
-public class User {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class User implements Parcelable {
 
     private String uid;
     private String email;
@@ -51,4 +54,43 @@ public class User {
     public String getGender() {
         return gender;
     }
+
+    protected User(Parcel in) {
+        uid = in.readString();
+        email = in.readString();
+        name = in.readString();
+        surname = in.readString();
+        phoneNumber = in.readString();
+        birthdate = in.readString();
+        gender = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(uid);
+        dest.writeString(email);
+        dest.writeString(name);
+        dest.writeString(surname);
+        dest.writeString(phoneNumber);
+        dest.writeString(birthdate);
+        dest.writeString(gender);
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 }

@@ -83,7 +83,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginBottom="248dp"
+        android:layout_marginTop="40dp"
 
         android:background="@drawable/button_custom"
         android:fontFamily="sans-serif-condensed-light"
@@ -94,8 +94,7 @@
         android:textSize="16sp"
 
         app:fontFamily="@font/roboto"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

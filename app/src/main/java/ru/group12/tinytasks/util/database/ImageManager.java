@@ -2,39 +2,47 @@ package ru.group12.tinytasks.util.database;
 
 import android.app.Activity;
 import android.content.ContentResolver;
-import android.media.Image;
+import android.content.Context;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.webkit.MimeTypeMap;
+import android.widget.ImageView;
 
+import com.google.android.gms.tasks.OnCanceledListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import ru.group12.tinytasks.util.database.objects.Task;
 
 public class ImageManager {
 
     private static StorageReference mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
-    private static DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
 
-    public static void uploadTaskImages(Activity activity, Task task) {
-        for(Uri uri : task.getUris()) {
-            if(uri != null) uploadTaskImage(activity, task, uri);
+    public static void uploadTaskImage(Activity activity, Task task, Uri uri) {
+        if(uri != null) {
+            StorageReference fileReference = mStorageRef.child(task.getUniqueTaskID()).child("taskimage." + getFileExtension(activity, uri));
+
+            fileReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    System.out.println("Image added!");
+                }
+            }).addOnCanceledListener(new OnCanceledListener() {
+                @Override
+                public void onCanceled() {
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+
+                }
+            });
         }
-    }
-
-    private static void uploadTaskImage(Activity activity, Task task, Uri uri) {
-        StorageReference fileReference = mStorageRef.child(task.getUniqueTaskID()).child(System.currentTimeMillis() + "." + getFileExtension(activity, uri));
-
-        fileReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                System.out.println("Image added!");
-            }
-        });
     }
 
     private static String getFileExtension(Activity activity, Uri uri) {
@@ -43,11 +51,11 @@ public class ImageManager {
         return mime.getExtensionFromMimeType(cR.getType(uri));
     }
 
-    public static void loadImagesToTask(Task task) {
-        mStorageRef.child(task.getUniqueTaskID()).getBytes(1024 * 1024).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+    public static void loadTaskImage(final Context context, Task task, final ImageView view) {
+        mStorageRef.child(task.getUniqueTaskID()).child("taskimage.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
-            public void onSuccess(byte[] bytes) {
-
+            public void onSuccess(Uri uri) {
+                Picasso.with(context).load(uri).into(view);
             }
         });
     }
