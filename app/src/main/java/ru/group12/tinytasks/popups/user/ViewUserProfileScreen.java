@@ -51,7 +51,7 @@ public class ViewUserProfileScreen extends AppCompatActivity {
                 clipboard.setPrimaryClip(clip);
             }
         });
-        copyNumber.setOnClickListener(new View.OnClickListener() {
+        copyMail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
@@ -60,4 +60,6 @@ public class ViewUserProfileScreen extends AppCompatActivity {
             }
         });
     }
+
+
 }
