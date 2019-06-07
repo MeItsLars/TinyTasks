@@ -13,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import ru.group12.tinytasks.R;
 import ru.group12.tinytasks.popups.signin.SignInScreen;
+import ru.group12.tinytasks.popups.tasks.MyTasksScreen;
 import ru.group12.tinytasks.util.ActivityManager;
 import ru.group12.tinytasks.util.database.Database;
 import ru.group12.tinytasks.util.database.objects.User;
@@ -62,6 +63,14 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
                 Database.signOutCurrentUser(getActivity());
                 ActivityManager.backToHomeActivity(getActivity(), "Home");
+            }
+        });
+
+        Button myTaskButton = inflatedView.findViewById(R.id.A_view_my_tasks);
+        myTaskButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityManager.startNewActivity(inflatedView.getContext(), MyTasksScreen.class, Intent.FLAG_ACTIVITY_NEW_TASK);
             }
         });
     }

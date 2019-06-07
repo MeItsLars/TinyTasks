@@ -1,5 +1,6 @@
 package ru.group12.tinytasks.util.database.objects.enums;
 
+// All task categories a user can set.
 public enum Category {
 
     BRICKLAYING("Brick laying"),

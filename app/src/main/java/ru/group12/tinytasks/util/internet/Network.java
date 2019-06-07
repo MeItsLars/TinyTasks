@@ -28,6 +28,8 @@ public class Network {
         return false;
     }
 
+    // Sends users to the internet unavailable screen if their internet connection is cut off.
+    // Sends them back to the home screen if they reconnect.
     public static void registerInternetStateChangedListener(final AppCompatActivity activity) {
         if(!isConnectedToInternet(activity)) {
             Intent intent = new Intent(activity, InternetUnavailableScreen.class);

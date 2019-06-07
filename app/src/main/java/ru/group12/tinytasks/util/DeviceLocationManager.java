@@ -8,6 +8,7 @@ import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 
 public class DeviceLocationManager {
+    // Retrives the location from the user to help decide if tasks are in range.
     public static Location getDeviceLocation(Activity context, LocationManager locationManager) {
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission

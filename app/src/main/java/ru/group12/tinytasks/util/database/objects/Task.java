@@ -15,6 +15,7 @@ import java.util.List;
 import ru.group12.tinytasks.util.DeviceLocationManager;
 import ru.group12.tinytasks.util.database.objects.enums.Category;
 
+// All relevant info needed to store and process tasks.
 public class Task implements Parcelable, Comparable<Task> {
 
     private String uniqueTaskID;

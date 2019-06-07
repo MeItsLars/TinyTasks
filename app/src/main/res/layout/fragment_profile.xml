@@ -33,7 +33,7 @@
 
             android:textSize="16sp"
             android:textStyle="bold"
-            android:visibility="invisible"
+            android:visibility="visible"
             app:fontFamily="@font/roboto"
             app:layout_constraintBottom_toTopOf="@+id/SignOutButton"
             app:layout_constraintHorizontal_bias="0.0"

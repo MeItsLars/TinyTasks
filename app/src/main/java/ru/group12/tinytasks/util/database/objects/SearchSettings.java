@@ -3,6 +3,7 @@ package ru.group12.tinytasks.util.database.objects;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+// Used to help decide which tasks to display after a search
 public class SearchSettings implements Parcelable {
 
     private String priceFrom;

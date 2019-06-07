@@ -39,6 +39,7 @@ import ru.group12.tinytasks.util.database.objects.enums.Category;
 
 public class TaskManager {
 
+    // Gets 5 random tasks from the firebase database
     public static void loadRandomTasks(final Activity context, final LinearLayout parent) {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("tasks");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -93,6 +94,7 @@ public class TaskManager {
         });
     }
 
+    // Sorts the task for the search fragment
     public static List<Task> sortTasks(Activity context, LocationManager locationManager, List<Task> tasks, SearchSettings settings, int limit) {
         Location userLocation = DeviceLocationManager.getDeviceLocation(context, locationManager);
 
@@ -139,10 +141,12 @@ public class TaskManager {
         return sortedTasks;
     }
 
+    // In practice this is used to decide if the location of a task is too far from your current location or not.
     public static boolean isLocationInRange(Location location1, Location location2, double distance) {
         return (location1 == null || location2 == null) || location1.distanceTo(location2) <= distance * 1000;
     }
 
+    // Displays the tasks and makes them clickable to get more info from the tasks
     public static ConstraintLayout getTaskButton(final Task task, final Context context) {
         ConstraintLayout constraintLayout = new ConstraintLayout(context);
         constraintLayout.setId(ViewCompat.generateViewId());
