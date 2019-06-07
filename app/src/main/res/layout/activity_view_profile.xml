@@ -35,7 +35,7 @@
         android:layout_marginBottom="132dp"
 
         android:background="@drawable/button_custom"
-        android:text="Copy Email"
+        android:text="@string/copy_email"
         android:textAllCaps="false"
         android:textColor="#fff"
         android:textSize="20sp"
